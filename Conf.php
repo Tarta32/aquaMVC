@@ -15,5 +15,6 @@
         const image = '/aquaMVC/assets/image/';
 
         const contact = "/aquaMVC/contact";
-
+        
+        const message = "/aquaMVC/admin/message";
     }

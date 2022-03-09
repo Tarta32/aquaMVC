@@ -124,4 +124,11 @@ class AdminModele
         $requete = $connexion->prepare("UPDATE accueil SET titre = ?, contenu = ?");
         $requete->execute([$titre, $contenu]);
     }
+
+    static function findAllMessage(){
+        $connexion = new PDOperso();
+        $requete = $connexion->prepare('SELECT * FROM message');
+        $requete->execute();
+        return $requete->fetchAll();
+    }
 }

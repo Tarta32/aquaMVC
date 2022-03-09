@@ -5,10 +5,18 @@
 body {
     background-color: rgba(138, 238, 138, 0.25) !important;
     -moz-user-select: none; /* Firefox */
- -webkit-user-select: none; /* Chrome, Safari, Opéra depuis la version 15 */
- -ms-user-select: none; /* Internet explorer depuis la version 10 et Edge */
- user-select: none; /* Propriété standard */
+    -webkit-user-select: none; /* Chrome, Safari, Opéra depuis la version 15 */
+    -ms-user-select: none; /* Internet explorer depuis la version 10 et Edge */
+    user-select: none; /* Propriété standard */
 }
+
+.selectable{
+    -moz-user-select: text; /* Firefox */
+    -webkit-user-select: text; /* Chrome, Safari, Opéra depuis la version 15 */
+    -ms-user-select: text; /* Internet explorer depuis la version 10 et Edge */
+    user-select: text; /* Propriété standard */
+}
+
 
 .absolute{
     position: absolute !important;
@@ -270,6 +278,11 @@ g path:hover {
 
 .remarque { display:none; }
 
+
+.msgHover:hover {
+    cursor: pointer;
+}
+
 @media (max-width: 2560px) {
 
     .carousel img{
@@ -426,4 +439,5 @@ img {
     width: 100%;
   }
   
+
 

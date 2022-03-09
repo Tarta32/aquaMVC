@@ -47,7 +47,7 @@ include './vue/commun/header.php'
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="form_phone">Telephone</label>
-                                    <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Entrez votre numéro de telephone (optionnel)">
+                                    <input id="form_phone" type="tel" pattern="^\+?\d{3}?\d{3}?\d{3}?\d{3}$" name="phone" class="form-control" placeholder="Entrez votre numéro de telephone (optionnel)">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@ include './vue/commun/header.php'
                             <textarea id="form_message" name="message" class="form-control" placeholder="Votre message *" rows="4" required="required" data-error="Please, leave us a message."></textarea>
                             <div class="help-block with-errors"></div>
                         </div>
-                        
+
                         <label class="remarque">Remarque</label>
                         <input class="remarque" name="remarque" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="nom@domaine.com">
 

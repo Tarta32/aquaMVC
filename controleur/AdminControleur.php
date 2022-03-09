@@ -50,6 +50,18 @@ class AdminControleur extends BaseControleur
         }
     }
 
+    function message()
+    {
+
+        if (isset($_SESSION['admin'])) {
+            $messages = AdminModele::findAllMessage();
+
+            $parametres = compact('messages');
+
+            $this->afficherVue($parametres,'messages');
+        }
+    }
+
 
 
     function dashboardAccueil()
@@ -262,7 +274,7 @@ class AdminControleur extends BaseControleur
             }
         }
     }
-    
+
     function update()
     {
         if (isset($_SESSION['admin'])) {

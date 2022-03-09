@@ -3,7 +3,32 @@
 include './vue/commun/headerAdmin.php'
 
 ?>
+<nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
 
+
+            <a href="<?= Conf::index ?>"><img src="/aquaMVC/assets/image/imageAccueil/BGimage/logo.png" style="width:75px" alt="Logo de plongée"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
+                <ul class="navbar-nav text-center">
+                    <li class="nav-item">
+                        <a href="<?= Conf::dashboard ?>" class="nav-link">Retour</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= Conf::message ?>" class="nav-link">Messages</a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="<?= Conf::deconnexion ?>" class="nav-link">Deconnexion</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </nav>
 <div class="container">
     <div class="row justify-content-between">
         <div class="col-auto mt-3">
@@ -11,6 +36,7 @@ include './vue/commun/headerAdmin.php'
         </div>
         <div class="col-auto mt-3">
             <a href="<?= Conf::dashboard ?>" class="btn btn-success">Retour</a>
+            <a href="<?= Conf::message ?>" class="btn btn-warning">Messages</a>
             <a href="<?= Conf::deconnexion ?>" class="btn btn-danger">Deconnexion</a>
         </div>
     </div>
@@ -22,8 +48,8 @@ include './vue/commun/headerAdmin.php'
     </div>
     <div class="row">
         <div class="col">
+            <h2>Modification de l'acceuil</h2>
             <form method="POST" action="/aquaMVC/admin/update">
-                <h2>Modification de l'acceuil</h2>
                 <p class="text-danger"><?php if (isset($_SESSION['message_error'])) {
                                             echo "<p style='color:red'>" . $_SESSION['message_error'] . "</p>";
                                             unset($_SESSION['message_error']);

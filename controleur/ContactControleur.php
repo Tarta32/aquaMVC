@@ -10,24 +10,31 @@ class ContactControleur extends BaseControleur
 
     public function onload()
     {
-        if ($_SESSION['admin']) {
 
-            $message = "";
 
-            if (isset($_POST['valider'])) {
+        $message = "";
 
-                // filtre anti-bot
-                if ($_POST['remarque'] != "") { die(); }
+        if (isset($_POST['valider'])) {
 
-                // si le champs "phone" est NULL
-                if ($_POST['phone'] == "" || $_POST['phone'] == NULL) {
-                    $message = ContactModele::InsertMessage($_POST['nom'], $_POST['prenom'], $_POST['email'], NULL, $_POST['message'], "");
+            // filtre anti-bot
+            if ($_POST['remarque'] != "") {
+                die();
+            }
 
-                    header("Location :".Conf::contact);
-                } // si le champs "phone" est rempli
-                else {
-                    $message = ContactModele::InsertMessage($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['phone'], $_POST['message'], "");
-                }
+            // si le champs "phone" est NULL
+            if ($_POST['phone'] == "" || $_POST['phone'] == NULL) {
+                $message = ContactModele::InsertMessage($_POST['nom'], $_POST['prenom'], $_POST['email'], NULL, $_POST['message']);
+
+                mail("test@gmail.com", $_POST['nom'] . " " . $_POST['prenom'], $_POST['message'], "From: " . $_POST['email']);
+
+                header("Location :" . Conf::contact);
+            } // si le champs "phone" est rempli
+            else {
+                $message = ContactModele::InsertMessage($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['phone'], $_POST['message']);
+
+                mail("test@gmail.com", $_POST['nom'] . " " . $_POST['prenom'] . " - Tel :" . $_POST['phone'], $_POST['message'], "From: " . $_POST['email']);
+
+                header("Location :" . Conf::contact);
             }
         }
 

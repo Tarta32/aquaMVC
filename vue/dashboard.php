@@ -3,21 +3,33 @@
 include './vue/commun/headerAdmin.php'
 
 ?>
+<nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
 
-<div class="container">
-    <div class="row justify-content-between">
-        <div class="col-auto mt-3">
-            <a href="<?= Conf::index ?>" class="btn btn-primary">Accueil</a>
 
+            <a href="<?= Conf::index ?>"><img src="/aquaMVC/assets/image/imageAccueil/BGimage/logo.png" style="width:75px" alt="Logo de plongée"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
+                <ul class="navbar-nav text-center">
+                    <li class="nav-item">
+                        <a href="<?= Conf::dashboardAccueil ?>" class="nav-link">Modifier accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= Conf::message ?>" class="nav-link">Messages</a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="<?= Conf::deconnexion ?>" class="nav-link">Deconnexion</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="col-auto mt-3">
-
-            <a href="<?= Conf::dashboardAccueil ?>" class="btn btn-success">Modifier accueil</a>
-            <a href="<?= Conf::deconnexion ?>" class="btn btn-danger">Deconnexion</a>
         </div>
-    </div>
-
-
+    </nav>
+<div class="container">    
     <?php
 
     if (isset($_SESSION['message'])) {
@@ -32,8 +44,8 @@ include './vue/commun/headerAdmin.php'
     <div class="container">
         <div class="row">
             <div class="col-6 mx-auto">
+                <h2 class="text-center">Departement</h2>
                 <div class="form-group">
-                    <label for="exampleSelect1" class="form-label">Departement</label>
                     <form method="POST" action="<?= Conf::index ?>admin/dashboard">
                         <select class="form-select mt-4" id="exampleSelect1" name="departement">
                             <?php
