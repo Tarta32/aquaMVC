@@ -21,40 +21,40 @@ include './vue/commun/header.php'
 
                     <div class="controls">
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="form_name">Prénom *</label>
-                                    <input id="form_name" type="text" name="prenom" class="form-control" placeholder="Entrez votre prénom *" required="required" data-error="Firstname is required.">
+                            <div class="col-lg-6 my-1">
+                                <div class="form-floating">
+                                    <input id="floatingInput" type="text" name="prenom" class="form-control" placeholder="Entrez votre prénom *" required="required" data-error="Firstname is required.">
+                                    <label for="floatingInput">Prénom *</label>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="form_lastname">Nom *</label>
-                                    <input id="form_lastname" type="text" name="nom" class="form-control" placeholder="Entrez votre nom *" required="required" data-error="Lastname is required.">
+                            <div class="col-lg-6 my-1">
+                                <div class="form-floating">
+                                    <input id="floatingInput" type="text" name="nom" class="form-control" placeholder="Entrez votre nom *" required="required" data-error="Lastname is required.">
+                                    <label for="floatingInput">Nom *</label>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="row p1">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="form_email">Email *</label>
-                                    <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="form_email" type="email" name="email" class="form-control" placeholder="Entrez votre e-mail *" required="required" data-error="Valid email is required.">
+                            <div class="col-lg-6 my-1">
+                                <div class="form-floating">
+                                    <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="floatingInput" type="email" name="email" class="form-control" placeholder="Entrez votre e-mail *" required="required" data-error="Valid email is required.">
+                                    <label for="floatingInput">Email *</label>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="form_phone">Telephone</label>
-                                    <input id="form_phone" type="tel" pattern="^\+?\d{3}?\d{3}?\d{3}?\d{3}$" name="phone" class="form-control" placeholder="Entrez votre numéro de telephone (optionnel)">
+                            <div class="col-lg-6 my-1">
+                                <div class="form-floating">
+                                    <input id="floatingInput" type="tel" pattern="^\+?\d{3}?\d{3}?\d{3}?\d{3}$" name="phone" class="form-control" placeholder="Entrez votre numéro de telephone (optionnel)">
+                                    <label for="floatingInput">Telephone</label>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="form_message">Message *</label>
-                            <textarea id="form_message" name="message" class="form-control" placeholder="Votre message *" rows="4" required="required" data-error="Please, leave us a message."></textarea>
+                        <div class="form-floating">
+                            <textarea id="floatingInput" name="message" type='texte' style="height:100%;" class="form-control" placeholder="Votre message *" cols="30" rows="4" required="required" data-error="Please, leave us a message."></textarea>
+                            <label for="floatingInput">Message *</label>
                             <div class="help-block with-errors"></div>
                         </div>
 
@@ -69,7 +69,7 @@ include './vue/commun/header.php'
                         </div> -->
 
 
-                        <input type="submit" name="valider" class="btn btn-success btn-send m-1" value="Send message">
+                        <input type="submit" name="valider" class="btn btn-success btn-send m-1" value="Envoyer message">
 
                         <p class="text-muted">
                             <strong>*</strong> Champs obligatoires.

@@ -8,7 +8,7 @@ include './vue/commun/header.php';
     function visited(elem, id) {
 
         document.querySelector("path.departement-" + elem).classList.add("fillRed");
-        document.querySelector("path.departement-" + elem).parentElement.setAttribute("href", "./departement.php?dp=" + id)
+        document.querySelector("path.departement-" + elem).parentElement.setAttribute("href", "./departement/visite/" + id)
 
     }
 </script>

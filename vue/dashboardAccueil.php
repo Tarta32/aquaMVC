@@ -30,16 +30,6 @@ include './vue/commun/headerAdmin.php'
         </div>
     </nav>
 <div class="container">
-    <div class="row justify-content-between">
-        <div class="col-auto mt-3">
-            <a href="<?= Conf::index ?>" class="btn btn-primary">Accueil</a>
-        </div>
-        <div class="col-auto mt-3">
-            <a href="<?= Conf::dashboard ?>" class="btn btn-success">Retour</a>
-            <a href="<?= Conf::message ?>" class="btn btn-warning">Messages</a>
-            <a href="<?= Conf::deconnexion ?>" class="btn btn-danger">Deconnexion</a>
-        </div>
-    </div>
     <div class="row">
         <div class="col">
             <form action="insert.php" method="post">
@@ -48,7 +38,7 @@ include './vue/commun/headerAdmin.php'
     </div>
     <div class="row">
         <div class="col">
-            <h2>Modification de l'acceuil</h2>
+            <h2 class="text-center">Modification de l'acceuil</h2>
             <form method="POST" action="/aquaMVC/admin/update">
                 <p class="text-danger"><?php if (isset($_SESSION['message_error'])) {
                                             echo "<p style='color:red'>" . $_SESSION['message_error'] . "</p>";

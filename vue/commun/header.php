@@ -54,6 +54,9 @@
                         <a class="nav-link" href="<?= Conf::index ?>">Accueil</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="<?= Conf::departement ?>">Departements</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Prestations</a>
                     </li>
                     <li class="nav-item">

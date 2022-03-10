@@ -12,7 +12,7 @@ class ContactControleur extends BaseControleur
     {
 
 
-        $message = "";
+        $message = NULL;
 
         if (isset($_POST['valider'])) {
 
