@@ -1,5 +1,6 @@
 <?php
 
+    ob_start();
     include("Autoloader.php");
     Autoloader::start();
     session_start();
@@ -36,5 +37,5 @@ if (isset($partiesChemin[2]) && $partiesChemin[2] != "") {
 
 $controleur = new $nomControleur();
 $controleur->$nomAction($parametre);
-
+ob_flush();
 ?>

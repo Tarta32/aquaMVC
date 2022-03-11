@@ -28,24 +28,24 @@ include './vue/commun/headerAdmin.php'
     </div>
 </nav>
 
-<h2 class="text-center">Messages</h2>
+<h2 class="text-center text-success mt-5"><u>Messages</u></h2>
 <div class="container  selectable mt-5">
 
     <div class="row border border-4 border-success">
         <div class="col-2 border-end border-4 border-success">
-            <h2 class="text-success">Nom</h2>
+            <h3 class="text-success">Nom</h3>
         </div>
         <div class="col-2 border-end border-4 border-success">
-            <h2 class="text-success">Prenom</h2>
+            <h3 class="text-success">Prenom</h3>
         </div>
         <div class="col-2 border-end border-4 border-success">
-            <h2 class="text-success">Email</h2>
+            <h3 class="text-success">Email</h3>
         </div>
         <div class="col-2 border-end border-4 border-success">
-            <h2 class="text-success">Telephone</h2>
+            <h3 class="text-success">Telephone</h3>
         </div>
         <div class="col-4">
-            <h2 class="text-success">Message</h2>
+            <h3 class="text-success">Message</h3>
         </div>
     </div>
 

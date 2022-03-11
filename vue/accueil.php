@@ -13,7 +13,7 @@ include './vue/commun/header.php';
     }
 </script>
 <section class="carteInteractive">
-    <h2>Carte interactive</h2>
+    <h2 class="text-success"><u>CARTE INTERACTIVE</u></h2>
     <p>Cliquez sur les departements en rouge pour acceder aux medias correspondant à ces departements</p>
     <div class="carte">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 667 578" xml:space="preserve">
@@ -372,31 +372,42 @@ include './vue/commun/header.php';
 </section>
 <section class="presentation p-5">
     <div class="container d-flex justify-content-between">
-        <div class="textePresentation text-light">
-            <h2 class="text-light"><?= $accueil['titre'] ?></h2>
-            <p><?= $accueil['contenu'] ?></p>
+        <div class="textePresentation text-light p-5">
+            <h2 class="text-light text-center"><?= $accueil['titre'] ?></h2>
+            <p class="mt-3"><?php 
+            if(strlen($accueil['contenu']) > 200){
+                echo substr($accueil['contenu'],0,200).' ...';
+            }else {
+                echo $accueil['contenu'];
+            } 
+            ?></p>
+            <button onclick="window.location.href='<?= Conf::index ?>'">Voir plus &xrarr;</button>
         </div>
         <div class="videoPresentation">
             <video autoplay muted width="100%">
-                <source src='<?= Conf::index ?>/assets/videoAccueil/<?= $accueil['media'] ?>' type='video/mp4'>
+                <source src='<?= Conf::index ?>assets/videoAccueil/<?= $accueil['media'] ?>' type='video/mp4'>
             </video>
         </div>
     </div>
 </section>
 
-<section class="sectionMasonry">
-    <div class="masonry ">
-        <?php
-        foreach ($images as $img) {
-        ?>
-            <div class="mItem mt-3">
-                <img class="rounded-3 imageMasonry" src='<?= Conf::index ?>assets/image/<?= $img['nom_image'] ?>'>
-            </div>
+<div class="container">
+    <section class="sectionMasonry p-3">
+        <div class="masonry ">
+            <?php
+            foreach ($images as $img) {
+            ?>
+                <div class="mItem mt-3">
+                    <img style="box-shadow: 10px 11px 15px -3px rgba(0,0,0,0.58)" class="rounded-3 imageMasonry" src='<?= Conf::index ?>assets/image/<?= $img['nom_image'] ?>'>
+                </div>
+    
+            <?php
+            }
+            ?>
+    </section>
+    <button class="my-4" onclick="window.location.href='<?= Conf::departement ?>'">Voir plus &xrarr;</button>
 
-        <?php
-        }
-        ?>
-</section>
+</div>
 
 <?php
 

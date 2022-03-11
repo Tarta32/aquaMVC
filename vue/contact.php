@@ -10,7 +10,7 @@ include './vue/commun/header.php'
 
             <div class="col-xl-8 offset-xl-2">
 
-                <h2 class="text-center">Contact</h2>
+                <h2 class="text-center text-success"><u>CONTACT</u></h2>
 
                 <p class="lead text-center">Si vous souhaitez nous contactez pour plus de renseignements</p>
 

@@ -6,13 +6,13 @@ include './vue/commun/header.php'
 
 ?>
 <div class="container">
-    <h2 class="text-center">Liste des departements disponible</h2>
+    <h2 class="text-center text-success my-5"><u>Liste des departements disponible</u></h2>
     <ul>
         <?php
         foreach ($departementVisite as $dp) {
         ?>
             <li>
-                <h2 class="text-center"><a href="<?= Conf::index ?>departement/visite/<?= $dp['id'] ?>"><?= $dp['departement_nom'] ?></a></h2>
+                <h2 class="text-center"> <a class="text-info" href="<?= Conf::index ?>departement/visite/<?= $dp['id'] ?>">&sime;<?= $dp['departement_nom'] ?> :&gtcir;</a></h2>
             </li>
 
         <?php

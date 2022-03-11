@@ -131,4 +131,17 @@ class AdminModele
         $requete->execute();
         return $requete->fetchAll();
     }
+
+    static function findVideo(){
+        $connexion = new PDOperso();
+        $requete = $connexion->prepare('SELECT media FROM accueil');
+        $requete->execute();
+        return $requete->fetch();
+    }
+
+    static function updateVideo($media){
+        $connexion = new PDOperso();
+        $requete = $connexion->prepare('UPDATE accueil SET media = ?');
+        $requete->execute([$media]);
+    }
 }

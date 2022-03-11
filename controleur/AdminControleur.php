@@ -272,18 +272,58 @@ class AdminControleur extends BaseControleur
                     header('Location: ' . Conf::dashboardAccueil);
                 }
             }
-        }
+        } 
+        
     }
 
     function update()
     {
         if (isset($_SESSION['admin'])) {
 
-            if (isset($_POST['updateAccueil'])) {
+            if (isset($_POST['updateAccueil']) && $_POST['updateAccueil']) {
 
                 AdminModele::updateTitreContenu($_POST['titre'], $_POST['contenu']);
                 $_SESSION['message_success'] = "Modifications enregistrées";
                 header('Location: ' . Conf::dashboardAccueil);
+            } else if (isset($_POST['updateVideo'])){
+
+                $video = AdminModele::findVideo();
+                unlink("./assets/videoAccueil/" . $video['media']);
+                
+
+
+        
+                $filename = $_FILES['selectVideo']['name'];
+
+                $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $file_extension = strtolower($file_extension);
+
+
+                $filename = "accueilVideo" . time() . '.' . $file_extension;
+
+                $valid_extension = array("mp4", "m4v", "mov","qt","avi","flv","mpeg","mkv", );
+
+                if (in_array($file_extension, $valid_extension)) {
+
+                    // Upload file
+                    if (move_uploaded_file(
+                        $_FILES['selectVideo']['tmp_name'],
+                        './assets/videoAccueil/' . $filename
+                    )) {
+                        $_SESSION['message_success'] = "Telechargement réussi";
+                        // Execute query
+                        AdminModele::updateVideo($filename);
+
+                        header("Location: " . Conf::dashboardAccueil);
+                    } else {
+                        $_SESSION['message_error'] = "Aucun fichier telechargé";
+                        header('Location: ' . Conf::dashboardAccueil);
+                    }
+                } else {
+                    $_SESSION['message_error'] = "Erreur d'extension de fichier";
+                    header('Location: ' . Conf::dashboardAccueil);
+                }
             }
         }
     }

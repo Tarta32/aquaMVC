@@ -1,4 +1,4 @@
-<div class="footer container-fluid d-flex justify-content-between p-4 flex-wrap">
+<div class="footer container-fluid d-flex justify-content-between p-4 flex-wrap border-top border-secondary">
     <div class="copyright my-auto">
         <p class="text-center">
             2022 © Copyright <br> Site realisé par Julien BARBE
@@ -28,10 +28,10 @@
     <div class="reseaux d-block text-center my-auto">
         <div class="iconeFlex d-flex justify-content-center">
             <div>
-                <a href=""><i class='bx bxl-instagram-alt'></i></a>
-                <a href=""><i class='bx bxl-twitter'></i></a>
-                <a href=""><i class='bx bxl-youtube'></i></a>
-                <a href=""><i class='bx bxl-facebook-square'></i></a>
+                <a href="" class="text-primary"><i class='bx bxl-instagram-alt'></i></a>
+                <a href="" class="text-primary"><i class='bx bxl-twitter'></i></a>
+                <a href="" class="text-primary"><i class='bx bxl-youtube'></i></a>
+                <a href="" class="text-primary"><i class='bx bxl-facebook-square'></i></a>
             </div>
         </div>
         <div>

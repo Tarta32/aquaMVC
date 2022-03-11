@@ -4,7 +4,7 @@ $title = $departement['departement_nom'];
 include './vue/commun/header.php'
 ?>
 
-<section class="sectionMasonry mt-5">
+<section class="sectionMasonry mt-5 p-3">
     <div class="masonry">
 
         <?php
@@ -12,7 +12,7 @@ include './vue/commun/header.php'
         ?>
             <div class="mItem">
 
-                <img src="<?= Conf::index ?>assets/image/<?= $img['nom_image'] ?>" alt="" />
+                <img class="rounded" style="box-shadow: 10px 11px 15px -3px rgba(0,0,0,0.58)" src="<?= Conf::index ?>assets/image/<?= $img['nom_image'] ?>" alt="" />
 
             </div>
         <?php
@@ -20,3 +20,7 @@ include './vue/commun/header.php'
         ?>
     </div>
 </section>
+
+<?php 
+    include './vue/commun/footer.php'
+?>

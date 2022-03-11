@@ -38,7 +38,7 @@ include './vue/commun/headerAdmin.php'
     </div>
     <div class="row">
         <div class="col">
-            <h2 class="text-center">Modification de l'acceuil</h2>
+            <h2 class="text-center text-success mt-5"><u>Modification de l'acceuil</u></h2>
             <form method="POST" action="<?= Conf::index ?>admin/update">
                 <p class="text-danger"><?php if (isset($_SESSION['message_error'])) {
                                             echo "<p style='color:red'>" . $_SESSION['message_error'] . "</p>";
@@ -60,7 +60,7 @@ include './vue/commun/headerAdmin.php'
             </form>
             <div class="row">
                 <div class="col-6">
-                    <form enctype='multipart/form-data' action="">
+                    <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/update">
                         <input name='selectVideo' class="form-control mt-5" type="file" id="formFile">
                         <input class="btn btn-success mt-2 mb-3" type="submit" value="Modifier video" name="updateVideo">
                         <video autoplay muted width="100%" style="max-width: 500px;">
