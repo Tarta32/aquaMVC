@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" defer></script>
     <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/aquaMVC/assets/css/style.css">
+    <link rel="stylesheet" href="<?= Conf::index ?>assets/css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <title><?= $title ?></title>
 
@@ -42,7 +42,7 @@
         <div class="container-fluid">
 
 
-            <a href="<?= Conf::index ?>"><img src="/aquaMVC/assets/image/imageAccueil/BGimage/logo.png" style="width:75px" alt="Logo de plongée"></a>
+            <a href="<?= Conf::index ?>"><img src="<?= Conf::index ?>assets/image/imageAccueil/BGimage/logo.png" style="width:75px" alt="Logo de plongée"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -78,7 +78,7 @@
         </div>
         </div>
     </nav>
-    <section class="headerIndex relative">
+    <section class="headerIndex relative" style="background-image: url(<?= Conf::index ?>assets/image/imageAccueil/BGimage/Screenshot_20211026_223424.jpg);">
         <h2 class="shadowText nonSelectionnable absolute p-4"><?= $title ?></h2>
         <h1 class="absolute nonSelectionnable p-4"><?= $title ?></h1>
     </section>

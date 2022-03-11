@@ -4,31 +4,31 @@ include './vue/commun/headerAdmin.php'
 
 ?>
 <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
+    <div class="container-fluid">
 
 
-            <a href="<?= Conf::index ?>"><img src="/aquaMVC/assets/image/imageAccueil/BGimage/logo.png" style="width:75px" alt="Logo de plongée"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <a href="<?= Conf::index ?>"><img src="<?= Conf::index ?>assets/image/imageAccueil/BGimage/logo.png" style="width:75px" alt="Logo de plongée"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
 
-            <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
-                <ul class="navbar-nav text-center">
-                    <li class="nav-item">
-                        <a href="<?= Conf::dashboard ?>" class="nav-link">Retour</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?= Conf::message ?>" class="nav-link">Messages</a>
-                    </li>
-                    <li class="nav-item">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
+            <ul class="navbar-nav text-center">
+                <li class="nav-item">
+                    <a href="<?= Conf::dashboard ?>" class="nav-link">Retour</a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= Conf::message ?>" class="nav-link">Messages</a>
+                </li>
+                <li class="nav-item">
                     <a href="<?= Conf::deconnexion ?>" class="nav-link">Deconnexion</a>
-                    </li>
-                </ul>
-            </div>
+                </li>
+            </ul>
         </div>
-        </div>
-    </nav>
+    </div>
+    </div>
+</nav>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -39,7 +39,7 @@ include './vue/commun/headerAdmin.php'
     <div class="row">
         <div class="col">
             <h2 class="text-center">Modification de l'acceuil</h2>
-            <form method="POST" action="/aquaMVC/admin/update">
+            <form method="POST" action="<?= Conf::index ?>admin/update">
                 <p class="text-danger"><?php if (isset($_SESSION['message_error'])) {
                                             echo "<p style='color:red'>" . $_SESSION['message_error'] . "</p>";
                                             unset($_SESSION['message_error']);
@@ -64,12 +64,12 @@ include './vue/commun/headerAdmin.php'
                         <input name='selectVideo' class="form-control mt-5" type="file" id="formFile">
                         <input class="btn btn-success mt-2 mb-3" type="submit" value="Modifier video" name="updateVideo">
                         <video autoplay muted width="100%" style="max-width: 500px;">
-                            <source src='/aquaMVC/assets/videoAccueil/<?= $accueil[0]['media'] ?>' type='video/mp4'>
+                            <source src='<?= Conf::index ?>assets/videoAccueil/<?= $accueil[0]['media'] ?>' type='video/mp4'>
                         </video>
                     </form>
                 </div>
                 <div class="col-6">
-                    <form enctype='multipart/form-data' method="POST" action="/aquaMVC/admin/insert">
+                    <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/insert">
                         <div class="form-group">
                             <input name='selectImage[]' class="form-control mt-5" type="file" id="formFile" multiple>
                             <input class="btn btn-success mt-2 mb-3" type="submit" value="Telecharger image(s)" name="validerAccueil">
@@ -81,8 +81,8 @@ include './vue/commun/headerAdmin.php'
                             foreach ($requeteImage as $img) {
                             ?>
                                 <div class="mItem" style="position: relative;">
-                                    <img style="max-width: 150px;" src="/aquaMVC/assets/image/<?= $img['nom_image'] ?>" alt="" />
-                                    <a style="position: absolute; left: 0" class="btn btn-danger" href="/aquaMVC/admin/supprimerAccueil/<?= $img['id'] ?>">X</a>
+                                    <img style="max-width: 150px;" src="<?= Conf::index ?>assets/image/<?= $img['nom_image'] ?>" alt="" />
+                                    <a style="position: absolute; left: 0" class="btn btn-danger" href="<?= Conf::index ?>admin/supprimerAccueil/<?= $img['id'] ?>">X</a>
                                 </div>
                             <?php
                             }

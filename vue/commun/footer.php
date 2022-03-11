@@ -6,16 +6,16 @@
     </div>
     <div class="arbo text-center">
         <ul>
-            <li>
+            <li style="list-style: url(<?= Conf::index ?>assets/image/imageAccueil/BGimage/leaf.png) !important;">
                 <a href="">Accueil</a>
             </li>
-            <li>
+            <li style="list-style: url(<?= Conf::index ?>assets/image/imageAccueil/BGimage/leaf.png) !important;">
                 <a href="">Prestations</a>
             </li>
-            <li>
+            <li style="list-style: url(<?= Conf::index ?>assets/image/imageAccueil/BGimage/leaf.png) !important;">
                 <a href="">Contact</a>
             </li>
-            <li>
+            <li style="list-style: url(<?= Conf::index ?>assets/image/imageAccueil/BGimage/leaf.png) !important;">
                 <a href="">A propos</a>
             </li>
         </ul>

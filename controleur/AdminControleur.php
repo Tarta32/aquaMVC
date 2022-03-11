@@ -143,7 +143,7 @@ class AdminControleur extends BaseControleur
             $departement = DepartementModele::findById($id[1]);
 
 
-            header("Location: /aquaMVC/admin/dashboard/" . $departement['departement_nom']);
+            header("Location: ".Conf::index."admin/dashboard/" . $departement['departement_nom']);
         } else {
             header('Location: ' . Conf::index);
         }

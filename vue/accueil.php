@@ -378,7 +378,7 @@ include './vue/commun/header.php';
         </div>
         <div class="videoPresentation">
             <video autoplay muted width="100%">
-                <source src='/aquaMVC/assets/videoAccueil/<?= $accueil['media'] ?>' type='video/mp4'>
+                <source src='<?= Conf::index ?>/assets/videoAccueil/<?= $accueil['media'] ?>' type='video/mp4'>
             </video>
         </div>
     </div>
@@ -390,7 +390,7 @@ include './vue/commun/header.php';
         foreach ($images as $img) {
         ?>
             <div class="mItem mt-3">
-                <img class="rounded-3 imageMasonry" src='/aquaMVC/assets/image/<?= $img['nom_image'] ?>'>
+                <img class="rounded-3 imageMasonry" src='<?= Conf::index ?>assets/image/<?= $img['nom_image'] ?>'>
             </div>
 
         <?php

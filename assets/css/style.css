@@ -114,15 +114,12 @@ a {
     font-size: 0.9rem;
 }
 
-.footer li{
-    list-style: url(/aquaMVC/assets/image/imageAccueil/BGimage/leaf.png) !important;
-}
+
 
 
 .headerIndex{
     box-shadow: inset 0 5px 5px lightblue;
     position: relative;
-    background-image: url(/aquaMVC/assets/image/imageAccueil/BGimage/Screenshot_20211026_223424.jpg);
     height: 90vh;
     text-align: center;
     background-position: center;

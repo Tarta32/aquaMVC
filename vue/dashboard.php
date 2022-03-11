@@ -7,7 +7,7 @@ include './vue/commun/headerAdmin.php'
         <div class="container-fluid">
 
 
-            <a href="<?= Conf::index ?>"><img src="/aquaMVC/assets/image/imageAccueil/BGimage/logo.png" style="width:75px" alt="Logo de plongée"></a>
+            <a href="<?= Conf::index ?>"><img src="<?= Conf::index ?>assets/image/imageAccueil/BGimage/logo.png" style="width:75px" alt="Logo de plongée"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -78,7 +78,7 @@ include './vue/commun/headerAdmin.php'
             <div class="container">
                 <div class="row">
                     <div class="col-8 mx-auto mt-5 p-5 border border-success border-2">
-                        <form enctype='multipart/form-data' method="POST" action="/aquaMVC/admin/insert">
+                        <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/insert">
                             <h2><?= $selectDepartement['departement_nom'] ?></h2>
                             <input style="display: none;" type="text" name="departement" value="<?= $selectDepartement["id"] ?>">
                             <input style="display: none;" type="text" name="departement_slug" value="<?= $selectDepartement["departement_slug"] ?>">
@@ -99,7 +99,7 @@ include './vue/commun/headerAdmin.php'
 
         ?>
 
-            <form enctype='multipart/form-data' method="POST" action="/aquaMVC/admin/insert">
+            <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/insert">
                 <h2><?= $selectDepartement['departement_nom'] ?></h2>
                 <input style="display: none;" type="text" name="departement" value="<?= $selectDepartement["id"] ?>">
                 <input style="display: none;" type="text" name="departement_slug" value="<?= $selectDepartement["departement_slug"] ?>">
@@ -118,7 +118,7 @@ include './vue/commun/headerAdmin.php'
                         <div class="mItem" style="position: relative;">
 
                             <img style="max-width: 200px;" src="<?= Conf::image . $img['nom_image'] ?>" alt="" />
-                            <a style="position: absolute; left: 0" class="btn btn-danger" href="/aquaMVC/admin/supprimer/<?= $img['image_id'] ?>-<?= $img['id_departement'] ?>">X</a>
+                            <a style="position: absolute; left: 0" class="btn btn-danger" href="<?= Conf::index ?>admin/supprimer/<?= $img['image_id'] ?>-<?= $img['id_departement'] ?>">X</a>
 
                         </div>
 

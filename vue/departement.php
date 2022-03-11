@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $title = $departement['departement_nom'];
 include './vue/commun/header.php'
@@ -12,7 +12,7 @@ include './vue/commun/header.php'
         ?>
             <div class="mItem">
 
-                <img src="/aquaMVC/assets/image/<?= $img['nom_image'] ?>" alt="" />
+                <img src="<?= Conf::index ?>assets/image/<?= $img['nom_image'] ?>" alt="" />
 
             </div>
         <?php
