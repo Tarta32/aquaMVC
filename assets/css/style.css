@@ -42,7 +42,7 @@ a:hover {
     color: rgb(29, 182, 42) !important;
 }
 
-button {
+.boutonAccueil {
     width: 9em;
     height: 3em;
     border-radius: 30em;
@@ -55,7 +55,7 @@ button {
     box-shadow: 3px 3px 12px #c5c5c5
    }
    
-button::before {
+   .boutonAccueil::before {
     content: '';
     width: 0;
     height: 3em;
@@ -69,7 +69,7 @@ button::before {
     z-index: -1;
    }
    
-button:hover::before {
+   .boutonAccueil:hover::before {
     width: 9em;
    }
 

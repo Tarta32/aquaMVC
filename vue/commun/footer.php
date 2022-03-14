@@ -7,16 +7,16 @@
     <div class="arbo text-center">
         <ul>
             <li style="list-style: url(<?= Conf::index ?>assets/image/imageAccueil/BGimage/leaf.png) !important;">
-                <a href="">Accueil</a>
+                <a href="<?= Conf::index ?>">Accueil</a>
             </li>
             <li style="list-style: url(<?= Conf::index ?>assets/image/imageAccueil/BGimage/leaf.png) !important;">
-                <a href="">Prestations</a>
+                <a href="<?= Conf::index ?>">Prestations</a>
             </li>
             <li style="list-style: url(<?= Conf::index ?>assets/image/imageAccueil/BGimage/leaf.png) !important;">
-                <a href="">Contact</a>
+                <a href="<?= Conf::contact ?>">Contact</a>
             </li>
             <li style="list-style: url(<?= Conf::index ?>assets/image/imageAccueil/BGimage/leaf.png) !important;">
-                <a href="">A propos</a>
+                <a href="<?= Conf::apropos ?>">A propos</a>
             </li>
         </ul>
     </div>

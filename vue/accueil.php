@@ -381,7 +381,7 @@ include './vue/commun/header.php';
                 echo $accueil['contenu'];
             } 
             ?></p>
-            <button onclick="window.location.href='<?= Conf::index ?>'">Voir plus &xrarr;</button>
+            <button class="boutonAccueil" onclick="window.location.href='<?= Conf::apropos ?>'">Voir plus &xrarr;</button>
         </div>
         <div class="videoPresentation">
             <video autoplay muted width="100%">
@@ -405,7 +405,7 @@ include './vue/commun/header.php';
             }
             ?>
     </section>
-    <button class="my-4" onclick="window.location.href='<?= Conf::departement ?>'">Voir plus &xrarr;</button>
+    <button class="my-4 boutonAccueil" onclick="window.location.href='<?= Conf::departement ?>'">Voir plus &xrarr;</button>
 
 </div>
 

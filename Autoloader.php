@@ -10,8 +10,11 @@ class Autoloader
 
     static function autoload($nomClasse)
     {
-        if (file_exists($nomClasse . ".php")) {
-            include($nomClasse . ".php");
+        $file = str_replace("\\","/",$nomClasse) . ".php";
+        
+        if (file_exists($file)) {
+            
+            include($file);
         }
     }
 }

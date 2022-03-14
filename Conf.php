@@ -19,4 +19,6 @@
         const contact = "/aquaMVC/contact";
         
         const message = "/aquaMVC/admin/message";
+
+        const apropos = "/aquaMVC/apropos";
     }
