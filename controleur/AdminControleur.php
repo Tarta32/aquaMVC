@@ -318,6 +318,7 @@ class AdminControleur extends BaseControleur
             } else if (isset($_POST['updateVideo'])) {
 
                 $video = AdminModele::findVideo();
+
                 unlink("./assets/videoAccueil/" . $video['media']);
 
 
@@ -354,12 +355,12 @@ class AdminControleur extends BaseControleur
                     $_SESSION['message_error'] = "Erreur d'extension de fichier";
                     header('Location: ' . Conf::dashboardApropos);
                 }
-            } elseif (isset($_POST['updateImagePresentation'])) {
+            } else if (isset($_POST['updateImagePresentation'])) {
 
 
                 $image = AproposModele::findAll();
                 
-                unlink("./assets/image/imageAccueil" . $image['media']);
+                unlink("./assets/image/imageAccueil/" . $image[0]['image_accueil']);
 
                 $filename = $_FILES['selectImagePresentation']['name'];
 
@@ -377,7 +378,7 @@ class AdminControleur extends BaseControleur
                     // Upload file
                     if (move_uploaded_file(
                         $_FILES['selectImagePresentation']['tmp_name'],
-                        './assets/image/imageAccueil' . $filename
+                        './assets/image/imageAccueil/' . $filename
                     )) {
                         $_SESSION['message_success'] = "Telechargement réussi";
                         // Execute query
@@ -396,7 +397,7 @@ class AdminControleur extends BaseControleur
 
 
                 $imagePerso = AproposModele::findAll();
-                unlink("./assets/image/imageAccueil" . $imagePerso['media']);
+                unlink("./assets/image/imageAccueil/" . $imagePerso[0]['image_perso']);
 
                 $filename = $_FILES['selectImageEquipement']['name'];
 
@@ -414,7 +415,7 @@ class AdminControleur extends BaseControleur
                     // Upload file
                     if (move_uploaded_file(
                         $_FILES['selectImageEquipement']['tmp_name'],
-                        './assets/image/imageAccueil' . $filename
+                        './assets/image/imageAccueil/' . $filename
                     )) {
                         $_SESSION['message_success'] = "Telechargement réussi";
                         // Execute query
@@ -429,12 +430,6 @@ class AdminControleur extends BaseControleur
                     $_SESSION['message_error'] = "Erreur d'extension de fichier";
                     header("Location: " . Conf::dashboardApropos);
                 }
-            }
-
-            if (isset($_POST['updateApropos'])) {
-                AproposModele::updateApropos($_POST['titre_perso'], $_POST['contenu_perso']);
-                $_SESSION['message_success'] = "Modifications enregistrées";
-                header("Location: " . Conf::dashboardApropos);
             }
         }
     }
