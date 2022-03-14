@@ -31,7 +31,7 @@ include './vue/commun/headerAdmin.php';
 
         <div class="col-6">
             <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/update">
-                <img class="mt-5" width="300px" src="<?= Conf::index ?>/assets/image/imageAccueil/<?= $presentation[0]['image_accueil'] ?>" alt="">
+                <img class="mt-5" width="300px" src="<?= Conf::index ?>assets/image/imageAccueil/<?= $presentation[0]['image_accueil'] ?>" alt="">
                 <input name='selectImagePresentation' class="form-control mt-2" type="file" id="formFile">
                 <input class="btn btn-success mt-2 mb-3" type="submit" value="Modifier image" name="updateImagePresentation">
             </form>
@@ -41,7 +41,7 @@ include './vue/commun/headerAdmin.php';
         <h2 class="text-center  my-5"><u>Mon equipement</u></h2>
         <div class="col-6">
             <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/update">
-                <img class="mt-5" width="300px" src="<?= Conf::index ?>/assets/image/imageAccueil/<?= $presentation[0]['image_perso'] ?>" alt="">
+                <img class="mt-5" width="300px" src="<?= Conf::index ?>assets/image/imageAccueil/<?= $presentation[0]['image_perso'] ?>" alt="">
                 <input name='selectImageEquipement' class="form-control mt-2" type="file" id="formFile">
                 <input class="btn btn-success mt-2 mb-3" type="submit" value="Modifier image" name="updateImageEquipement">
             </form>
@@ -50,13 +50,13 @@ include './vue/commun/headerAdmin.php';
             <form method="POST" action="<?= Conf::index ?>admin/update">
                 <div class="form-group mt-3 mb-3">
                     <label for="inputDefault">Titre :</label>
-                    <input type="text" class="form-control" id="inputDefault" value="<?= $presentation[0]["titre_perso"] ?>" name="titre">
+                    <input type="text" class="form-control" id="inputDefault" value="<?= $presentation[0]["titre_perso"] ?>" name="titre_equipement">
                 </div>
                 <div class="form-group">
                     <label for="contenu" class="form-label mt-4">Contenu :</label>
-                    <textarea name="contenu" class="form-control" id="contenu" rows="6"><?= $presentation[0]["contenu_perso"] ?></textarea>
+                    <textarea name="contenu_equipement" class="form-control" id="contenu" rows="6"><?= $presentation[0]["contenu_perso"] ?></textarea>
                 </div>
-                <input class="btn btn-success mt-2" type="submit" value="Modifier contenu" name="updatePresentation">
+                <input class="btn btn-success mt-2" type="submit" value="Modifier contenu" name="updateEquipement">
             </form>
         </div>
 

@@ -55,11 +55,14 @@ class AdminControleur extends BaseControleur
     {
 
         if (isset($_SESSION['admin'])) {
+
             $messages = AdminModele::findAllMessage();
 
             $parametres = compact('messages');
 
-            $this->afficherVue($parametres,'messages');
+            $this->afficherVue($parametres, 'messages');
+        } else {
+            header('Location: ' . Conf::connexion);
         }
     }
 
@@ -83,14 +86,19 @@ class AdminControleur extends BaseControleur
         }
     }
 
-    function dashboardApropos(){
-        if(isset($_SESSION['admin'])){
-            
+    function dashboardApropos()
+    {
+
+        if (isset($_SESSION['admin'])) {
+
             $presentation = AproposModele::apropos();
 
             $parametres = compact('presentation');
 
-            $this->afficherVue($parametres,"dashboardApropos");
+            $this->afficherVue($parametres, "dashboardApropos");
+        } else {
+
+            header('Location: ' . Conf::connexion);
         }
     }
 
@@ -155,7 +163,7 @@ class AdminControleur extends BaseControleur
             $departement = DepartementModele::findById($id[1]);
 
 
-            header("Location: ".Conf::index."admin/dashboard/" . $departement['departement_nom']);
+            header("Location: " . Conf::index . "admin/dashboard/" . $departement['departement_nom']);
         } else {
             header('Location: ' . Conf::index);
         }
@@ -284,8 +292,7 @@ class AdminControleur extends BaseControleur
                     header('Location: ' . Conf::dashboardAccueil);
                 }
             }
-        } 
-        
+        }
     }
 
     function update()
@@ -302,16 +309,20 @@ class AdminControleur extends BaseControleur
                 } else {
                     header('Location: ' . Conf::dashboardApropos);
                 }
+            } else if (isset($_POST['updateEquipement'])) {
 
+                AdminModele::updateEquipement($_POST['titre_equipement'], $_POST['contenu_equipement']);
+                $_SESSION['message_success'] = "Modifications enregistrées";
 
-            } else if (isset($_POST['updateVideo'])){
+                header('Location: ' . Conf::dashboardApropos);
+            } else if (isset($_POST['updateVideo'])) {
 
                 $video = AdminModele::findVideo();
                 unlink("./assets/videoAccueil/" . $video['media']);
-                
 
 
-        
+
+
                 $filename = $_FILES['selectVideo']['name'];
 
                 $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
@@ -321,7 +332,7 @@ class AdminControleur extends BaseControleur
 
                 $filename = "accueilVideo" . time() . '.' . $file_extension;
 
-                $valid_extension = array("mp4", "m4v", "mov","qt","avi","flv","mpeg","mkv");
+                $valid_extension = array("mp4", "m4v", "mov", "qt", "avi", "flv", "mpeg", "mkv");
 
                 if (in_array($file_extension, $valid_extension)) {
 
@@ -334,21 +345,22 @@ class AdminControleur extends BaseControleur
                         // Execute query
                         AdminModele::updateVideo($filename);
 
-                        header("Location: " . Conf::dashboardAccueil);
+                        header("Location: " . Conf::dashboardApropos);
                     } else {
                         $_SESSION['message_error'] = "Aucun fichier telechargé";
-                        header('Location: ' . Conf::dashboardAccueil);
+                        header('Location: ' . Conf::dashboardApropos);
                     }
                 } else {
                     $_SESSION['message_error'] = "Erreur d'extension de fichier";
-                    header('Location: ' . Conf::dashboardAccueil);
+                    header('Location: ' . Conf::dashboardApropos);
                 }
-            } elseif (isset($_POST['updateImagePresentation'])){
+            } elseif (isset($_POST['updateImagePresentation'])) {
 
 
-                $image = AdminModele::findImageAccueil();
-                unlink("./assets/image/imageAccueil" . $image['media']);
+                $image = AproposModele::findAll();
                 
+                unlink("./assets/image/imageAccueil" . $image['media']);
+
                 $filename = $_FILES['selectImagePresentation']['name'];
 
                 $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
@@ -371,21 +383,21 @@ class AdminControleur extends BaseControleur
                         // Execute query
                         AdminModele::updateImageAccueil($filename);
 
-                        header("Location: " . Conf::dashboardAccueil);
+                        header("Location: " . Conf::dashboardApropos);
                     } else {
                         $_SESSION['message_error'] = "Aucun fichier telechargé";
-                        header('Location: ' . Conf::dashboardAccueil);
+                        header("Location: " . Conf::dashboardApropos);
                     }
                 } else {
                     $_SESSION['message_error'] = "Erreur d'extension de fichier";
-                    header('Location: ' . Conf::dashboardAccueil);
+                    header("Location: " . Conf::dashboardApropos);
                 }
-            } elseif (isset($_POST['updateImageEquipement'])){
+            } elseif (isset($_POST['updateImageEquipement'])) {
 
 
-                $imagePerso = AdminModele::findImagePerso();
+                $imagePerso = AproposModele::findAll();
                 unlink("./assets/image/imageAccueil" . $imagePerso['media']);
-                
+
                 $filename = $_FILES['selectImageEquipement']['name'];
 
                 $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
@@ -406,23 +418,23 @@ class AdminControleur extends BaseControleur
                     )) {
                         $_SESSION['message_success'] = "Telechargement réussi";
                         // Execute query
-                        AdminModele::updateImageAccueil($filename);
+                        AdminModele::updateImagePerso($filename);
 
-                        header("Location: " . Conf::dashboardAccueil);
+                        header("Location: " . Conf::dashboardApropos);
                     } else {
                         $_SESSION['message_error'] = "Aucun fichier telechargé";
-                        header('Location: ' . Conf::dashboardAccueil);
+                        header("Location: " . Conf::dashboardApropos);
                     }
                 } else {
                     $_SESSION['message_error'] = "Erreur d'extension de fichier";
-                    header('Location: ' . Conf::dashboardAccueil);
+                    header("Location: " . Conf::dashboardApropos);
                 }
             }
 
-            if(isset($_POST['updateApropos'])){
-                AproposModele::updateApropos($_POST['titre_perso'],$_POST['contenu_perso']);
+            if (isset($_POST['updateApropos'])) {
+                AproposModele::updateApropos($_POST['titre_perso'], $_POST['contenu_perso']);
                 $_SESSION['message_success'] = "Modifications enregistrées";
-                header('Location: ' . Conf::dashboardApropos);
+                header("Location: " . Conf::dashboardApropos);
             }
         }
     }
