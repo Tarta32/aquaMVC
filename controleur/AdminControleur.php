@@ -4,6 +4,7 @@ namespace controleur;
 
 use modele\AdminModele;
 use Conf;
+use modele\AproposModele;
 use modele\DepartementModele;
 use modele\ImageModele;
 
@@ -82,6 +83,17 @@ class AdminControleur extends BaseControleur
         }
     }
 
+    function dashboardApropos(){
+        if(isset($_SESSION['admin'])){
+            
+            $presentation = AproposModele::apropos();
+
+            $parametres = compact('presentation');
+
+            $this->afficherVue($parametres,"dashboardApropos");
+        }
+    }
+
     function connexion()
     {
 
@@ -91,9 +103,9 @@ class AdminControleur extends BaseControleur
 
             if (isset($_POST['valider'])) {
 
-                $utilisateur = AdminModele::connexion($_POST['login']);
+                $utilisateur = AdminModele::connexion(htmlentities($_POST['login']));
 
-                if (password_verify($_POST['password'], $utilisateur['password'])) {
+                if (password_verify(htmlentities($_POST['password']), $utilisateur['password'])) {
 
                     $_SESSION['admin'] = $_POST['login'];
                     header('Location: ' . Conf::dashboard);
@@ -280,11 +292,18 @@ class AdminControleur extends BaseControleur
     {
         if (isset($_SESSION['admin'])) {
 
-            if (isset($_POST['updateAccueil']) && $_POST['updateAccueil']) {
+            if (isset($_POST['updateAccueil']) || isset($_POST['updatePresentation'])) {
 
                 AdminModele::updateTitreContenu($_POST['titre'], $_POST['contenu']);
                 $_SESSION['message_success'] = "Modifications enregistrées";
-                header('Location: ' . Conf::dashboardAccueil);
+
+                if (isset($_POST['updateAccueil'])) {
+                    header('Location: ' . Conf::dashboardAccueil);
+                } else {
+                    header('Location: ' . Conf::dashboardApropos);
+                }
+
+
             } else if (isset($_POST['updateVideo'])){
 
                 $video = AdminModele::findVideo();
@@ -302,7 +321,7 @@ class AdminControleur extends BaseControleur
 
                 $filename = "accueilVideo" . time() . '.' . $file_extension;
 
-                $valid_extension = array("mp4", "m4v", "mov","qt","avi","flv","mpeg","mkv", );
+                $valid_extension = array("mp4", "m4v", "mov","qt","avi","flv","mpeg","mkv");
 
                 if (in_array($file_extension, $valid_extension)) {
 
@@ -324,6 +343,86 @@ class AdminControleur extends BaseControleur
                     $_SESSION['message_error'] = "Erreur d'extension de fichier";
                     header('Location: ' . Conf::dashboardAccueil);
                 }
+            } elseif (isset($_POST['updateImagePresentation'])){
+
+
+                $image = AdminModele::findImageAccueil();
+                unlink("./assets/image/imageAccueil" . $image['media']);
+                
+                $filename = $_FILES['selectImagePresentation']['name'];
+
+                $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $file_extension = strtolower($file_extension);
+
+
+                $filename = "accueilImagePresentation" . time() . '.' . $file_extension;
+
+                $valid_extension = array("png", "jpeg", "jpg");
+
+                if (in_array($file_extension, $valid_extension)) {
+
+                    // Upload file
+                    if (move_uploaded_file(
+                        $_FILES['selectImagePresentation']['tmp_name'],
+                        './assets/image/imageAccueil' . $filename
+                    )) {
+                        $_SESSION['message_success'] = "Telechargement réussi";
+                        // Execute query
+                        AdminModele::updateImageAccueil($filename);
+
+                        header("Location: " . Conf::dashboardAccueil);
+                    } else {
+                        $_SESSION['message_error'] = "Aucun fichier telechargé";
+                        header('Location: ' . Conf::dashboardAccueil);
+                    }
+                } else {
+                    $_SESSION['message_error'] = "Erreur d'extension de fichier";
+                    header('Location: ' . Conf::dashboardAccueil);
+                }
+            } elseif (isset($_POST['updateImageEquipement'])){
+
+
+                $imagePerso = AdminModele::findImagePerso();
+                unlink("./assets/image/imageAccueil" . $imagePerso['media']);
+                
+                $filename = $_FILES['selectImageEquipement']['name'];
+
+                $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $file_extension = strtolower($file_extension);
+
+
+                $filename = "ImageEquipement" . time() . '.' . $file_extension;
+
+                $valid_extension = array("png", "jpeg", "jpg");
+
+                if (in_array($file_extension, $valid_extension)) {
+
+                    // Upload file
+                    if (move_uploaded_file(
+                        $_FILES['selectImageEquipement']['tmp_name'],
+                        './assets/image/imageAccueil' . $filename
+                    )) {
+                        $_SESSION['message_success'] = "Telechargement réussi";
+                        // Execute query
+                        AdminModele::updateImageAccueil($filename);
+
+                        header("Location: " . Conf::dashboardAccueil);
+                    } else {
+                        $_SESSION['message_error'] = "Aucun fichier telechargé";
+                        header('Location: ' . Conf::dashboardAccueil);
+                    }
+                } else {
+                    $_SESSION['message_error'] = "Erreur d'extension de fichier";
+                    header('Location: ' . Conf::dashboardAccueil);
+                }
+            }
+
+            if(isset($_POST['updateApropos'])){
+                AproposModele::updateApropos($_POST['titre_perso'],$_POST['contenu_perso']);
+                $_SESSION['message_success'] = "Modifications enregistrées";
+                header('Location: ' . Conf::dashboardApropos);
             }
         }
     }

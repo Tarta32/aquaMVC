@@ -1,32 +1,6 @@
 <?php
 include './vue/commun/headerAdmin.php'
 ?>
-<nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid">
-
-
-        <a href="<?= Conf::index ?>"><img src="<?= Conf::index ?>assets/image/imageAccueil/BGimage/logo.png" style="width:75px" alt="Logo de plongée"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-
-        <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
-            <ul class="navbar-nav text-center">
-                <li class="nav-item">
-                    <a href="<?= Conf::dashboard ?>" class="nav-link">Modifier departements</a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= Conf::dashboardAccueil ?>" class="nav-link">Modifier accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= Conf::deconnexion ?>" class="nav-link">Deconnexion</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    </div>
-</nav>
 
 <h2 class="text-center text-success mt-5"><u>Messages</u></h2>
 <div class="container  selectable mt-5">

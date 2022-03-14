@@ -13,4 +13,10 @@ class AproposModele extends BaseModele
        return $requete->fetchAll();       
    }
 
+   static function updateApropos($titre,$contenu){
+    $connexion = new PDOperso();
+    $requete = $connexion->prepare('UPDATE apropos SET titre_perso = ?, contenu_perso = ?');
+    $requete->execute([$titre,$contenu]);
+   }
+
 }

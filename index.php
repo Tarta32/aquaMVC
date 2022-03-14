@@ -30,10 +30,10 @@ if (isset($partiesChemin[2]) && $partiesChemin[2] != "") {
 }
 
 
-// if (!method_exists($nomControleur, $nomAction)) {
-//     $nomControleur = "controleur\\ErreurControleur";
-//     $nomAction = "pageNonTrouve";
-// }
+if (!method_exists($nomControleur, $nomAction)) {
+    $nomControleur = "controleur\\ErreurControleur";
+    $nomAction = "pageNonTrouve";
+}
 
 $controleur = new $nomControleur();
 $controleur->$nomAction($parametre);

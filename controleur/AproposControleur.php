@@ -13,7 +13,6 @@ class AproposControleur extends BaseControleur{
 
         $presentation = AproposModele::apropos();
 
-
         $parametres = compact('presentation');
 
         $this->afficherVue($parametres,'apropos');

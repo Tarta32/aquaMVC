@@ -144,4 +144,39 @@ class AdminModele
         $requete = $connexion->prepare('UPDATE accueil SET media = ?');
         $requete->execute([$media]);
     }
+
+    static function updateImageAccueil($media){
+        $connexion = new PDOperso();
+        $requete = $connexion->prepare('UPDATE apropos SET image_accueil = ?');
+        $requete->execute([$media]);
+    }
+
+    static function updateImagePerso($media){
+        $connexion = new PDOperso();
+        $requete = $connexion->prepare('UPDATE apropos SET image_perso = ?');
+        $requete->execute([$media]);
+    }
+
+    static function findAllFromApropos(){
+        $connexion = new PDOperso();
+        $requete = $connexion->prepare('SELECT * FROM apropos');
+        $requete->execute();
+        return $requete->fetchAll();
+    }
+
+    static function findImageAccueil(){
+        $connexion = new PDOperso();
+        $requete = $connexion->prepare('SELECT image_accueil FROM apropos');
+        $requete->execute();
+        return $requete->fetch();
+    }
+    static function findImagePerso(){
+        $connexion = new PDOperso();
+        $requete = $connexion->prepare('SELECT image_perso FROM apropos');
+        $requete->execute();
+        return $requete->fetch();
+    }
+
+    
+
 }

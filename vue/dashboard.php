@@ -3,33 +3,8 @@
 include './vue/commun/headerAdmin.php'
 
 ?>
-<nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
 
-
-            <a href="<?= Conf::index ?>"><img src="<?= Conf::index ?>assets/image/imageAccueil/BGimage/logo.png" style="width:75px" alt="Logo de plongée"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-
-            <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
-                <ul class="navbar-nav text-center">
-                    <li class="nav-item">
-                        <a href="<?= Conf::dashboardAccueil ?>" class="nav-link">Modifier accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?= Conf::message ?>" class="nav-link">Messages</a>
-                    </li>
-                    <li class="nav-item">
-                    <a href="<?= Conf::deconnexion ?>" class="nav-link">Deconnexion</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        </div>
-    </nav>
-<div class="container">    
+<div class="container">
     <?php
 
     if (isset($_SESSION['message'])) {

@@ -23,14 +23,14 @@ class ContactControleur extends BaseControleur
 
             // si le champs "phone" est NULL
             if ($_POST['phone'] == "" || $_POST['phone'] == NULL) {
-                $message = ContactModele::InsertMessage($_POST['nom'], $_POST['prenom'], $_POST['email'], NULL, $_POST['message']);
+                $message = ContactModele::InsertMessage(htmlentities($_POST['nom']), htmlentities($_POST['prenom']), htmlentities($_POST['email']), NULL, htmlentities($_POST['message']));
 
                 mail("test@gmail.com", $_POST['nom'] . " " . $_POST['prenom'], $_POST['message'], "From: " . $_POST['email']);
 
                 header("Location :" . Conf::contact);
             } // si le champs "phone" est rempli
             else {
-                $message = ContactModele::InsertMessage($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['phone'], $_POST['message']);
+                $message = ContactModele::InsertMessage(htmlentities($_POST['nom']), htmlentities($_POST['prenom']), htmlentities($_POST['email']), htmlentities($_POST['phone']), htmlentities($_POST['message']));
 
                 mail("test@gmail.com", $_POST['nom'] . " " . $_POST['prenom'] . " - Tel :" . $_POST['phone'], $_POST['message'], "From: " . $_POST['email']);
 

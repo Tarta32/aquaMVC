@@ -1,4 +1,4 @@
-<div class="footer container-fluid d-flex justify-content-between p-4 flex-wrap border-top border-secondary">
+<div class="footer container-fluid d-flex justify-content-between p-4 flex-wrap border-top border-secondary mt-5">
     <div class="copyright my-auto">
         <p class="text-center">
             2022 © Copyright <br> Site realisé par Julien BARBE

@@ -241,6 +241,16 @@ img {
 }
 
 
+.dropdown-menu{
+    background-color: lightblue;
+}
+
+.dropdown-menu a:hover{
+    transform: scale(1);
+    background-color: lightblue;
+}
+
+
 
 
 

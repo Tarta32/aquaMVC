@@ -8,6 +8,8 @@
 
         const dashboardAccueil = '/aquaMVC/admin/dashboardAccueil';
 
+        const dashboardApropos = '/aquaMVC/admin/dashboardApropos';
+
         const departement = '/aquaMVC/departement/';
 
         const connexion = '/aquaMVC/admin/connexion';

@@ -61,14 +61,6 @@ include './vue/commun/header.php'
                         <label class="remarque">Remarque</label>
                         <input class="remarque" name="remarque" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="nom@domaine.com">
 
-
-                        <!-- <div class="form-group">
-                            <div class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
-                            <input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha">
-                            <div class="help-block with-errors"></div>
-                        </div> -->
-
-
                         <input type="submit" name="valider" class="btn btn-success btn-send m-1" value="Envoyer message">
 
                         <p class="text-muted">
