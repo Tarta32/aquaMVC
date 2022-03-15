@@ -8,7 +8,6 @@
     <meta name="description" content="???">
     <link rel="stylesheet" href="https://bootswatch.com/5/spacelab/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" defer></script>
-    <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="<?= Conf::index ?>assets/css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -51,24 +50,24 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
                 <ul class="navbar-nav text-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= Conf::index ?>">Accueil</a>
+                        <a class="nav-link" href="<?= Conf::index ?>"><span class="vert">A</span>ccueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= Conf::departement ?>">Departements</a>
+                        <a class="nav-link" href="<?= Conf::departement ?>"><span class="vert">D</span>epartements</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Prestations</a>
+                        <a class="nav-link" href="#"><span class="vert">P</span>restations</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= Conf::contact ?>">Contact</a>
+                        <a class="nav-link" href="<?= Conf::contact ?>"><span class="vert">C</span>ontact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= Conf::apropos ?>">A propos</a>
+                        <a class="nav-link" href="<?= Conf::apropos ?>"><span class="vert">A</span> propos</a>
                     </li>
                     <?php if ($_SESSION) {
                     ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= Conf::dashboard ?>">Admin</a>
+                            <a class="nav-link" href="<?= Conf::dashboard ?>"><span class="vert">A</span>dmin</a>
                         </li>
                     <?php } ?>
 

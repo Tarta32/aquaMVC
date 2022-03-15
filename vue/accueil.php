@@ -13,7 +13,7 @@ include './vue/commun/header.php';
     }
 </script>
 <section class="carteInteractive">
-    <h2 class="text-success"><u>CARTE INTERACTIVE</u></h2>
+    <h2 class="bleu"><span class="vert">C</span>ARTE INTERACTIVE</h2>
     <p>Cliquez sur les departements en rouge pour acceder aux medias correspondant à ces departements</p>
     <div class="carte">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 667 578" xml:space="preserve">
@@ -398,7 +398,7 @@ include './vue/commun/header.php';
             foreach ($images as $img) {
             ?>
                 <div class="mItem mt-3">
-                    <img style="box-shadow: 10px 11px 15px -3px rgba(0,0,0,0.58)" class="rounded-3 imageMasonry" src='<?= Conf::index ?>assets/image/<?= $img['nom_image'] ?>'>
+                    <img style="box-shadow: 10px 11px 15px -3px rgba(0,0,0,0.58)" alt="Image Accueil" class="rounded-3 imageMasonry" src='<?= Conf::index ?>assets/image/<?= $img['nom_image'] ?>'>
                 </div>
     
             <?php

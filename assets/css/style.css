@@ -85,6 +85,7 @@ h1{
     color: transparent;
     font-size: 12rem;
     position: absolute;
+    width: 80%;
     top: 50%;
     left: 50%;
     -ms-transform: translateX(-50%) translateY(-70%);
@@ -127,7 +128,15 @@ img {
     position: relative !important;
 }
 
+.vert{
+    color: #21bd50;
+}
 
+.bleu {
+    text-decoration: underline;
+    text-decoration-color: #21bd50 ;
+    color: #0066CC !important;
+}
 
 
 /* ===== Header - Footer (+ Navbar) ===== */  
@@ -145,6 +154,7 @@ img {
     text-shadow: 10px 10px 15px black;
     font-size: 12rem;
     position: absolute;
+    width: 80%;
     top: 50%;
     left: 50%;
     -ms-transform: translateX(-50%) translateY(-70%);
@@ -333,6 +343,10 @@ g path:hover {
     padding: 20px;
 }
 
+
+.boxShadow{
+    box-shadow: 5px 5px 15px 5px #000000;
+}
 
 
 

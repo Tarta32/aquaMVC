@@ -301,7 +301,7 @@ class AdminControleur extends BaseControleur
 
             if (isset($_POST['updateAccueil']) || isset($_POST['updatePresentation'])) {
 
-                AdminModele::updateTitreContenu($_POST['titre'], $_POST['contenu']);
+                AdminModele::updateTitreContenu(htmlentities($_POST['titre']), htmlentities($_POST['contenu']));
                 $_SESSION['message_success'] = "Modifications enregistrées";
 
                 if (isset($_POST['updateAccueil'])) {
@@ -311,7 +311,7 @@ class AdminControleur extends BaseControleur
                 }
             } else if (isset($_POST['updateEquipement'])) {
 
-                AdminModele::updateEquipement($_POST['titre_equipement'], $_POST['contenu_equipement']);
+                AdminModele::updateEquipement(htmlentities($_POST['titre_equipement']), htmlentities($_POST['contenu_equipement']));
                 $_SESSION['message_success'] = "Modifications enregistrées";
 
                 header('Location: ' . Conf::dashboardApropos);

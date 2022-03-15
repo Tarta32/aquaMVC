@@ -6,7 +6,7 @@ include './vue/commun/header.php'
 
 ?>
 <div class="container">
-    <h2 class="text-center text-success my-5"><u>Liste des departements disponible</u></h2>
+    <h2 class="text-center bleu my-5"><span class="vert">L</span>iste des departements disponible</h2>
     <ul>
         <?php
         foreach ($departementVisite as $dp) {
