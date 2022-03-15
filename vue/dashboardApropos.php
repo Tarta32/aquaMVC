@@ -16,50 +16,105 @@ include './vue/commun/headerAdmin.php';
                                 }
                                 ?></p>
         <div class="col-6">
-            <form method="POST" action="<?= Conf::index ?>admin/update">
-                <div class="form-group mt-3 mb-3">
-                    <label for="inputDefault">Titre :</label>
-                    <input type="text" class="form-control" id="inputDefault" value="<?= $presentation[0]["titre"] ?>" name="titre">
-                </div>
-                <div class="form-group">
-                    <label for="contenu" class="form-label mt-4">Contenu :</label>
-                    <textarea name="contenu" class="form-control" id="contenu" rows="6"><?= $presentation[0]["contenu"] ?></textarea>
-                </div>
-                <input class="btn btn-success mt-2" type="submit" value="Modifier contenu" name="updatePresentation">
-            </form>
-        </div>
-
-        <div class="col-6">
             <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/update">
-                <img class="mt-5" width="300px" src="<?= Conf::index ?>assets/image/imageAccueil/<?= $presentation[0]['image_accueil'] ?>" alt="">
+                <img class="mt-5" width="300px" src="<?= Conf::index ?>assets/image/imageAccueil/<?= htmlentities($accueil[0]['image']) ?>" alt="">
                 <input name='selectImagePresentation' class="form-control mt-2" type="file" id="formFile">
-                <input class="btn btn-success mt-2 mb-3" type="submit" value="Modifier image" name="updateImagePresentation">
-            </form>
-        </div>
-    </div>
-    <div class="row">
-        <h2 class="text-center  my-5"><u>Mon equipement</u></h2>
-        <div class="col-6">
-            <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/update">
-                <img class="mt-5" width="300px" src="<?= Conf::index ?>assets/image/imageAccueil/<?= $presentation[0]['image_perso'] ?>" alt="">
-                <input name='selectImageEquipement' class="form-control mt-2" type="file" id="formFile">
-                <input class="btn btn-success mt-2 mb-3" type="submit" value="Modifier image" name="updateImageEquipement">
+                <input class="btn cssbuttons-io-button mt-2 mb-3" type="submit" value="Modifier image" name="updateImagePresentation">
             </form>
         </div>
         <div class="col-6">
             <form method="POST" action="<?= Conf::index ?>admin/update">
                 <div class="form-group mt-3 mb-3">
                     <label for="inputDefault">Titre :</label>
-                    <input type="text" class="form-control" id="inputDefault" value="<?= $presentation[0]["titre_perso"] ?>" name="titre_equipement">
+                    <input type="text" class="form-control" id="inputDefault" value="<?= htmlentities($accueil[0]["titre"]) ?>" name="titre">
                 </div>
                 <div class="form-group">
                     <label for="contenu" class="form-label mt-4">Contenu :</label>
-                    <textarea name="contenu_equipement" class="form-control" id="contenu" rows="6"><?= $presentation[0]["contenu_perso"] ?></textarea>
+                    <textarea name="contenu" class="form-control" id="contenu" rows="6"><?= htmlentities($accueil[0]["contenu"]) ?></textarea>
                 </div>
-                <input class="btn btn-success mt-2" type="submit" value="Modifier contenu" name="updateEquipement">
+                <input class="cssbuttons-io-button mt-2" type="submit" value="Modifier contenu" name="updatePresentation">
             </form>
         </div>
 
     </div>
+    <h2 class="text-center  my-5"><u>Mon equipement</u></h2>
+
+
+    <div class="d-flex justify-content-center">
+        <button type="button" class="cssbuttons-io-button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>Ajouter un equipement</span></button>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ajouter un equipement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/insert">
+                        <div class="form-group mt-3 ">
+                            <label for="inputDefault">Nom :</label>
+                            <input type="text" class="form-control" id="inputDefault" name="titre">
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="contenu" class="form-label mt-4">Description :</label>
+                            <textarea name="contenu" class="form-control" id="contenu" rows="6"></textarea>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="selectImageEquipement">Image :</label>
+                            <input type='file' name='selectImageEquipement' class="form-control mt-2" id="selectImageEquipement" />
+                        </div>
+
+                        <input class="btn cssbuttons-io-button mt-2" type="submit" value="Ajouter equipement" name="ajouterEquipement">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <?php
+    $chiffre = 1;
+    foreach ($equipement as $equip) {
+
+
+    ?>
+        <div class="row m-5 p-3 border border-4">
+            <div class="col-6">
+                <div>
+                    <h4>Equipement <?= $chiffre ?></h4>
+
+                </div>
+                <form method="POST" action="<?= Conf::index ?>admin/update">
+                    <div class="form-group mt-3 mb-3">
+                        <label for="inputDefault">Titre :</label>
+                        <input type="text" class="form-control" id="inputDefault" value="<?= htmlentities($equip["nom"]) ?>" name="titre_equipement">
+                    </div>
+                    <div class="form-group">
+                        <label for="contenu" class="form-label mt-4">Contenu :</label>
+                        <textarea name="contenu_equipement" class="form-control" id="contenu" rows="6"><?= htmlentities($equip["description"]) ?></textarea>
+                    </div>
+                    <input class="btn cssbuttons-io-button mt-2" type="submit" value="Modifier contenu" name="updateEquipement">
+                    <input type="hidden" name="id_equipement" value="<?= $equip['id'] ?>">
+                </form>
+            </div>
+            <div class="col-6">
+                <div class="text-end">
+                    <a class=" btn btn-danger" href="<?= Conf::index ?>admin/supprimerEquipement/<?= $equip['id'] ?>">Supprimer l'equipement</a>
+                </div>
+                <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/update">
+                    <img class="mt-5" width="300px" src="<?= Conf::index ?>assets/image/imageAccueil/<?= htmlentities($equip['image']) ?>" alt="">
+                    <input name='selectImageEquipement' class="form-control mt-2" type="file" id="formFile">
+                    <input class="btn cssbuttons-io-button mt-2 mb-3" type="submit" value="Modifier image" name="updateImageEquipement">
+                    <input type="hidden" name="id_equipement" value="<?= $equip['id'] ?>">
+                </form>
+            </div>
+        </div>
+    <?php
+        $chiffre++;
+    }
+    ?>
 </div>
 </div>

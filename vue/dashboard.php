@@ -35,7 +35,7 @@ include './vue/commun/headerAdmin.php'
                             } ?>
                         </select>
                         <div class="d-flex justify-content-between">
-                            <input class="btn btn-success mt-4" type="submit" value="Modifier departement" name="valider">
+                            <input class="btn cssbuttons-io-button mt-4" type="submit" value="Modifier departement" name="valider">
 
                         </div>
                     </form>
@@ -61,7 +61,7 @@ include './vue/commun/headerAdmin.php'
                                 <label for="formFile" class="form-label mt-4">inserer image</label>
                                 <input name='selectImage[]' class="form-control" type="file" id="formFile" multiple>
                             </div>
-                            <input class="btn btn-success mt-2" type="submit" value="valider" name="valider2">
+                            <input class="btn cssbuttons-io-button mt-2" type="submit" value="valider" name="valider2">
                         </form>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ include './vue/commun/headerAdmin.php'
                     <label for="formFile" class="form-label mt-4">inserer image</label>
                     <input name='selectImage[]' class="form-control" type="file" id="formFile" multiple>
                 </div>
-                <input class="btn btn-success" type="submit" value="valider" name="valider2">
+                <input class="btn cssbuttons-io-button" type="submit" value="valider" name="valider2">
             </form>
             <section class="sectionMasonry">
                 <div class="masonry">
@@ -92,7 +92,7 @@ include './vue/commun/headerAdmin.php'
                     ?>
                         <div class="mItem" style="position: relative;">
 
-                            <img style="max-width: 200px;" src="<?= Conf::image . $img['nom_image'] ?>" alt="" />
+                            <img style="max-width: 200px;" src="<?= Conf::image . htmlentities($img['nom_image']) ?>" alt="" />
                             <a style="position: absolute; left: 0" class="btn btn-danger" href="<?= Conf::index ?>admin/supprimer/<?= $img['image_id'] ?>-<?= $img['id_departement'] ?>">X</a>
 
                         </div>

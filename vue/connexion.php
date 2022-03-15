@@ -24,7 +24,7 @@
             <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
           </div>
           <a class="btn btn-danger mt-5" href="<?= Conf::index ?>">Retour</a>
-          <input name="valider" class="btn btn-success mt-5" type="submit" value="Connexion">
+          <input name="valider" class="btn cssbuttons-io-button mt-5" type="submit" value="Connexion">
         </div>
       </div>
     </form>

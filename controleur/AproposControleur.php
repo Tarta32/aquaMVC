@@ -6,14 +6,18 @@ use Conf;
 use modele\AccueilModele;
 use modele\AporposModele;
 use modele\AproposModele;
+use modele\EquipementModele;
 
 class AproposControleur extends BaseControleur{
 
     public function onload() {
 
-        $presentation = AproposModele::apropos();
+        $accueil = AccueilModele::findAll();
+        
+        $equipement = EquipementModele::findAll();
 
-        $parametres = compact('presentation');
+        $parametres = compact('accueil','equipement');
+
 
         $this->afficherVue($parametres,'apropos');
 

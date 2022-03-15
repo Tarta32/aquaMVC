@@ -4,8 +4,10 @@ namespace controleur;
 
 use modele\AdminModele;
 use Conf;
+use modele\AccueilModele;
 use modele\AproposModele;
 use modele\DepartementModele;
+use modele\EquipementModele;
 use modele\ImageModele;
 
 class AdminControleur extends BaseControleur
@@ -91,9 +93,11 @@ class AdminControleur extends BaseControleur
 
         if (isset($_SESSION['admin'])) {
 
-            $presentation = AproposModele::apropos();
+            $accueil = AccueilModele::findAll();
 
-            $parametres = compact('presentation');
+            $equipement = EquipementModele::findAll();
+
+            $parametres = compact('accueil', 'equipement');
 
             $this->afficherVue($parametres, "dashboardApropos");
         } else {
@@ -111,9 +115,9 @@ class AdminControleur extends BaseControleur
 
             if (isset($_POST['valider'])) {
 
-                $utilisateur = AdminModele::connexion(htmlentities($_POST['login']));
+                $utilisateur = AdminModele::connexion($_POST['login']);
 
-                if (password_verify(htmlentities($_POST['password']), $utilisateur['password'])) {
+                if (password_verify($_POST['password'], $utilisateur['password'])) {
 
                     $_SESSION['admin'] = $_POST['login'];
                     header('Location: ' . Conf::dashboard);
@@ -168,6 +172,20 @@ class AdminControleur extends BaseControleur
             header('Location: ' . Conf::index);
         }
     }
+
+    function supprimerEquipement($id)
+    {
+        if (isset($_SESSION['admin'])) {
+            $image = EquipementModele::findById($id);
+
+            unlink('./assets/image/imageAccueil/' . $image['image']);
+
+            EquipementModele::deletEquipementById($id);
+
+            header('Location: ' . Conf::dashboardApropos);
+        }
+    }
+
     function supprimerAccueil($parametre)
     {
 
@@ -257,8 +275,6 @@ class AdminControleur extends BaseControleur
             $countfiles = count($_FILES['selectImage']['name']);
             for ($i = 0; $i < $countfiles; $i++) {
 
-
-
                 $filename = $_FILES['selectImage']['name'][$i];
 
                 $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
@@ -292,6 +308,41 @@ class AdminControleur extends BaseControleur
                     header('Location: ' . Conf::dashboardAccueil);
                 }
             }
+
+        } else if (isset($_POST["ajouterEquipement"])) {
+
+
+            $filename = $_FILES['selectImageEquipement']['name'];
+
+            $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+            $file_extension = strtolower($file_extension);
+
+            $filename = "equipement" . time() . '.' . $file_extension;
+
+            $valid_extension = array("png", "jpeg", "jpg");
+
+                if (in_array($file_extension, $valid_extension)) {
+
+
+                    // Upload file
+                    if (move_uploaded_file(
+                        $_FILES['selectImageEquipement']['tmp_name'],
+                        './assets/image/imageAccueil/' . $filename
+                    )) {
+                        $_SESSION['message_success'] = "Telechargement réussi";
+                        // Execute query
+                        EquipementModele::insertEquipement($_POST['titre'],$_POST['contenu'],$filename);
+
+                        header("Location: " . Conf::dashboardApropos);
+                    } else {
+                        $_SESSION['message_error'] = "Aucun fichier telechargé";
+                        header('Location: ' . Conf::dashboardApropos);
+                    }
+                } else {
+                    $_SESSION['message_error'] = "Erreur d'extension de fichier";
+                    header('Location: ' . Conf::dashboardApropos);
+                }
         }
     }
 
@@ -301,7 +352,7 @@ class AdminControleur extends BaseControleur
 
             if (isset($_POST['updateAccueil']) || isset($_POST['updatePresentation'])) {
 
-                AdminModele::updateTitreContenu(htmlentities($_POST['titre']), htmlentities($_POST['contenu']));
+                AdminModele::updateTitreContenu($_POST['titre'], $_POST['contenu']);
                 $_SESSION['message_success'] = "Modifications enregistrées";
 
                 if (isset($_POST['updateAccueil'])) {
@@ -311,7 +362,7 @@ class AdminControleur extends BaseControleur
                 }
             } else if (isset($_POST['updateEquipement'])) {
 
-                AdminModele::updateEquipement(htmlentities($_POST['titre_equipement']), htmlentities($_POST['contenu_equipement']));
+                EquipementModele::updateEquipement($_POST['titre_equipement'], $_POST['contenu_equipement'], $_POST['id_equipement']);
                 $_SESSION['message_success'] = "Modifications enregistrées";
 
                 header('Location: ' . Conf::dashboardApropos);
@@ -358,9 +409,9 @@ class AdminControleur extends BaseControleur
             } else if (isset($_POST['updateImagePresentation'])) {
 
 
-                $image = AproposModele::findAll();
-                
-                unlink("./assets/image/imageAccueil/" . $image[0]['image_accueil']);
+                $image = AccueilModele::findAll();
+
+                unlink("./assets/image/imageAccueil/" . $image[0]['image']);
 
                 $filename = $_FILES['selectImagePresentation']['name'];
 
@@ -382,7 +433,7 @@ class AdminControleur extends BaseControleur
                     )) {
                         $_SESSION['message_success'] = "Telechargement réussi";
                         // Execute query
-                        AdminModele::updateImageAccueil($filename);
+                        AccueilModele::updateImage($filename);
 
                         header("Location: " . Conf::dashboardApropos);
                     } else {
@@ -419,7 +470,7 @@ class AdminControleur extends BaseControleur
                     )) {
                         $_SESSION['message_success'] = "Telechargement réussi";
                         // Execute query
-                        AdminModele::updateImagePerso($filename);
+                        EquipementModele::updateImage($filename, $_POST['id_equipement']);
 
                         header("Location: " . Conf::dashboardApropos);
                     } else {

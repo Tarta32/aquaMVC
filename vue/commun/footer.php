@@ -1,4 +1,4 @@
-<div class="footer container-fluid d-flex justify-content-between p-4 flex-wrap border-top border-secondary mt-5">
+<div class="footer container-fluid d-flex justify-content-between p-4 flex-wrap border-top border-secondary pt-3">
     <div class="copyright my-auto">
         <p class="text-center">
             2022 © Copyright <br> Site realisé par Julien BARBE
@@ -36,7 +36,7 @@
         </div>
         <div>
             <div>
-                <a href="mailto:sangoku_320@hotmail.fr"><i class='bx bx-mail-send'></i><span class="textHeaderTop">&nbsp; test@gmail.com</span></a>
+                <a href="mailto:test@gmail.com"><i class='bx bx-mail-send'></i><span class="textHeaderTop">&nbsp; test@gmail.com</span></a>
             </div>
             <div class="div">
                 <a href="tel: 0123456789"><i class='bx bxs-phone-call'></i><span class="textHeaderTop">&nbsp; 0123456789</span></a>

@@ -10,7 +10,7 @@ include './vue/commun/header.php'
 
             <div class="col-xl-8 offset-xl-2">
 
-                <h2 class="text-center bleu"><u>CONTACT</u></h2>
+                <h2 class="text-center bleu"><span class="vert">C</span>ONTACT</h2>
 
                 <p class="lead text-center">Si vous souhaitez nous contactez pour plus de renseignements</p>
 
@@ -61,7 +61,7 @@ include './vue/commun/header.php'
                         <label class="remarque">Remarque</label>
                         <input class="remarque" name="remarque" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="nom@domaine.com">
 
-                        <input type="submit" name="valider" class="btn btn-success btn-send m-1" value="Envoyer message">
+                        <input type="submit" name="valider" class="btn cssbuttons-io-button btn-send m-1" value="Envoyer message">
 
                         <p class="text-muted">
                             <strong>*</strong> Champs obligatoires.

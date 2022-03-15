@@ -126,12 +126,6 @@ class AdminModele
         $requete->execute([$titre, $contenu]);
     }
 
-    static function updateEquipement($titre, $contenu)
-    {
-        $connexion = new PDOperso();
-        $requete = $connexion->prepare("UPDATE apropos SET titre_perso = ?, contenu_perso = ?");
-        $requete->execute([$titre, $contenu]);
-    }
 
     static function findAllMessage()
     {
@@ -156,17 +150,8 @@ class AdminModele
         $requete->execute([$media]);
     }
 
-    static function updateImageAccueil($media)
-    {
-        $connexion = new PDOperso();
-        $requete = $connexion->prepare('UPDATE apropos SET image_accueil = ?');
-        $requete->execute([$media]);
-    }
 
-    static function updateImagePerso($media)
-    {
-        $connexion = new PDOperso();
-        $requete = $connexion->prepare('UPDATE apropos SET image_perso = ?');
-        $requete->execute([$media]);
-    }
+    
+
+    
 }

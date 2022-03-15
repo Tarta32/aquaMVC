@@ -12,7 +12,7 @@ include './vue/commun/header.php'
         ?>
             <div class="mItem">
 
-                <img class="rounded" style="box-shadow: 10px 11px 15px -3px rgba(0,0,0,0.58)" src="<?= Conf::index ?>assets/image/<?= $img['nom_image'] ?>" alt="" />
+                <img class="rounded" style="box-shadow: 10px 11px 15px -3px rgba(0,0,0,0.58)" src="<?= Conf::index ?>assets/image/<?= htmlentities($img['nom_image']) ?>" alt="" />
 
             </div>
         <?php

@@ -4,7 +4,7 @@ namespace modele;
 
 use PDOperso;
 
-class AccueilModele
+class AccueilModele extends BaseModele
 {
     static function findAllFromDepartement()
     {
@@ -34,6 +34,13 @@ class AccueilModele
         $requete = $connexion->prepare('SELECT * from image WHERE id_departement IS NULL');
         $requete->execute();
         return $requete->fetchAll();
+    }
+
+    static function updateImage($media)
+    {
+        $connexion = new PDOperso();
+        $requete = $connexion->prepare('UPDATE accueil SET image = ? ');
+        $requete->execute([$media]);
     }
 
 

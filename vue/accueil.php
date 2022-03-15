@@ -373,19 +373,19 @@ include './vue/commun/header.php';
 <section class="presentation p-5">
     <div class="container d-flex justify-content-between">
         <div class="textePresentation text-light p-5">
-            <h2 class="text-light text-center"><?= $accueil['titre'] ?></h2>
+            <h2 class="text-light text-center"><?= htmlentities($accueil['titre']) ?></h2>
             <p class="mt-3"><?php 
-            if(strlen($accueil['contenu']) > 200){
-                echo substr($accueil['contenu'],0,200).' ...';
+            if(strlen(htmlentities($accueil['contenu'])) > 200){
+                echo substr(htmlentities($accueil['contenu']),0,200).' ...';
             }else {
-                echo $accueil['contenu'];
+                echo htmlentities($accueil['contenu']);
             } 
             ?></p>
             <button class="boutonAccueil" onclick="window.location.href='<?= Conf::apropos ?>'">Voir plus &xrarr;</button>
         </div>
         <div class="videoPresentation">
             <video autoplay muted width="100%">
-                <source src='<?= Conf::index ?>assets/videoAccueil/<?= $accueil['media'] ?>' type='video/mp4'>
+                <source src='<?= Conf::index ?>assets/videoAccueil/<?= htmlentities($accueil['media']) ?>' type='video/mp4'>
             </video>
         </div>
     </div>
