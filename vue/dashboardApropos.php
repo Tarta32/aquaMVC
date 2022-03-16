@@ -16,8 +16,8 @@ include './vue/commun/headerAdmin.php';
                                 }
                                 ?></p>
 
-        <div class="d-flex aproposFlex align-items-center">
-            <div class="col-10 col-md-6">
+        <div class="d-flex aproposFlex align-items-center justify-content-around">
+            <div class="col-10 col-md-5">
                 <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/update">
                     <img class="mt-5" width="300px" src="<?= Conf::index ?>assets/image/imageAccueil/<?= htmlentities($accueil[0]['image']) ?>" alt="">
                     <input name='selectImagePresentation' class="form-control mt-2" type="file" id="formFile">
