@@ -30,8 +30,8 @@ include './vue/commun/header.php'
                             </div>
                             <div class="col-lg-6 my-1">
                                 <div class="form-floating">
-                                    <input id="floatingInput" type="text" name="nom" class="form-control" placeholder="Entrez votre nom *" required="required" data-error="Lastname is required.">
-                                    <label for="floatingInput">Nom *</label>
+                                    <input id="floatingInput2" type="text" name="nom" class="form-control" placeholder="Entrez votre nom *" required="required" data-error="Lastname is required.">
+                                    <label for="floatingInput2">Nom *</label>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -39,22 +39,22 @@ include './vue/commun/header.php'
                         <div class="row p1">
                             <div class="col-lg-6 my-1">
                                 <div class="form-floating">
-                                    <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="floatingInput" type="email" name="email" class="form-control" placeholder="Entrez votre e-mail *" required="required" data-error="Valid email is required.">
-                                    <label for="floatingInput">Email *</label>
+                                    <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="floatingInput3" type="email" name="email" class="form-control" placeholder="Entrez votre e-mail *" required="required" data-error="Valid email is required.">
+                                    <label for="floatingInput3">Email *</label>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-lg-6 my-1">
                                 <div class="form-floating">
-                                    <input id="floatingInput" type="tel" pattern="^\+?\d{3}?\d{3}?\d{3}?\d{3}$" name="phone" class="form-control" placeholder="Entrez votre numéro de telephone (optionnel)">
-                                    <label for="floatingInput">Telephone</label>
+                                    <input id="floatingInput4" type="tel" pattern="^\+?\d{3}?\d{3}?\d{3}?\d{3}$" name="phone" class="form-control" placeholder="Entrez votre numéro de telephone (optionnel)">
+                                    <label for="floatingInput4">Telephone</label>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-floating">
-                            <textarea id="floatingInput" name="message" type='texte' style="height:100%;" class="form-control" placeholder="Votre message *" cols="30" rows="4" required="required" data-error="Please, leave us a message."></textarea>
-                            <label for="floatingInput">Message *</label>
+                            <textarea id="floatingInput5" name="message" type='texte' style="height:100%;" class="form-control" placeholder="Votre message *" cols="30" rows="4" required="required" data-error="Please, leave us a message."></textarea>
+                            <label for="floatingInput5">Message *</label>
                             <div class="help-block with-errors"></div>
                         </div>
 
