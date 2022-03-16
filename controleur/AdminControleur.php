@@ -116,14 +116,16 @@ class AdminControleur extends BaseControleur
             if (isset($_POST['valider'])) {
 
                 $utilisateur = AdminModele::connexion($_POST['login']);
+                if ($utilisateur != FALSE) {
+                    if (password_verify($_POST['password'], $utilisateur['password'])) {
 
-                if (password_verify($_POST['password'], $utilisateur['password'])) {
-
-                    $_SESSION['admin'] = $_POST['login'];
-                    header('Location: ' . Conf::dashboard);
+                        $_SESSION['admin'] = $_POST['login'];
+                        header('Location: ' . Conf::dashboard);
+                    }
                 } else {
 
                     $mdperror = true;
+                    $_SESSION['error'] = 'Mauvais login/password';
                 }
             }
 
@@ -308,7 +310,6 @@ class AdminControleur extends BaseControleur
                     header('Location: ' . Conf::dashboardAccueil);
                 }
             }
-
         } else if (isset($_POST["ajouterEquipement"])) {
 
 
@@ -322,27 +323,27 @@ class AdminControleur extends BaseControleur
 
             $valid_extension = array("png", "jpeg", "jpg");
 
-                if (in_array($file_extension, $valid_extension)) {
+            if (in_array($file_extension, $valid_extension)) {
 
 
-                    // Upload file
-                    if (move_uploaded_file(
-                        $_FILES['selectImageEquipement']['tmp_name'],
-                        './assets/image/imageAccueil/' . $filename
-                    )) {
-                        $_SESSION['message_success'] = "Telechargement réussi";
-                        // Execute query
-                        EquipementModele::insertEquipement($_POST['titre'],$_POST['contenu'],$filename);
+                // Upload file
+                if (move_uploaded_file(
+                    $_FILES['selectImageEquipement']['tmp_name'],
+                    './assets/image/imageAccueil/' . $filename
+                )) {
+                    $_SESSION['message_success'] = "Telechargement réussi";
+                    // Execute query
+                    EquipementModele::insertEquipement($_POST['titre'], $_POST['contenu'], $filename);
 
-                        header("Location: " . Conf::dashboardApropos);
-                    } else {
-                        $_SESSION['message_error'] = "Aucun fichier telechargé";
-                        header('Location: ' . Conf::dashboardApropos);
-                    }
+                    header("Location: " . Conf::dashboardApropos);
                 } else {
-                    $_SESSION['message_error'] = "Erreur d'extension de fichier";
+                    $_SESSION['message_error'] = "Aucun fichier telechargé";
                     header('Location: ' . Conf::dashboardApropos);
                 }
+            } else {
+                $_SESSION['message_error'] = "Erreur d'extension de fichier";
+                header('Location: ' . Conf::dashboardApropos);
+            }
         }
     }
 
@@ -367,45 +368,12 @@ class AdminControleur extends BaseControleur
 
                 header('Location: ' . Conf::dashboardApropos);
             } else if (isset($_POST['updateVideo'])) {
+                
 
-                $video = AdminModele::findVideo();
+                $videoLink = explode("=",$_POST['selectVideo']);
+                
+                AdminModele::updateVideo($videoLink[1]);
 
-                unlink("./assets/videoAccueil/" . $video['media']);
-
-
-
-
-                $filename = $_FILES['selectVideo']['name'];
-
-                $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
-
-                $file_extension = strtolower($file_extension);
-
-
-                $filename = "accueilVideo" . time() . '.' . $file_extension;
-
-                $valid_extension = array("mp4", "m4v", "mov", "qt", "avi", "flv", "mpeg", "mkv");
-
-                if (in_array($file_extension, $valid_extension)) {
-
-                    // Upload file
-                    if (move_uploaded_file(
-                        $_FILES['selectVideo']['tmp_name'],
-                        './assets/videoAccueil/' . $filename
-                    )) {
-                        $_SESSION['message_success'] = "Telechargement réussi";
-                        // Execute query
-                        AdminModele::updateVideo($filename);
-
-                        header("Location: " . Conf::dashboardApropos);
-                    } else {
-                        $_SESSION['message_error'] = "Aucun fichier telechargé";
-                        header('Location: ' . Conf::dashboardApropos);
-                    }
-                } else {
-                    $_SESSION['message_error'] = "Erreur d'extension de fichier";
-                    header('Location: ' . Conf::dashboardApropos);
-                }
             } else if (isset($_POST['updateImagePresentation'])) {
 
 

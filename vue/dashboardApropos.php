@@ -15,27 +15,29 @@ include './vue/commun/headerAdmin.php';
                                     unset($_SESSION['message_success']);
                                 }
                                 ?></p>
-        <div class="col-6">
-            <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/update">
-                <img class="mt-5" width="300px" src="<?= Conf::index ?>assets/image/imageAccueil/<?= htmlentities($accueil[0]['image']) ?>" alt="">
-                <input name='selectImagePresentation' class="form-control mt-2" type="file" id="formFile">
-                <input class="btn cssbuttons-io-button mt-2 mb-3" type="submit" value="Modifier image" name="updateImagePresentation">
-            </form>
-        </div>
-        <div class="col-6">
-            <form method="POST" action="<?= Conf::index ?>admin/update">
-                <div class="form-group mt-3 mb-3">
-                    <label for="inputDefault">Titre :</label>
-                    <input type="text" class="form-control" id="inputDefault" value="<?= htmlentities($accueil[0]["titre"]) ?>" name="titre">
-                </div>
-                <div class="form-group">
-                    <label for="contenu" class="form-label mt-4">Contenu :</label>
-                    <textarea name="contenu" class="form-control" id="contenu" rows="6"><?= htmlentities($accueil[0]["contenu"]) ?></textarea>
-                </div>
-                <input class="btn cssbuttons-io-button mt-2" type="submit" value="Modifier contenu" name="updatePresentation">
-            </form>
-        </div>
 
+        <div class="d-flex aproposFlex align-items-center">
+            <div class="col-10 col-md-6">
+                <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/update">
+                    <img class="mt-5" width="300px" src="<?= Conf::index ?>assets/image/imageAccueil/<?= htmlentities($accueil[0]['image']) ?>" alt="">
+                    <input name='selectImagePresentation' class="form-control mt-2" type="file" id="formFile">
+                    <input class="btn cssbuttons-io-button mt-2 mb-3" type="submit" value="Modifier image" name="updateImagePresentation">
+                </form>
+            </div>
+            <div class="col-10 col-md-6">
+                <form method="POST" action="<?= Conf::index ?>admin/update">
+                    <div class="form-group mt-3 mb-3">
+                        <label for="inputDefault">Titre :</label>
+                        <input type="text" class="form-control" id="inputDefault" value="<?= htmlentities($accueil[0]["titre"]) ?>" name="titre">
+                    </div>
+                    <div class="form-group">
+                        <label for="contenu" class="form-label mt-4">Contenu :</label>
+                        <textarea name="contenu" class="form-control" id="contenu" rows="6"><?= htmlentities($accueil[0]["contenu"]) ?></textarea>
+                    </div>
+                    <input class="btn cssbuttons-io-button mt-2" type="submit" value="Modifier contenu" name="updatePresentation">
+                </form>
+            </div>
+        </div>
     </div>
     <h2 class="text-center  my-5"><u>Mon equipement</u></h2>
 
@@ -81,10 +83,11 @@ include './vue/commun/headerAdmin.php';
 
 
     ?>
-        <div class="row m-5 p-3 border border-4">
-            <div class="col-6">
+        <div class="row my-5 m-2 p-3 border border-4 aproposFlex align-items-center">
+            <div class="col-12 col-md-6">
                 <div>
-                    <h4>Equipement <?= $chiffre ?></h4>
+                    <button class="btn cssbuttons-io-button-red mb-5" onclick='window.location.href="<?= Conf::index ?>admin/supprimerEquipement/<?= $equip[`id`] ?>"'>Supprimer l'equipement</button>
+                    <h4 class="text-center">Equipement <?= $chiffre ?></h4>
 
                 </div>
                 <form method="POST" action="<?= Conf::index ?>admin/update">
@@ -100,9 +103,8 @@ include './vue/commun/headerAdmin.php';
                     <input type="hidden" name="id_equipement" value="<?= $equip['id'] ?>">
                 </form>
             </div>
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <div class="text-end">
-                    <button class=" btn cssbuttons-io-button-red" onclick='window.location.href="<?= Conf::index ?>admin/supprimerEquipement/<?= $equip[`id`] ?>"'>Supprimer l'equipement</button>
                 </div>
                 <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/update">
                     <img class="mt-5" width="300px" src="<?= Conf::index ?>assets/image/imageAccueil/<?= htmlentities($equip['image']) ?>" alt="">

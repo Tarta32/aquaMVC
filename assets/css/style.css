@@ -28,7 +28,6 @@
   /* Boutons */
 
   .cssbuttons-io-button {
-    display: flex;
     align-items: center;
     font-family: inherit;
     font-weight: 500;
@@ -97,6 +96,10 @@
     box-shadow: 0 0.3em 1em -0.5em #181cd498;
    }
 
+
+   iframe {
+       max-width: 100%;
+   }
 
 
 
@@ -345,7 +348,7 @@ img {
     width: 50%;
     padding: 20px;
     border-radius: 20px;
-    margin: 50px 150px 0 0;
+    margin: 50px 20px 0 0;
     background: linear-gradient(45deg, #161ECE 0%, #1C6EA4 30%, #1CCD14 100%);
     box-shadow: 10px 11px 15px -3px rgba(0,0,0,0.58)
 }
@@ -474,6 +477,7 @@ g path:hover {
     .carousel img{
         height: 350px !important;
     }
+
     
 }
 
@@ -497,6 +501,10 @@ g path:hover {
 
     h1, .shadowText{
         font-size: 8rem;
+    }
+
+    .carte {
+        width: 60%;
     }
     
 }
@@ -525,6 +533,10 @@ g path:hover {
 
     .headerIndex{
         height: 400px;
+    }
+
+    .carte {
+        width: 70%;
     }
   }
 
@@ -564,6 +576,13 @@ g path:hover {
     
       .headerIndex{
         height: 300px;
+    }
+    .carte {
+        width: 80%;
+    }
+
+    .aproposFlex{
+        flex-direction: column;
     }
     
 }
@@ -605,12 +624,31 @@ g path:hover {
         height: 125px !important;
     }
 
+    p{
+        font-size: 0.5rem !important;
+    }
+
+    h2{
+        font-size: 1rem !important;
+    }
+
     h1, .shadowText{
         font-size: 3rem !important;
     }
     
     .headerIndex{
         height: 200px;
+    }
+    .carte {
+        width: 100%;
+    }
+
+    input{
+        font-size: 12px !important;
+    }
+
+    button{
+        font-size: 12px !important;
     }
 }
 

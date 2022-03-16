@@ -17,14 +17,15 @@
     <form method='POST' action="">
       <div class="row justify-content-center">
         <div class="col-6 text-center">
+          <p class="text-danger"><?php if(isset($_SESSION['error'])) { echo $_SESSION['error']; unset($_SESSION['error']); } ?></p>
           <div class="form-group ">
             <input name="login" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez login">
           </div>
           <div class="form-group mt-5">
             <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
           </div>
-          <a class="btn btn-danger mt-5" href="<?= Conf::index ?>">Retour</a>
           <input name="valider" class="btn cssbuttons-io-button mt-5" type="submit" value="Connexion">
+          <button class="btn cssbuttons-io-button-red mt-5" onclick="window.location.href='<?= Conf::index ?>'">Retour</button>
         </div>
       </div>
     </form>

@@ -68,7 +68,7 @@ class AdminModele
         $connexion = new PDOperso();
         $requete = $connexion->prepare("SELECT *  FROM accueil ");
         $requete->execute();
-        return $requete->fetchAll();
+        return $requete->fetch();
     }
 
     static function deletImageById($id)
@@ -135,13 +135,6 @@ class AdminModele
         return $requete->fetchAll();
     }
 
-    static function findVideo()
-    {
-        $connexion = new PDOperso();
-        $requete = $connexion->prepare('SELECT media FROM accueil');
-        $requete->execute();
-        return $requete->fetch();
-    }
 
     static function updateVideo($media)
     {

@@ -371,7 +371,7 @@ include './vue/commun/header.php';
     </div>
 </section>
 <section class="presentation p-5">
-    <div class="container d-flex justify-content-between">
+    <div class="container d-flex justify-content-between presentation">
         <div class="textePresentation text-light p-5">
             <h2 class="text-light text-center"><?= htmlentities($accueil['titre']) ?></h2>
             <p class="mt-3"><?php 
@@ -384,9 +384,7 @@ include './vue/commun/header.php';
             <button class="boutonAccueil" onclick="window.location.href='<?= Conf::apropos ?>'">Voir plus &xrarr;</button>
         </div>
         <div class="videoPresentation">
-            <video autoplay muted width="100%">
-                <source src='<?= Conf::index ?>assets/videoAccueil/<?= htmlentities($accueil['media']) ?>' type='video/mp4'>
-            </video>
+        <iframe class="rounded" width="600" height="340" src="https://www.youtube.com/embed/<?= htmlentities($accueil['media']) ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 </section>

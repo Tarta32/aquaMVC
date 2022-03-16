@@ -29,7 +29,6 @@
         <div class="iconeFlex d-flex justify-content-center">
             <div>
                 <a href="" class="text-primary"><i class='bx bxl-instagram-alt'></i></a>
-                <a href="" class="text-primary"><i class='bx bxl-twitter'></i></a>
                 <a href="" class="text-primary"><i class='bx bxl-youtube'></i></a>
                 <a href="" class="text-primary"><i class='bx bxl-facebook-square'></i></a>
             </div>

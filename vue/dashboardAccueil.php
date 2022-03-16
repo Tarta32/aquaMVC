@@ -24,22 +24,21 @@ include './vue/commun/headerAdmin.php'
             <form method="POST" action="<?= Conf::index ?>admin/update">
                 <div class="form-group mt-3 mb-3">
                     <label for="inputDefault">Titre :</label>
-                    <input type="text" class="form-control" id="inputDefault" value="<?= htmlentities($accueil[0]["titre"]) ?>" name="titre">
+                    <input type="text" class="form-control" id="inputDefault" value="<?= htmlentities($accueil["titre"]) ?>" name="titre">
                 </div>
                 <div class="form-group">
                     <label for="contenu" class="form-label mt-4">Contenu :</label>
-                    <textarea name="contenu" class="form-control" id="contenu" rows="6"><?= htmlentities($accueil[0]["contenu"]) ?></textarea>
+                    <textarea name="contenu" class="form-control" id="contenu" rows="6"><?= htmlentities($accueil["contenu"]) ?></textarea>
                 </div>
                 <input class="btn cssbuttons-io-button mt-2" type="submit" value="Modifier contenu" name="updateAccueil">
             </form>
             <div class="row">
                 <div class="col-6">
                     <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/update">
-                        <input name='selectVideo' class="form-control mt-5" type="file" id="formFile">
+                        <label for="selectVideo" class=" mt-5">Lien Youtube de la video :</label>
+                        <input name='selectVideo' id="selectVideo" class="form-control mt-2" type="text">
                         <input class="btn cssbuttons-io-button mt-2 mb-3" type="submit" value="Modifier video" name="updateVideo">
-                        <video autoplay muted width="100%" style="max-width: 500px;">
-                            <source src='<?= Conf::index ?>assets/videoAccueil/<?= htmlentities($accueil[0]['media']) ?>' type='video/mp4'>
-                        </video>
+                        <iframe width="500" height="300" src="https://www.youtube.com/embed/<?= htmlentities($accueil['media']) ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </form>
                 </div>
                 <div class="col-6">
