@@ -32,7 +32,7 @@ include './vue/commun/headerAdmin.php';
                     <label for="contenu" class="form-label mt-4">Contenu :</label>
                     <textarea name="contenu" class="form-control" id="contenu" rows="6"><?= htmlentities($accueil[0]["contenu"]) ?></textarea>
                 </div>
-                <input class="cssbuttons-io-button mt-2" type="submit" value="Modifier contenu" name="updatePresentation">
+                <input class="btn cssbuttons-io-button mt-2" type="submit" value="Modifier contenu" name="updatePresentation">
             </form>
         </div>
 
@@ -41,7 +41,7 @@ include './vue/commun/headerAdmin.php';
 
 
     <div class="d-flex justify-content-center">
-        <button type="button" class="cssbuttons-io-button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>Ajouter un equipement</span></button>
+        <button type="button" class="btn cssbuttons-io-button-blue" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>Ajouter un equipement</span></button>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -102,7 +102,7 @@ include './vue/commun/headerAdmin.php';
             </div>
             <div class="col-6">
                 <div class="text-end">
-                    <a class=" btn btn-danger" href="<?= Conf::index ?>admin/supprimerEquipement/<?= $equip['id'] ?>">Supprimer l'equipement</a>
+                    <button class=" btn cssbuttons-io-button-red" onclick='window.location.href="<?= Conf::index ?>admin/supprimerEquipement/<?= $equip[`id`] ?>"'>Supprimer l'equipement</button>
                 </div>
                 <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/update">
                     <img class="mt-5" width="300px" src="<?= Conf::index ?>assets/image/imageAccueil/<?= htmlentities($equip['image']) ?>" alt="">

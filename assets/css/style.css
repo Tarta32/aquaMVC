@@ -25,7 +25,7 @@
 
 
 
-  /* Bouton ajout admin */
+  /* Boutons */
 
   .cssbuttons-io-button {
     display: flex;
@@ -50,6 +50,55 @@
    .cssbuttons-io-button:active {
     box-shadow: 0 0.3em 1em -0.5em #14a73e98;
    }
+
+   .cssbuttons-io-button-red{
+    align-items: center;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0.7em 1.4em 0.7em 1.1em;
+    color: white;
+    background: #ad5389;
+    background: linear-gradient(0deg, rgb(126, 5, 5) 0%, rgb(243, 0, 0) 100%);
+    border: none;
+    box-shadow: 0 0.7em 1.5em -0.5em #d80a0a98;
+    letter-spacing: 0.05em;
+    border-radius: 20em;
+   }
+
+   .cssbuttons-io-button-red:hover {
+    box-shadow: 0 0.5em 1.5em -0.5em #d80a0a98;
+   }
+
+   .cssbuttons-io-button-red:active {
+    box-shadow: 0 0.3em 1em -0.5em #d80a0a98;
+   }
+
+   .cssbuttons-io-button-blue{
+    align-items: center;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0.7em 1.4em 0.7em 1.1em;
+    color: white;
+    background: #ad5389;
+    background: linear-gradient(0deg, rgb(22, 37, 179) 0%, rgb(14, 127, 202) 100%);
+    border: none;
+    box-shadow: 0 0.7em 1.5em -0.5em #181cd498;
+    letter-spacing: 0.05em;
+    border-radius: 20em;
+   }
+
+   .cssbuttons-io-button-blue:hover {
+    box-shadow: 0 0.5em 1.5em -0.5em #181cd498;
+   }
+
+   .cssbuttons-io-button-blue:active {
+    box-shadow: 0 0.3em 1em -0.5em #181cd498;
+   }
+
+
+
 
 /* ===== General ===== */  
 
