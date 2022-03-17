@@ -4,14 +4,18 @@ namespace controleur;
 
 use Conf;
 use modele\DepartementModele;
+use modele\EpingleDepartementModele;
+use modele\EpingleModele;
 
 class DepartementControleur extends BaseControleur{
 
     public function visite($parametre) {
+
+        $epingles = EpingleModele::FindEpingleByIdJoinEpingleDepartement($parametre);
         $departement = DepartementModele::findDepartementById($parametre);
         $images = DepartementModele::findImageByDepartementId($parametre);
 
-        $parametres = compact('departement', 'images');
+        $parametres = compact('departement', 'images','epingles');
 
         $this->afficherVue($parametres, 'departement');
     }

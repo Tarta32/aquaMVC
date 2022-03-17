@@ -20,26 +20,30 @@ include './vue/commun/headerAdmin.php'
         <div class="row">
             <div class="col-6 mx-auto">
                 <h2 class="text-center">Departement</h2>
-                <div class="form-group">
-                    <form method="POST" action="<?= Conf::index ?>admin/dashboard">
+                <form method="POST" action="<?= Conf::index ?>admin/dashboard">
+                    <div class="form-group">
                         <select class="form-select mt-4" id="exampleSelect1" name="departement">
                             <?php
                             foreach ($departement as $dp) {
                                 if ($dp['visite'] == 1) {
 
                             ?>
-                                    <option value="<?= $dp['departement_nom'] ?>" class="scrollVisite"><?= $dp['departement_code'] . " " . $dp['departement_nom'] ?> [visité]</option>
+                                    <option <?php if (Conf::dashboard . '/' . $dp['departement_slug'] == $_SERVER['REQUEST_URI']) {
+                                                echo 'selected';
+                                            } ?> value="<?= $dp['departement_slug'] ?>" class="scrollVisite"><?= $dp['departement_code'] . " " . $dp['departement_nom'] ?> [visité]</option>
                                 <?php } else { ?>
-                                    <option value="<?= $dp['departement_nom'] ?>" class="scrollNonVisite"><?= $dp['departement_code'] . " " . $dp['departement_nom'] ?></option>
+                                    <option <?php if (Conf::dashboard . '/' . $dp['departement_slug'] == $_SERVER['REQUEST_URI']) {
+                                                echo 'selected';
+                                            } ?> value="<?= $dp['departement_slug'] ?>" class="scrollNonVisite"><?= $dp['departement_code'] . " " . $dp['departement_nom'] ?></option>
                             <?php }
                             } ?>
                         </select>
                         <div class="d-flex justify-content-between">
-                            <input class="btn cssbuttons-io-button mt-4" type="submit" value="Modifier departement" name="valider">
+                            <input class="btn cssbuttons-io-button mt-4" type="submit" value="Choisir departement" name="valider">
 
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -52,16 +56,31 @@ include './vue/commun/headerAdmin.php'
     ?>
             <div class="container">
                 <div class="row">
-                    <div class="col-8 mx-auto mt-5 p-5 border border-success border-2">
+                    <div class="col-8 mx-auto my-5 p-5 border border-success border-2">
                         <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/insert">
+
                             <h2><?= $selectDepartement['departement_nom'] ?></h2>
                             <input style="display: none;" type="text" name="departement" value="<?= $selectDepartement["id"] ?>">
                             <input style="display: none;" type="text" name="departement_slug" value="<?= $selectDepartement["departement_slug"] ?>">
+                            <?php foreach ($epingles as $epingle) {
+                            ?>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="epingle[]" value="<?= $epingle['id'] ?>" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        <?= $epingle['description'] ?>
+                                    </label>
+                                </div>
+                            <?php } ?>
+                            <div class="form-group mt-5">
+                                <label for="descriptionDepartement">Description departement :</label>
+                                <textarea class="form-control" name="descriptionDepartement" id="descriptionDepartement" cols="30" rows="10"></textarea>
+                            </div>
+                            <input class="btn cssbuttons-io-button mt-2" type="submit" value="Valider description" name="validerDescription">
                             <div class="form-group">
                                 <label for="formFile" class="form-label mt-4">inserer image</label>
                                 <input name='selectImage[]' class="form-control" type="file" id="formFile" multiple>
                             </div>
-                            <input class="btn cssbuttons-io-button mt-2" type="submit" value="valider" name="valider2">
+                            <input class="btn cssbuttons-io-button mt-2" type="submit" value="Upload image(s)" name="valider2">
                         </form>
                     </div>
                 </div>
@@ -73,16 +92,31 @@ include './vue/commun/headerAdmin.php'
         } else {
 
         ?>
-
-            <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/insert">
+            <form method="POST" action="<?= Conf::index ?>admin/insert">
                 <h2><?= $selectDepartement['departement_nom'] ?></h2>
                 <input style="display: none;" type="text" name="departement" value="<?= $selectDepartement["id"] ?>">
                 <input style="display: none;" type="text" name="departement_slug" value="<?= $selectDepartement["departement_slug"] ?>">
+                <?php foreach ($epingles as $epingle) {
+                ?>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="epingle[]" value="<?= $epingle['id'] ?>" id="flexCheckDefault" <?php if (in_array($epingle['id'], $listeIdEpingleDepartement)) {
+                                                                                                            echo 'checked';
+                                                                                                        } ?>>
+                        <label class="form-check-label" for="flexCheckDefault">
+                            <?= $epingle['description'] ?>
+                        </label>
+                    </div>
+                <?php } ?>
+                <div class="form-group mt-5">
+                    <label for="descriptionDepartement">Description departement :</label>
+                    <textarea class="form-control" name="descriptionDepartement" id="descriptionDepartement" cols="30" rows="10"><?= $selectDepartement['departement_description'] ?></textarea>
+                </div>
+                <input class="btn cssbuttons-io-button" type="submit" value="Valider description" name="validerDescription">
                 <div class="form-group">
                     <label for="formFile" class="form-label mt-4">inserer image</label>
                     <input name='selectImage[]' class="form-control" type="file" id="formFile" multiple>
                 </div>
-                <input class="btn cssbuttons-io-button" type="submit" value="valider" name="valider2">
+                <input class="btn cssbuttons-io-button" type="submit" value="Upload image(s)" name="valider2">
             </form>
             <section class="sectionMasonry">
                 <div class="masonry">

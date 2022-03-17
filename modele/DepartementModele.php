@@ -29,4 +29,18 @@ class DepartementModele extends BaseModele
         $requete->execute();
         return $requete->fetchAll();
     }
+
+    static function findByNom($nom)
+    {
+        $connexion = new PDOperso();
+        $requete = $connexion->prepare('SELECT * FROM departement WHERE departement_nom = ?');
+        $requete->execute([$nom]);
+        return $requete->fetch();
+    }
+
+    static function updateDescriptionById($description,$id){
+        $connexion = new PDOperso();
+        $requete = $connexion->prepare('UPDATE departement SET departement_description = ? WHERE departement.id = ?');
+        $requete->execute([$description,$id]);
+    }
 }

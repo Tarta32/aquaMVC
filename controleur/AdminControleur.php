@@ -7,6 +7,8 @@ use Conf;
 use modele\AccueilModele;
 use modele\AproposModele;
 use modele\DepartementModele;
+use modele\EpingleDepartementModele;
+use modele\EpingleModele;
 use modele\EquipementModele;
 use modele\ImageModele;
 
@@ -24,6 +26,16 @@ class AdminControleur extends BaseControleur
     function dashboard($nomDepartement)
     {
 
+        $departement = DepartementModele::findByNom($nomDepartement);
+
+        if ($departement != NULL) {
+            $epingle_departement = EpingleDepartementModele::finByIdDepartement($departement['id']);
+        }
+
+
+        $listeIdEpingleDepartement = [];
+
+
         if (isset($_POST["departement"]) && $_POST["departement"]) {
             //$nomDepartement = $_POST["departement"];
             header("Location: " . Conf::dashboard . "/" . $_POST["departement"]);
@@ -31,15 +43,22 @@ class AdminControleur extends BaseControleur
 
         if (isset($_SESSION['admin'])) {
 
+
             $departement = AdminModele::findAllFromDepartement();
 
             if (isset($nomDepartement)) {
+
+                foreach ($epingle_departement as $epingleDepartement) {
+                    array_push($listeIdEpingleDepartement, $epingleDepartement['id_epingle']);
+                }
+
+                $epingles = EpingleModele::findAll();
 
                 $selectDepartement = AdminModele::findDepartementByNom($nomDepartement);
 
                 $image = AdminModele::findImageDepartementNom($nomDepartement);
 
-                $parametres = compact('departement', 'selectDepartement', 'image');
+                $parametres = compact('departement', 'selectDepartement', 'image', 'epingles', 'listeIdEpingleDepartement');
 
                 $this->afficherVue($parametres, 'dashboard');
             } else {
@@ -169,7 +188,7 @@ class AdminControleur extends BaseControleur
             $departement = DepartementModele::findById($id[1]);
 
 
-            header("Location: " . Conf::index . "admin/dashboard/" . $departement['departement_nom']);
+            header("Location: " . Conf::index . "admin/dashboard/" . $departement['departement_slug']);
         } else {
             header('Location: ' . Conf::index);
         }
@@ -213,139 +232,164 @@ class AdminControleur extends BaseControleur
     {
 
         $chiffre = 0;
+        if (isset($_SESSION['admin'])) {
 
-        if (isset($_POST['valider2'])) {
-
-
-            $countfiles = count($_FILES['selectImage']['name']);
-            for ($i = 0; $i < $countfiles; $i++) {
-
-                $filename = $_FILES['selectImage']['name'][$i];
-
-                $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
-
-                $file_extension = strtolower($file_extension);
-
-                $slug = explode('-', $_POST['departement_slug']);
-
-                for ($j = 0; count($slug) < $j; $j++) {
-
-                    $slug .= $slug[$j];
-                }
-
-                $slug = implode('', $slug);
-
-                $filename = $slug . time() . $chiffre . '.' . $file_extension;
-
-                $chiffre++;
-
-                // Valid image extension
-                $valid_extension = array("png", "jpeg", "jpg");
-
-                if (in_array($file_extension, $valid_extension)) {
-
-                    // Upload file
-                    if (move_uploaded_file(
-                        $_FILES['selectImage']['tmp_name'][$i],
-                        './assets/image/' . $filename
-                    )) {
-
-                        // Execute query
-                        AdminModele::insertImage($filename, $_POST['departement']);
+            if (isset($_POST['valider2'])) {
 
 
-                        $_SESSION['message_success'] = "Telechargement réussi";
+                $countfiles = count($_FILES['selectImage']['name']);
+                for ($i = 0; $i < $countfiles; $i++) {
 
-                        AdminModele::updateVisite($_POST['departement_slug']);
+                    $filename = $_FILES['selectImage']['name'][$i];
+
+                    $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+                    $file_extension = strtolower($file_extension);
+
+                    $slug = explode('-', $_POST['departement_slug']);
+
+                    for ($j = 0; count($slug) < $j; $j++) {
+
+                        $slug .= $slug[$j];
+                    }
+
+                    $slug = implode('', $slug);
+
+                    $filename = $slug . time() . $chiffre . '.' . $file_extension;
+
+                    $chiffre++;
+
+                    // Valid image extension
+                    $valid_extension = array("png", "jpeg", "jpg");
 
 
 
-                        $departement = AdminModele::findDepartementByNom($_POST['departement_slug']);
+                    if (in_array($file_extension, $valid_extension)) {
 
-                        header("Location: " . Conf::dashboard . "/" . $departement['departement_nom']);
+                        // Upload file
+                        if (move_uploaded_file(
+                            $_FILES['selectImage']['tmp_name'][$i],
+                            './assets/image/' . $filename
+                        )) {
+
+                            // Execute query
+                            AdminModele::insertImage($filename, $_POST['departement']);
+
+
+                            $_SESSION['message_success'] = "Telechargement réussi";
+
+                            AdminModele::updateVisite($_POST['departement_slug']);
+
+
+
+                            $departement = AdminModele::findDepartementByNom($_POST['departement_slug']);
+
+                            header("Location: " . Conf::dashboard . "/" . $departement['departement_slug']);
+                        } else {
+                            $_SESSION['message_error'] = "Aucun fichier telechargé";
+                            header('Location: ' . Conf::dashboard);
+                        }
                     } else {
                         $_SESSION['message_error'] = "Aucun fichier telechargé";
                         header('Location: ' . Conf::dashboard);
                     }
-                } else {
-                    $_SESSION['message_error'] = "Aucun fichier telechargé";
-                    header('Location: ' . Conf::dashboard);
                 }
-            }
-        } else if (isset($_POST['validerAccueil'])) {
+            } else if (isset($_POST['validerAccueil'])) {
 
-            $countfiles = count($_FILES['selectImage']['name']);
-            for ($i = 0; $i < $countfiles; $i++) {
+                $countfiles = count($_FILES['selectImage']['name']);
+                for ($i = 0; $i < $countfiles; $i++) {
 
-                $filename = $_FILES['selectImage']['name'][$i];
+                    $filename = $_FILES['selectImage']['name'][$i];
+
+                    $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
+
+                    $file_extension = strtolower($file_extension);
+
+
+                    $filename = "accueil" . time() . $chiffre . '.' . $file_extension;
+
+                    $chiffre++;
+                    $valid_extension = array("png", "jpeg", "jpg");
+
+                    if (in_array($file_extension, $valid_extension)) {
+
+                        // Upload file
+                        if (move_uploaded_file(
+                            $_FILES['selectImage']['tmp_name'][$i],
+                            './assets/image/' . $filename
+                        )) {
+                            $_SESSION['message_success'] = "Telechargement réussi";
+                            // Execute query
+                            AdminModele::insertImageDepartementNull($filename);
+
+                            header("Location: " . Conf::dashboardAccueil);
+                        } else {
+                            $_SESSION['message_error'] = "Aucun fichier telechargé";
+                            header('Location: ' . Conf::dashboardAccueil);
+                        }
+                    } else {
+                        $_SESSION['message_error'] = "Erreur d'extension de fichier";
+                        header('Location: ' . Conf::dashboardAccueil);
+                    }
+                }
+            } else if (isset($_POST["ajouterEquipement"])) {
+
+
+                $filename = $_FILES['selectImageEquipement']['name'];
 
                 $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
 
                 $file_extension = strtolower($file_extension);
 
+                $filename = "equipement" . time() . '.' . $file_extension;
 
-                $filename = "accueil" . time() . $chiffre . '.' . $file_extension;
-
-                $chiffre++;
                 $valid_extension = array("png", "jpeg", "jpg");
 
                 if (in_array($file_extension, $valid_extension)) {
 
+
                     // Upload file
                     if (move_uploaded_file(
-                        $_FILES['selectImage']['tmp_name'][$i],
-                        './assets/image/' . $filename
+                        $_FILES['selectImageEquipement']['tmp_name'],
+                        './assets/image/imageAccueil/' . $filename
                     )) {
                         $_SESSION['message_success'] = "Telechargement réussi";
                         // Execute query
-                        AdminModele::insertImageDepartementNull($filename);
+                        EquipementModele::insertEquipement($_POST['titre'], $_POST['contenu'], $filename);
 
-                        header("Location: " . Conf::dashboardAccueil);
+                        header("Location: " . Conf::dashboardApropos);
                     } else {
                         $_SESSION['message_error'] = "Aucun fichier telechargé";
-                        header('Location: ' . Conf::dashboardAccueil);
+                        header('Location: ' . Conf::dashboardApropos);
                     }
                 } else {
                     $_SESSION['message_error'] = "Erreur d'extension de fichier";
-                    header('Location: ' . Conf::dashboardAccueil);
-                }
-            }
-        } else if (isset($_POST["ajouterEquipement"])) {
-
-
-            $filename = $_FILES['selectImageEquipement']['name'];
-
-            $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
-
-            $file_extension = strtolower($file_extension);
-
-            $filename = "equipement" . time() . '.' . $file_extension;
-
-            $valid_extension = array("png", "jpeg", "jpg");
-
-            if (in_array($file_extension, $valid_extension)) {
-
-
-                // Upload file
-                if (move_uploaded_file(
-                    $_FILES['selectImageEquipement']['tmp_name'],
-                    './assets/image/imageAccueil/' . $filename
-                )) {
-                    $_SESSION['message_success'] = "Telechargement réussi";
-                    // Execute query
-                    EquipementModele::insertEquipement($_POST['titre'], $_POST['contenu'], $filename);
-
-                    header("Location: " . Conf::dashboardApropos);
-                } else {
-                    $_SESSION['message_error'] = "Aucun fichier telechargé";
                     header('Location: ' . Conf::dashboardApropos);
                 }
-            } else {
-                $_SESSION['message_error'] = "Erreur d'extension de fichier";
-                header('Location: ' . Conf::dashboardApropos);
+            } else if (isset($_POST['validerDescription'])) {
+
+                DepartementModele::updateDescriptionById($_POST['descriptionDepartement'], $_POST['departement']);
+
+                
+                if($_POST['epingle'] != NULL){
+                    EpingleDepartementModele::delet($_POST['departement']);
+
+                    foreach($_POST['epingle'] as $epingle){
+                        EpingleDepartementModele::insertIntoDepartementEpingleById($_POST['departement'], $epingle);
+
+                    }
+
+
+                }
+
+                $departement = AdminModele::findDepartementByNom($_POST['departement_slug']);
+
+                header("Location: " . Conf::dashboard . "/" . $departement['departement_slug']);
             }
         }
     }
+
+
 
     function update()
     {
@@ -368,12 +412,11 @@ class AdminControleur extends BaseControleur
 
                 header('Location: ' . Conf::dashboardApropos);
             } else if (isset($_POST['updateVideo'])) {
-                
 
-                $videoLink = explode("=",$_POST['selectVideo']);
-                
+
+                $videoLink = explode("=", $_POST['selectVideo']);
+
                 AdminModele::updateVideo($videoLink[1]);
-
             } else if (isset($_POST['updateImagePresentation'])) {
 
 

@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="<?= Conf::index ?>assets/css/style.css">
+    <script src="<?= Conf::index ?>assets/js/script.js" defer></script>
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <title><?= $title ?></title>
 
@@ -75,6 +76,6 @@
         </div>
     </nav>
     <section class="headerIndex relative" style="background-image: url(<?= Conf::index ?>assets/image/imageAccueil/BGimage/Screenshot_20211026_223424.jpg);">
-        <h2 class="shadowText nonSelectionnable absolute p-4"><?= $title ?></h2>
-        <h1 class="absolute nonSelectionnable p-4"><?= $title ?></h1>
+        <h2 class="shadowText nonSelectionnable absolute p-4 reveal"><?= $title ?></h2>
+        <h1 class="absolute nonSelectionnable p-4 reveal"><?= $title ?></h1>
     </section>

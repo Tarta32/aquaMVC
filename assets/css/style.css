@@ -23,6 +23,64 @@
     border: 3px none #ffffff;
   }
 
+  
+  
+
+
+
+  
+    @keyframes reveal{
+      from {
+          opacity: 0;
+        }
+        
+        to {
+            opacity: 1;
+        }
+    }
+    
+
+
+
+    @keyframes slideinTop {
+        0% {transform: translateY(+100%);}
+        100% { transform: translateY(0%); }
+    }
+
+    @keyframes slideinBottom {
+        0% {transform: translateY(-100%);}
+        100% { transform: translateY(0%); }
+    }
+
+    @keyframes slideinRight {
+        0% {transform: translateX(+100%);}
+        100% { transform: translateX(0%); }
+    }
+
+    @keyframes slideinLeft {
+
+        0% {transform: translateX(-100%);}
+        100% { transform: translateX(0%); }
+    }
+
+    .reveal{
+        animation: reveal 1s linear;
+    }
+
+    .slideinTop{
+        animation: slideinTop 1.5s linear;
+    }
+    .slideinBottom{
+        animation: slideinBottom 1.5s linear;
+    }
+
+    .slideinRight {
+        animation: slideinRight 1.5s linear;
+    }
+
+    .slideinLeft {
+        animation: slideinLeft 1.5s linear;
+    }
 
 
   /* Boutons */
@@ -155,6 +213,8 @@
    }
 
 
+
+   
 
 /* ===== General ===== */  
 
@@ -487,6 +547,8 @@ g path:hover {
 }
 
 
+
+
 .boxShadow{
     box-shadow: 5px 5px 15px 5px #000000;
 }
@@ -512,10 +574,7 @@ g path:hover {
         column-count: 2 !important;
     }
     
-    .sectionMasonry {
-        overflow: auto;
-        height: 67vh;
-    }
+
 .imageMasonry{
     transition: 00.5s;
     filter: grayscale(0.7);
