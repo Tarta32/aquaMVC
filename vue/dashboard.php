@@ -21,6 +21,7 @@ include './vue/commun/headerAdmin.php'
             <div class="col-6 mx-auto">
                 <h2 class="text-center">Departement</h2>
                 <form method="POST" action="<?= Conf::index ?>admin/dashboard">
+                    <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                     <div class="form-group">
                         <select class="form-select mt-4" id="exampleSelect1" name="departement">
                             <?php
@@ -58,6 +59,7 @@ include './vue/commun/headerAdmin.php'
                 <div class="row">
                     <div class="col-8 mx-auto my-5 p-5 border border-success border-2">
                         <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/insert">
+                            <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
 
                             <h2><?= $selectDepartement['departement_nom'] ?></h2>
                             <input style="display: none;" type="text" name="departement" value="<?= $selectDepartement["id"] ?>">
@@ -93,6 +95,7 @@ include './vue/commun/headerAdmin.php'
 
         ?>
             <form method="POST" action="<?= Conf::index ?>admin/insert">
+                <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                 <h2><?= $selectDepartement['departement_nom'] ?></h2>
                 <input style="display: none;" type="text" name="departement" value="<?= $selectDepartement["id"] ?>">
                 <input style="display: none;" type="text" name="departement_slug" value="<?= $selectDepartement["departement_slug"] ?>">
@@ -100,8 +103,8 @@ include './vue/commun/headerAdmin.php'
                 ?>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="epingle[]" value="<?= $epingle['id'] ?>" id="flexCheckDefault" <?php if (in_array($epingle['id'], $listeIdEpingleDepartement)) {
-                                                                                                            echo 'checked';
-                                                                                                        } ?>>
+                                                                                                                                                    echo 'checked';
+                                                                                                                                                } ?>>
                         <label class="form-check-label" for="flexCheckDefault">
                             <?= $epingle['description'] ?>
                         </label>
@@ -126,8 +129,11 @@ include './vue/commun/headerAdmin.php'
                     ?>
                         <div class="mItem" style="position: relative;">
 
+                            <form method="POST" style="position: absolute; left: 0"  action='<?= Conf::index ?>admin/supprimer/<?= $img['image_id'] ?>-<?= $img['id_departement'] ?>'>
+                                <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
+                                <button type="submit" class="btn btn-danger">x</button>
+                            </form>
                             <img style="max-width: 200px;" src="<?= Conf::image . htmlentities($img['nom_image']) ?>" alt="" />
-                            <a style="position: absolute; left: 0" class="btn btn-danger" href="<?= Conf::index ?>admin/supprimer/<?= $img['image_id'] ?>-<?= $img['id_departement'] ?>">X</a>
 
                         </div>
 

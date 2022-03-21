@@ -19,6 +19,7 @@ include './vue/commun/headerAdmin.php';
         <div class="d-flex aproposFlex align-items-center justify-content-around">
             <div class="col-10 col-md-5">
                 <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/update">
+                    <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                     <img class="mt-5" width="300px" src="<?= Conf::index ?>assets/image/imageAccueil/<?= htmlentities($accueil[0]['image']) ?>" alt="">
                     <input name='selectImagePresentation' class="form-control mt-2" type="file" id="formFile">
                     <input class="btn cssbuttons-io-button mt-2 mb-3" type="submit" value="Modifier image" name="updateImagePresentation">
@@ -26,6 +27,7 @@ include './vue/commun/headerAdmin.php';
             </div>
             <div class="col-10 col-md-6">
                 <form method="POST" action="<?= Conf::index ?>admin/update">
+                    <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                     <div class="form-group mt-3 mb-3">
                         <label for="inputDefault">Titre :</label>
                         <input type="text" class="form-control" id="inputDefault" value="<?= htmlentities($accueil[0]["titre"]) ?>" name="titre">
@@ -55,6 +57,7 @@ include './vue/commun/headerAdmin.php';
                 <div class="modal-body">
 
                     <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/insert">
+                        <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                         <div class="form-group mt-3 ">
                             <label for="inputDefault">Nom :</label>
                             <input type="text" class="form-control" id="inputDefault" name="titre">
@@ -91,6 +94,7 @@ include './vue/commun/headerAdmin.php';
 
                 </div>
                 <form method="POST" action="<?= Conf::index ?>admin/update">
+                    <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                     <div class="form-group mt-3 mb-3">
                         <label for="inputDefault">Titre :</label>
                         <input type="text" class="form-control" id="inputDefault" value="<?= htmlentities($equip["nom"]) ?>" name="titre_equipement">
@@ -107,6 +111,7 @@ include './vue/commun/headerAdmin.php';
                 <div class="text-end">
                 </div>
                 <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/update">
+                    <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                     <img class="mt-5" width="300px" src="<?= Conf::index ?>assets/image/imageAccueil/<?= htmlentities($equip['image']) ?>" alt="">
                     <input name='selectImageEquipement' class="form-control mt-2" type="file" id="formFile">
                     <input class="btn cssbuttons-io-button mt-2 mb-3" type="submit" value="Modifier image" name="updateImageEquipement">

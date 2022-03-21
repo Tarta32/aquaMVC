@@ -6,6 +6,7 @@
   * {
     scrollbar-width: auto;
     scrollbar-color: #469730 #ffffff00;
+    scroll-behavior: smooth;
   }
 
   /* Chrome, Edge, and Safari */
@@ -24,11 +25,7 @@
   }
 
   
-  
-
-
-
-  
+ 
     @keyframes reveal{
       from {
           opacity: 0;
@@ -39,8 +36,6 @@
         }
     }
     
-
-
 
     @keyframes slideinTop {
         0% {transform: translateY(+100%);}
@@ -68,18 +63,18 @@
     }
 
     .slideinTop{
-        animation: slideinTop 1.5s linear;
+        animation: slideinTop 1.5s ease-out;
     }
     .slideinBottom{
-        animation: slideinBottom 1.5s linear;
+        animation: slideinBottom 1.5s ease-out;
     }
 
     .slideinRight {
-        animation: slideinRight 1.5s linear;
+        animation: slideinRight 1.5s ease-out;
     }
 
     .slideinLeft {
-        animation: slideinLeft 1.5s linear;
+        animation: slideinLeft 1.5s ease-out;
     }
 
 

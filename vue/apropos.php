@@ -8,15 +8,15 @@ include './vue/commun/header.php';
 
 <div class="container">
     <div class="row m-auto justify-content-between align-items-center aproposFlex">
-        <div class="col-8 col-md-6 mt-4 text-end slideinLeft">
+        <div class="col-8 col-md-6 mt-4 text-end slideinLeftAnim">
             <img width="500px" class="rounded" src="<?= Conf::index ?>assets/image/imageAccueil/<?= htmlentities($accueil[0]['image']) ?>" alt="Image de presentation">
         </div>
-        <div class="col-8 col-md-5 border border-dark border-3 p-5 mt-4 rounded-3 slideinRight boxShadow">
+        <div class="col-8 col-md-5 border border-dark border-3 p-5 mt-4 rounded-3 slideinRightAnim boxShadow">
             <h3 class="text-center"><?= htmlentities($accueil[0]['titre']) ?></h3>
             <p><?= htmlentities($accueil[0]['contenu']) ?></p>
         </div>
     </div>
-    <h2 class="slideinTop text-center  mt-5"><u>Mes equipements</u></h2>
+    <h2 class="slideinTopAnim text-center  mt-5"><u>Mes equipements</u></h2>
 
     <?php 
     foreach($equipement as $equip){
@@ -24,12 +24,12 @@ include './vue/commun/header.php';
     
     ?>
     <div class="row justify-content-between align-items-center aproposFlex">
-        <div class="col-8 col-md-5 border border-dark border-3 p-5 my-4 rounded-3 boxShadow slideinLeft">
+        <div class="col-8 col-md-5 border border-dark border-3 p-5 my-4 rounded-3 boxShadow slideinLeftAnim">
             <h3 class="text-center"><?= htmlentities($equip['nom']) ?></h3>
             <p><?= htmlentities($equip['description']) ?></p>
         </div>
-        <div class="col-8 col-md-6 mt-4">
-            <img width="500px" class="rounded slideinRight" src="<?= Conf::index ?>assets/image/imageAccueil/<?= htmlentities($equip['image']) ?>" alt="">
+        <div class="col-8 col-md-6 mt-4  slideinRightAnim">
+            <img width="500px" class="rounded" src="<?= Conf::index ?>assets/image/imageAccueil/<?= htmlentities($equip['image']) ?>" alt="">
         </div>
     </div>
 

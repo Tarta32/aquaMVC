@@ -76,6 +76,6 @@
         </div>
     </nav>
     <section class="headerIndex relative" style="background-image: url(<?= Conf::index ?>assets/image/imageAccueil/BGimage/Screenshot_20211026_223424.jpg);">
-        <h2 class="shadowText nonSelectionnable absolute p-4 reveal"><?= $title ?></h2>
-        <h1 class="absolute nonSelectionnable p-4 reveal"><?= $title ?></h1>
+        <h2 class="shadowText nonSelectionnable absolute p-4 revealAnim"><?= $title ?></h2>
+        <h1 class="absolute nonSelectionnable p-4 revealAnim"><?= $title ?></h1>
     </section>

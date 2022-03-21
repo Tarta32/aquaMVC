@@ -1,17 +1,65 @@
-listeClasseAnimation = ["slideinLeft", "slideinRight", "reveal", "slideinTop", "slideinBottom"];
+const options = {
+    threshold: 0
+}
 
-listeClasseAnimation.forEach(classe => {
 
-    const elements = document.querySelectorAll('.' + classe);
+const slideinLeftAnims = document.querySelectorAll('.slideinLeftAnim');
 
-    elements.forEach(element => {
+slideinLeftAnims.forEach(slideinLeftAnim => {
 
-        const observer = new IntersectionObserver(entries => {
-
-            element.classList.toggle(classe, entries[0].isIntersecting);
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                slideinLeftAnim.classList.add('slideinLeft');
+                observer.unobserve(entry);
+            }
         })
+    },options)
+    observer.observe(slideinLeftAnim);
+})
 
-        observer.observe(element);
 
-    })
+const slideinRightAnims = document.querySelectorAll('.slideinRightAnim');
+
+slideinRightAnims.forEach(slideinRightAnim => {
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                slideinRightAnim.classList.add('slideinRight');
+                observer.unobserve(entry);
+            }
+        })
+    },options)
+    observer.observe(slideinRightAnim);
+})
+
+const revealAnims = document.querySelectorAll('.revealAnim');
+
+revealAnims.forEach(revealAnim => {
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                revealAnim.classList.add('reveal');
+                observer.unobserve(entry);
+            }
+        })
+    },options)
+    observer.observe(revealAnim);
+})
+
+const slideinTopAnims = document.querySelectorAll('.slideinTopAnim');
+
+slideinTopAnims.forEach(slideinTopAnim => {
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                slideinTopAnim.classList.add('slideinTop');
+                observer.unobserve(entry);
+            }
+        })
+    },options)
+    observer.observe(slideinTopAnim);
 })

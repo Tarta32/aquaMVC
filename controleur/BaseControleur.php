@@ -8,6 +8,8 @@ class BaseControleur
 
     function afficherVue($parametres = [], $vue)
     {
+
+
         // $listeArticle = $parametres['listeArticle'];
         extract($parametres);
 

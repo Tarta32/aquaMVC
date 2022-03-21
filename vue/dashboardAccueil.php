@@ -6,12 +6,6 @@ include './vue/commun/headerAdmin.php'
 <div class="container">
     <div class="row">
         <div class="col">
-            <form action="insert.php" method="post">
-            </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
             <h2 class="text-center text-success mt-5"><u>Modification de l'acceuil</u></h2>
             <p class="text-danger"><?php if (isset($_SESSION['message_error'])) {
                                         echo "<p style='color:red'>" . $_SESSION['message_error'] . "</p>";
@@ -22,6 +16,7 @@ include './vue/commun/headerAdmin.php'
                                     }
                                     ?></p>
             <form method="POST" action="<?= Conf::index ?>admin/update">
+                <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                 <div class="form-group mt-3 mb-3">
                     <label for="inputDefault">Titre :</label>
                     <input type="text" class="form-control" id="inputDefault" value="<?= htmlentities($accueil["titre"]) ?>" name="titre">
@@ -43,6 +38,7 @@ include './vue/commun/headerAdmin.php'
                 </div>
                 <div class="col-6">
                     <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/insert">
+                        <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                         <div class="form-group">
                             <input name='selectImage[]' class="form-control mt-5" type="file" id="formFile" multiple>
                             <input class="btn cssbuttons-io-button mt-2 mb-3" type="submit" value="Telecharger image(s)" name="validerAccueil">
@@ -54,8 +50,11 @@ include './vue/commun/headerAdmin.php'
                             foreach ($requeteImage as $img) {
                             ?>
                                 <div class="mItem" style="position: relative;">
+                                    <form style="position: absolute; left: 0" action="<?= Conf::index ?>admin/supprimerAccueil/<?= $img['id'] ?>" method="post">
+                                        <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
+                                        <button type="submit" class="btn btn-danger">x</button>
+                                    </form>
                                     <img style="max-width: 150px;" src="<?= Conf::index ?>assets/image/<?= htmlentities($img['nom_image']) ?>" alt="" />
-                                    <a style="position: absolute; left: 0" class="btn btn-danger" href="<?= Conf::index ?>admin/supprimerAccueil/<?= $img['id'] ?>">X</a>
                                 </div>
                             <?php
                             }
