@@ -2,5 +2,8 @@ RewriteEngine On
 
 RewriteRule ^([a-zA-Z0-9\-\/\_\?\=]*)$ index.php?chemin=$1/%{QUERY_STRING}
 
-
+RewriteCond %{HTTP_HOST} ^aquavision-shooting.com$
+RewriteRule ^(.*) http://www.aquavision-shooting.com/$1 [QSA,L,R=301]
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://www.aquavision-shooting.com/$1 [R,L]
 
