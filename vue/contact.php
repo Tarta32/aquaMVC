@@ -1,6 +1,7 @@
 <?php
 
-$title = "Contact - Aquavision, photos videos et referencement sub-aquatique";
+$title = "Contact";
+$description = " - Aquavision, photos videos et referencement sub-aquatique";
 include './vue/commun/header.php'
 ?>
 <div class="container-fluid bg-white p-5">

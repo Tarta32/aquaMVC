@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="<?= Conf::index ?>assets/css/style.css">
     <script src="<?= Conf::index ?>assets/js/script.js" defer></script>
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <title><?= $title ?></title>
+    <title><?= $title.$description ?></title>
 
 
 </head>

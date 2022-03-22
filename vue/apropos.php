@@ -1,6 +1,6 @@
 <?php
-$title = 'A propos - Aquavision, photos videos et referencement sub-aquatique';
-
+$title = 'A propos';
+$description = " - Aquavision, photos videos et referencement sub-aquatique";
 include './vue/commun/header.php';
 ?>
     <h2 class="text-center bleu mt-5"><span class="vert">D</span>ESCRIPTION</h2>
