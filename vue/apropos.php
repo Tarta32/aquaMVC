@@ -23,7 +23,7 @@ include './vue/commun/header.php';
 
     
     ?>
-    <div class="row justify-content-between align-items-center aproposFlex">
+    <div class="row justify-content-between align-items-center aproposFlex mb-5">
         <div class="col-8 col-md-5 border border-dark border-3 p-5 my-4 rounded-3 boxShadow slideinLeftAnim">
             <h3 class="text-center"><?= htmlentities($equip['nom']) ?></h3>
             <p><?= htmlentities($equip['description']) ?></p>
