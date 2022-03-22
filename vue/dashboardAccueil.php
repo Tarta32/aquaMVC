@@ -30,6 +30,7 @@ include './vue/commun/headerAdmin.php'
             <div class="row">
                 <div class="col-6">
                     <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/update">
+                        <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                         <label for="selectVideo" class=" mt-5">Lien Youtube de la video :</label>
                         <input name='selectVideo' id="selectVideo" class="form-control mt-2" type="text">
                         <input class="btn cssbuttons-io-button mt-2 mb-3" type="submit" value="Modifier video" name="updateVideo">

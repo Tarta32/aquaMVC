@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="???">
+    <meta name="description" content="Mon but est de vous faire découvrir ce que je vois sous la surface des étangs et rivières et lutter pour la préservation des milieux aquatiques en dépolluant un maximum ces milieux.">
     <link rel="icon" type="image/png" href="<?= Conf::index ?>assets/image/imageAccueil/BGimage/favicon.ico" />
     <link rel="stylesheet" href="https://bootswatch.com/5/spacelab/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" defer></script>
@@ -22,17 +22,17 @@
     <div class="container-fluid topHeader d-flex justify-content-between">
         <div class="headerMedia d-flex w-50 justify-content-between">
             <div class="mail">
-                <a href="mailto:test@gmail.com"><i class='bx bx-mail-send'></i><span class="textHeaderTop">&nbsp; test@gmail.com</span></a>
+                <a href="mailto:morgan.robert1987@gmail.com"><i class='bx bx-mail-send'></i><span class="textHeaderTop">&nbsp; morgan.robert1987@gmail.com</span></a>
             </div>
             <div class="phone">
-                <a href="tel: 0123456789"><i class='bx bxs-phone-call'></i><span class="textHeaderTop">&nbsp; 0123456789</span></a>
+                <a href="tel: 0631895783"><i class='bx bxs-phone-call'></i><span class="textHeaderTop">&nbsp; 0631895783</span></a>
             </div>
         </div>
         <div class="iconeFlex d-flex">
             <div>
-                <a href="" class="text-primary"><i class='bx bxl-instagram-alt'></i></a>
-                <a href="" class="text-primary"><i class='bx bxl-youtube'></i></a>
-                <a href="" class="text-primary"><i class='bx bxl-facebook-square'></i></a>
+                <a href="https://www.instagram.com/fish_ooting/" class="text-primary"><i class='bx bxl-instagram-alt'></i></a>
+                <a href="https://www.facebook.com/MorganAquatique" class="text-primary"><i class='bx bxl-facebook-square'></i></a>
+                <a href="https://www.youtube.com/channel/UC4DCDphd0U-pfaxjrGOAEIQ" class="text-primary"><i class='bx bxl-youtube'></i></a>
             </div>
         </div>
     </div>

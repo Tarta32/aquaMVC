@@ -28,17 +28,17 @@
     <div class="reseaux d-block text-center my-auto">
         <div class="iconeFlex d-flex justify-content-center">
             <div>
-                <a href="" class="text-primary"><i class='bx bxl-instagram-alt'></i></a>
-                <a href="" class="text-primary"><i class='bx bxl-youtube'></i></a>
-                <a href="" class="text-primary"><i class='bx bxl-facebook-square'></i></a>
+                <a href="https://www.instagram.com/fish_ooting/" class="text-primary"><i class='bx bxl-instagram-alt'></i></a>
+                <a href="https://www.facebook.com/MorganAquatique" class="text-primary"><i class='bx bxl-facebook-square'></i></a>
+                <a href="https://www.youtube.com/channel/UC4DCDphd0U-pfaxjrGOAEIQ" class="text-primary"><i class='bx bxl-youtube'></i></a>
             </div>
         </div>
         <div>
             <div>
-                <a href="mailto:test@gmail.com"><i class='bx bx-mail-send'></i><span class="textHeaderTop">&nbsp; test@gmail.com</span></a>
+                <a href="mailto:morgan.robert1987@gmail.com"><i class='bx bx-mail-send'></i><span class="textHeaderTop">&nbsp; morgan.robert1987@gmail.com</span></a>
             </div>
             <div class="div">
-                <a href="tel: 0123456789"><i class='bx bxs-phone-call'></i><span class="textHeaderTop">&nbsp; 0123456789</span></a>
+                <a href="tel: 0631895783"><i class='bx bxs-phone-call'></i><span class="textHeaderTop">&nbsp; 0631895783</span></a>
             </div>
         </div>
     </div>

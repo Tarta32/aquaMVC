@@ -258,7 +258,6 @@ class AdminControleur extends BaseControleur
         $token = uniqid(rand(), true);
         $_SESSION['token'] = $token;
         $_SESSION['data_token'] = time();
-
     }
 
     function insert()
@@ -268,7 +267,7 @@ class AdminControleur extends BaseControleur
         if (isset($_SESSION['admin'])) {
 
 
-            if (isset($_POST['valider2']) && (($_SESSION['token'] == $_POST['token'])&& $_SESSION['data_token'] +3000 > time())) {
+            if (isset($_POST['valider2']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
 
                 $countfiles = count($_FILES['selectImage']['name']);
@@ -328,7 +327,7 @@ class AdminControleur extends BaseControleur
                         header('Location: ' . Conf::dashboard);
                     }
                 }
-            } else if (isset($_POST['validerAccueil']) && (($_SESSION['token'] == $_POST['token'])&& $_SESSION['data_token'] +3000 > time())) {
+            } else if (isset($_POST['validerAccueil']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
                 $countfiles = count($_FILES['selectImage']['name']);
                 for ($i = 0; $i < $countfiles; $i++) {
@@ -366,7 +365,7 @@ class AdminControleur extends BaseControleur
                         header('Location: ' . Conf::dashboardAccueil);
                     }
                 }
-            } else if (isset($_POST["ajouterEquipement"]) && (($_SESSION['token'] == $_POST['token'])&& $_SESSION['data_token'] +3000 > time())) {
+            } else if (isset($_POST["ajouterEquipement"]) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
 
                 $filename = $_FILES['selectImageEquipement']['name'];
@@ -400,7 +399,7 @@ class AdminControleur extends BaseControleur
                     $_SESSION['message_error'] = "Erreur d'extension de fichier";
                     header('Location: ' . Conf::dashboardApropos);
                 }
-            } else if (isset($_POST['validerDescription']) && (($_SESSION['token'] == $_POST['token'])&& $_SESSION['data_token'] +3000 > time())) {
+            } else if (isset($_POST['validerDescription']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
                 DepartementModele::updateDescriptionById($_POST['descriptionDepartement'], $_POST['departement']);
 
@@ -422,7 +421,6 @@ class AdminControleur extends BaseControleur
             $token = uniqid(rand(), true);
             $_SESSION['token'] = $token;
             $_SESSION['data_token'] = time();
-
         }
     }
 
@@ -432,7 +430,7 @@ class AdminControleur extends BaseControleur
     {
         if (isset($_SESSION['admin'])) {
 
-            if ((isset($_POST['updateAccueil']) && ($_SESSION['token'] == $_POST['token'])) || (isset($_POST['updatePresentation']) && (($_SESSION['token'] == $_POST['token'])&& $_SESSION['data_token'] +3000 > time()))) {
+            if ((isset($_POST['updateAccueil']) && ($_SESSION['token'] == $_POST['token'])) || (isset($_POST['updatePresentation']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 3000 > time()))) {
 
                 AdminModele::updateTitreContenu($_POST['titre'], $_POST['contenu']);
                 $_SESSION['message_success'] = "Modifications enregistrées";
@@ -442,19 +440,21 @@ class AdminControleur extends BaseControleur
                 } else {
                     header('Location: ' . Conf::dashboardApropos);
                 }
-            } else if (isset($_POST['updateEquipement']) && (($_SESSION['token'] == $_POST['token'])&& $_SESSION['data_token'] +3000 > time())) {
+            } else if (isset($_POST['updateEquipement']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
                 EquipementModele::updateEquipement($_POST['titre_equipement'], $_POST['contenu_equipement'], $_POST['id_equipement']);
                 $_SESSION['message_success'] = "Modifications enregistrées";
 
                 header('Location: ' . Conf::dashboardApropos);
-            } else if (isset($_POST['updateVideo']) && (($_SESSION['token'] == $_POST['token'])&& $_SESSION['data_token'] +3000 > time())) {
+            } else if (isset($_POST['updateVideo']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
 
                 $videoLink = explode("=", $_POST['selectVideo']);
 
                 AdminModele::updateVideo($videoLink[1]);
-            } else if (isset($_POST['updateImagePresentation']) && (($_SESSION['token'] == $_POST['token'])&& $_SESSION['data_token'] +3000 > time())) {
+
+                header("Location: " . Conf::dashboardAccueil);
+            } else if (isset($_POST['updateImagePresentation']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
 
                 $image = AccueilModele::findAll();
@@ -492,7 +492,7 @@ class AdminControleur extends BaseControleur
                     $_SESSION['message_error'] = "Erreur d'extension de fichier";
                     header("Location: " . Conf::dashboardApropos);
                 }
-            } elseif (isset($_POST['updateImageEquipement']) && (($_SESSION['token'] == $_POST['token'])&& $_SESSION['data_token'] +3000 > time())) {
+            } else if (isset($_POST['updateImageEquipement']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
 
                 $imagePerso = AproposModele::findAll();
