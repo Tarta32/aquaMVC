@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://bootswatch.com/5/spacelab/bootstrap.min.css">
   <link rel="stylesheet" href="<?= Conf::index ?>assets/css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" defer></script>
-  <title>Admin</title>
+  <title>Admin - Aquavision, photos videos et referencement sub-aquatique</title>
 </head>
 
 <body>

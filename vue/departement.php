@@ -1,6 +1,6 @@
 <?php
 
-$title = $departement['departement_nom'];
+$title = $departement['departement_nom'] . " - Aquavision, photos videos et referencement sub-aquatique";
 include './vue/commun/header.php'
 ?>
 
