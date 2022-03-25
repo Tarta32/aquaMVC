@@ -376,17 +376,17 @@ include './vue/commun/header.php';
     <div class="container d-flex justify-content-between presentation">
         <div class="textePresentation text-light slideinLeftAnim p-5">
             <h2 class="text-light text-center"><?= htmlentities($accueil['titre']) ?></h2>
-            <p class="mt-3"><?php 
-            if(strlen(htmlentities($accueil['contenu'])) > 200){
-                echo substr(htmlentities($accueil['contenu']),0,200).' ...';
-            }else {
-                echo htmlentities($accueil['contenu']);
-            } 
-            ?></p>
+            <p class="mt-3"><?php
+                            if (strlen(htmlentities($accueil['contenu'])) > 200) {
+                                echo substr(htmlentities($accueil['contenu']), 0, 200) . ' ...';
+                            } else {
+                                echo htmlentities($accueil['contenu']);
+                            }
+                            ?></p>
             <button class="boutonAccueil" onclick="window.location.href='<?= Conf::apropos ?>'">Voir plus &xrarr;</button>
         </div>
         <div class="videoPresentation slideinRightAnim">
-        <iframe class="rounded" width="600" height="340" src="https://www.youtube.com/embed/<?= htmlentities($accueil['media']) ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="rounded" width="600" height="340" src="https://www.youtube.com/embed/<?= htmlentities($accueil['media']) ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 </section>
@@ -398,9 +398,20 @@ include './vue/commun/header.php';
             foreach ($images as $img) {
             ?>
                 <div class="mItem mt-3 ">
-                    <img style="box-shadow: 10px 11px 15px -3px rgba(0,0,0,0.58)" alt="Image Accueil" class="rounded-3 revealAnim imageMasonry" src='<?= Conf::index ?>assets/image/<?= $img['nom_image'] ?>'>
+                    <div data-bs-toggle="modal" data-bs-target="#exampleModal<?= $img['id'] ?>">
+                        <img style="box-shadow: 10px 11px 15px -3px rgba(0,0,0,0.58)" alt="Image Accueil" class="rounded-3 revealAnim imageMasonry" src='<?= Conf::index ?>assets/image/<?= $img['nom_image'] ?>'>
+                    </div>
+                    <div class="modal fade" id="exampleModal<?= $img['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-accueil">
+                            <div class="modal-content">
+                                <div class="modal-body modal-accueil-body">
+                                <img alt="Image Accueil" class="rounded-3" src='<?= Conf::index ?>assets/image/<?= $img['nom_image'] ?>'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-    
+
             <?php
             }
             ?>

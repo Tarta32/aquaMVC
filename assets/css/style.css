@@ -568,7 +568,14 @@ g path:hover {
     .dashboardMasonry{
         column-count: 2 !important;
     }
-    
+   
+.modal-accueil-body {
+    padding: 0 !important;
+}
+
+.modal-accueil{
+    max-width: 60vw !important;
+}
 
 .imageMasonry{
     transition: 00.5s;
