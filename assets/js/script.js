@@ -11,7 +11,7 @@ slideinLeftAnims.forEach(slideinLeftAnim => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 slideinLeftAnim.classList.add('slideinLeft');
-                observer.unobserve(entry);
+                observer.unobserve(slideinLeftAnim);
             }
         })
     },options)
@@ -27,7 +27,7 @@ slideinRightAnims.forEach(slideinRightAnim => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 slideinRightAnim.classList.add('slideinRight');
-                observer.unobserve(entry);
+                observer.unobserve(slideinRightAnim);
             }
         })
     },options)
@@ -42,7 +42,7 @@ revealAnims.forEach(revealAnim => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 revealAnim.classList.add('reveal');
-                observer.unobserve(entry);
+                observer.unobserve(revealAnim);
             }
         })
     },options)
@@ -57,7 +57,7 @@ slideinTopAnims.forEach(slideinTopAnim => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 slideinTopAnim.classList.add('slideinTop');
-                observer.unobserve(entry);
+                observer.unobserve(slideinTopAnim);
             }
         })
     },options)
