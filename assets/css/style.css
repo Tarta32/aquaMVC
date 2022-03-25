@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
 /* ===== Scrollbar CSS ===== */
   /* Firefox */
   * {
@@ -289,11 +290,12 @@ h1{
     -ms-transform: translateX(-50%) translateY(-70%);
     -webkit-transform: translate(-50%,-70%);
     transform: translate(-50%,-70%);
-    font-family: "lobster";
+    font-family: 'Playball', cursive;
 }
 
 h2{
-    font-family: 'Poppins', sans-serif;;
+    font-family: 'Abril Fatface', cursive;
+    letter-spacing: 3px;
 }
 
 li{
@@ -358,7 +360,7 @@ img {
     -ms-transform: translateX(-50%) translateY(-70%);
     -webkit-transform: translate(-50%,-70%);
     transform: translate(-50%,-70%);
-    font-family: "lobster";
+    font-family: 'Playball', cursive;
 }
 
 

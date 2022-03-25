@@ -1,5 +1,5 @@
 <?php
-$title = 'Accueil';
+$title = 'AquaVision';
 $description = " - Aquavision, photos videos et referencement sub-aquatique";
 include './vue/commun/header.php';
 
@@ -375,7 +375,7 @@ include './vue/commun/header.php';
 <section class="presentation p-5">
     <div class="container d-flex justify-content-between presentation">
         <div class="textePresentation text-light slideinLeftAnim p-5">
-            <h2 class="text-light text-center"><?= htmlentities($accueil['titre']) ?></h2>
+            <h3 class="text-light text-center"><?= htmlentities($accueil['titre']) ?></h3>
             <p class="mt-3"><?php
                             if (strlen(htmlentities($accueil['contenu'])) > 200) {
                                 echo substr(htmlentities($accueil['contenu']), 0, 200) . ' ...';
