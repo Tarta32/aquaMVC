@@ -84,12 +84,13 @@ include './vue/commun/headerAdmin.php';
     $chiffre = 1;
     foreach ($equipement as $equip) {
 
-
+        $equipID = $equip['id'];
     ?>
         <div class="row my-5 m-2 p-3 border border-4 aproposFlex align-items-center">
             <div class="col-12 col-md-6">
                 <div>
-                    <button class="btn cssbuttons-io-button-red mb-5" onclick='window.location.href="<?= Conf::index ?>admin/supprimerEquipement/<?= $equip[`id`] ?>"'>Supprimer l'equipement</button>
+
+                    <button class="btn cssbuttons-io-button-red mb-5" onclick='window.location.href="<?= Conf::index ?>admin/supprimerEquipement/<?= $equipID ?>"'>Supprimer l'equipement</button>
                     <h4 class="text-center">Equipement <?= $chiffre ?></h4>
 
                 </div>
