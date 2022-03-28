@@ -495,9 +495,11 @@ class AdminControleur extends BaseControleur
             } else if (isset($_POST['updateImageEquipement']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
 
-                $imagePerso = AproposModele::findAll();
-                unlink("./assets/image/imageAccueil/" . $imagePerso[0]['image_perso']);
+                
+                $imagePerso = EquipementModele::findById($_POST['id_equipement']);
 
+                unlink("./assets/image/imageAccueil/" . $imagePerso['image']);
+                
                 $filename = $_FILES['selectImageEquipement']['name'];
 
                 $file_extension = pathinfo($filename, PATHINFO_EXTENSION);

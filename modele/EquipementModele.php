@@ -16,7 +16,7 @@ class EquipementModele extends BaseModele
     static function updateImage($media, $id)
     {
         $connexion = new PDOperso();
-        $requete = $connexion->prepare('UPDATE accueil SET image = ? WHERE id = ?');
+        $requete = $connexion->prepare('UPDATE equipement SET image = ? WHERE id = ?');
         $requete->execute([$media, $id]);
     }
 
