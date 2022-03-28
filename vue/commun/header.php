@@ -67,9 +67,6 @@
                         <a class="nav-link" href="<?= Conf::departement ?>"><span class="vert">D</span>epartements</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><span class="vert">P</span>restations</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="<?= Conf::contact ?>"><span class="vert">C</span>ontact</a>
                     </li>
                     <li class="nav-item">
