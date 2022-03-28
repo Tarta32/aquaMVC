@@ -378,7 +378,7 @@ include './vue/commun/header.php';
             <h3 class="text-light text-center"><?= htmlentities($accueil['titre']) ?></h3>
             <p class="mt-3"><?php
                             if (strlen(htmlentities($accueil['contenu'])) > 200) {
-                                echo substr(htmlentities($accueil['contenu']), 0, 200) . ' ...';
+                                echo substr(htmlentities($accueil['contenu']), 0, strpos(htmlentities($accueil['contenu']), ' ', 300));
                             } else {
                                 echo htmlentities($accueil['contenu']);
                             }
@@ -405,7 +405,7 @@ include './vue/commun/header.php';
                         <div class="modal-dialog modal-accueil">
                             <div class="modal-content">
                                 <div class="modal-body modal-accueil-body">
-                                <img alt="Image Accueil" class="rounded-3" src='<?= Conf::index ?>assets/image/<?= $img['nom_image'] ?>'>
+                                    <img alt="Image Accueil" class="rounded-3" src='<?= Conf::index ?>assets/image/<?= $img['nom_image'] ?>'>
                                 </div>
                             </div>
                         </div>
