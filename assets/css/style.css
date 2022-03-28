@@ -284,13 +284,14 @@ h1{
     color: transparent;
     font-size: 12rem;
     position: absolute;
-    width: 80%;
+    width: 100%;
     top: 50%;
     left: 50%;
     -ms-transform: translateX(-50%) translateY(-70%);
     -webkit-transform: translate(-50%,-70%);
     transform: translate(-50%,-70%);
     font-family: 'Playball', cursive;
+    letter-spacing: 3px;
 }
 
 h2{
