@@ -378,9 +378,9 @@ include './vue/commun/header.php';
             <h3 class="text-light text-center"><?= htmlentities($accueil['titre']) ?></h3>
             <p class="mt-3"><?php
                             if (strlen(htmlentities($accueil['contenu'])) > 200) {
-                                echo substr(htmlentities($accueil['contenu']), 0, strpos(htmlentities($accueil['contenu']), ' ', 300));
+                                echo nl2br(substr(htmlentities($accueil['contenu']), 0, strpos(htmlentities($accueil['contenu']), ' ', 300))). ' . . .';
                             } else {
-                                echo htmlentities($accueil['contenu']);
+                                echo nl2br(utf8_encode(htmlentities($accueil['contenu'])));
                             }
                             ?></p>
             <button class="boutonAccueil" onclick="window.location.href='<?= Conf::apropos ?>'">Voir plus &xrarr;</button>
