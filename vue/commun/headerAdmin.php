@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Mon but est de vous faire découvrir ce que je vois sous la surface des étangs et rivières et lutter pour la préservation des milieux aquatiques en dépolluant un maximum ces milieux.">
-    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Div Web association création de site internet & formation Nancy" />
+    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Aquavision-shooting photos sub-aquatiques" />
     <meta prefix="og: http://ogp.me/ns#" property="og:type" content="video.movie" />
     <meta prefix="og: http://ogp.me/ns#" property="og:url" content="https://www.aquavision-shooting.com/" />
     <meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://www.aquavision-shooting.com/assets/image/imageAccueil/BGimage/accueil.jpg" />
@@ -20,11 +20,11 @@
     <meta name="author" content="Barbe Julien">
     <link rel="icon" type="image/png" href="<?= Conf::index ?>assets/image/imageAccueil/BGimage/favicon.ico" />
     <link rel="stylesheet" href="https://bootswatch.com/5/spacelab/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" defer></script>
-    <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="<?= Conf::index ?>assets/css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" defer></script>
+    <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js" defer></script>
   <title>Admin - Aquavision, photos videos et referencement sub-aquatique </title>
 </head>
 
