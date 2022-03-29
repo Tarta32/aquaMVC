@@ -271,6 +271,7 @@ class AdminControleur extends BaseControleur
 
 
                 $countfiles = count($_FILES['selectImage']['name']);
+                
                 for ($i = 0; $i < $countfiles; $i++) {
 
                     $filename = $_FILES['selectImage']['name'][$i];
