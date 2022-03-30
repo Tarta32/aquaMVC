@@ -503,7 +503,7 @@ map {
     width: 200% !important;
 }
 
-.carte {
+.carte, .carteSuisse {
     width: 40%;
     margin: 0 auto;
 }
@@ -659,7 +659,7 @@ g path:hover {
         font-size: 8rem;
     }
 
-    .carte {
+    .carte, .carteSuisse {
         width: 60%;
     }
     
@@ -691,7 +691,7 @@ g path:hover {
         height: 400px;
     }
 
-    .carte {
+    .carte, .carteSuisse {
         width: 70%;
     }
   }
@@ -733,7 +733,7 @@ g path:hover {
       .headerIndex{
         height: 300px;
     }
-    .carte {
+    .carte, .carteSuisse {
         width: 80%;
     }
 
@@ -803,7 +803,7 @@ g path:hover {
     .headerIndex{
         height: 200px;
     }
-    .carte {
+    .carte, .carteSuisse {
         width: 100%;
     }
 

@@ -364,7 +364,7 @@ include './vue/commun/header.php';
     </div>
     <div class="carteSuisse">
         <h2 class="mt-5">Suisse</h2>
-        <svg version="1.1" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="640px" height="420px" viewBox="0 0 640 420" enable-background="new 0 0 640 420" xml:space="preserve">
+        <svg version="1.1" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 640 420" enable-background="new 0 0 640 420" xml:space="preserve">
             <g id="landmarks-switzerland">
                 <a href="#a">
                     <path id="OW" data-nom="Obwald" class="departement-obwald" fill="#DDDDDD" stroke="#FFFFFF" stroke-width="0.75" d="M334.03,216.98l-5.76-4.83l0.76-1.05l0.87-2.04l-0.23-2.21
@@ -905,8 +905,8 @@ include './vue/commun/header.php';
         <div class="textePresentation text-light slideinLeftAnim p-5">
             <h3 class="text-light text-center"><?= htmlentities($accueil['titre']) ?></h3>
             <p class="mt-3"><?php
-                            if (strlen(htmlentities($accueil['contenu'])) > 200) {
-                                echo nl2br(substr(htmlentities($accueil['contenu']), 0, strpos(htmlentities($accueil['contenu']), ' ', 300))) . ' . . .';
+                            if (strlen(htmlentities($accueil['contenu'])) > 270) {
+                                echo nl2br(utf8_encode(substr(htmlentities($accueil['contenu']), 0, strpos(htmlentities($accueil['contenu']), ' ', 270)))) . ' . . .';
                             } else {
                                 echo nl2br(utf8_encode(htmlentities($accueil['contenu'])));
                             }
