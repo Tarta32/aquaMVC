@@ -89,8 +89,8 @@ include './vue/commun/headerAdmin.php';
         <div class="row my-5 m-2 p-3 border border-4 aproposFlex align-items-center">
             <div class="col-12 col-md-6">
                 <div>
-                    <button type="button" class="btn btn-primary cssbuttons-io-button-red mb-5" data-bs-toggle="modal" data-bs-target="#supprimer">Supprimer l'equipement</button>
-                    <div class="modal fade" id="supprimer" tabindex="-1" aria-labelledby="supprimerLabel" aria-hidden="true">
+                    <button type="button" class="btn btn-primary cssbuttons-io-button-red mb-5" data-bs-toggle="modal" data-bs-target="#supprimer<?= $equipID ?>">Supprimer l'equipement</button>
+                    <div class="modal fade" id="supprimer<?= $equipID ?>" tabindex="-1" aria-labelledby="supprimerLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-body">
@@ -98,7 +98,10 @@ include './vue/commun/headerAdmin.php';
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">retour</button>
-                                    <button class="btn btn-danger" onclick='window.location.href="<?= Conf::index ?>admin/supprimerEquipement/<?= $equipID ?>"'>Supprimer l'equipement</button>
+                                    <form method="POST" action='<?= Conf::index ?>admin/supprimerEquipement/<?= $equipID ?>'>
+                                        <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
+                                        <button type="submit" name="supprimer" class="btn btn-danger">Supprimer l'equipement</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

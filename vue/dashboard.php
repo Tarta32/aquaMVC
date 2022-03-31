@@ -60,24 +60,9 @@ include './vue/commun/headerAdmin.php'
                     <div class="col-8 mx-auto my-5 p-5 border border-success border-2">
                         <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/insert">
                             <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
-
                             <h2><?= $selectDepartement['departement_nom'] ?></h2>
                             <input style="display: none;" type="text" name="departement" value="<?= $selectDepartement["id"] ?>">
-                            <input style="display: none;" type="text" name="departement_slug" value="<?= $selectDepartement["departement_slug"] ?>">
-                            <?php foreach ($epingles as $epingle) {
-                            ?>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="epingle[]" value="<?= $epingle['id'] ?>" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        <?= $epingle['description'] ?>
-                                    </label>
-                                </div>
-                            <?php } ?>
-                            <div class="form-group mt-5">
-                                <label for="descriptionDepartement">Description departement :</label>
-                                <textarea class="form-control" name="descriptionDepartement" id="descriptionDepartement" cols="30" rows="10"></textarea>
-                            </div>
-                            <input class="btn cssbuttons-io-button mt-2" type="submit" value="Valider description" name="validerDescription">
+                            <input style="display: none;" type="text" name="departement_slug" value="<?= $selectDepartement["departement_slug"] ?>">                           
                             <div class="form-group">
                                 <label for="formFile" class="form-label mt-4">inserer image</label>
                                 <input name='selectImage[]' class="form-control" type="file" id="formFile" multiple>
@@ -94,7 +79,7 @@ include './vue/commun/headerAdmin.php'
         } else {
 
         ?>
-            <form method="POST" action="<?= Conf::index ?>admin/insert">
+            <form method="POST" enctype="multipart/form-data" action="<?= Conf::index ?>admin/insert">
                 <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                 <h2><?= $selectDepartement['departement_nom'] ?></h2>
                 <input style="display: none;" type="text" name="departement" value="<?= $selectDepartement["id"] ?>">
@@ -128,10 +113,10 @@ include './vue/commun/headerAdmin.php'
 
                     ?>
                         <div class="mItem" style="position: relative;">
-                            <button style="position: absolute; left: 0" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button style="position: absolute; left: 0" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal<?=$img['image_id']?>">
                                 x
                             </button>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal<?=$img['image_id']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-body">
@@ -141,7 +126,7 @@ include './vue/commun/headerAdmin.php'
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                                             <form method="POST" action='<?= Conf::index ?>admin/supprimer/<?= $img['image_id'] ?>-<?= $img['id_departement'] ?>'>
                                                 <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
-                                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                <button type="submit" name="supprimer" class="btn btn-danger">Supprimer</button>
                                             </form>
                                         </div>
                                     </div>
@@ -154,32 +139,14 @@ include './vue/commun/headerAdmin.php'
 
                     <?php
                     }
-
-
-
                     ?>
-
                 </div>
             </section>
-
-
-
-
-
     <?php
 
         }
     }
-
-
-
     ?>
-
-
-
-
 </div>
-
 </body>
-
 </html>

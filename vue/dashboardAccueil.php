@@ -52,10 +52,10 @@ include './vue/commun/headerAdmin.php'
                             ?>
 
                                 <div class="mItem" style="position: relative;">
-                                    <button style="position: absolute; left: 0" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <button style="position: absolute; left: 0" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $img['id'] ?>">
                                         x
                                     </button>
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModal<?= $img['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-body">
@@ -65,7 +65,7 @@ include './vue/commun/headerAdmin.php'
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                                                     <form method="POST" action='<?= Conf::index ?>admin/supprimerAccueil/<?= $img['id'] ?>-<?= $img['id_departement'] ?>'>
                                                         <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
-                                                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                        <button type="submit" name="supprimer" class="btn btn-danger">Supprimer</button>
                                                     </form>
                                                 </div>
                                             </div>

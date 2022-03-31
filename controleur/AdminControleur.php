@@ -190,48 +190,54 @@ class AdminControleur extends BaseControleur
     {
 
         if (isset($_SESSION['admin'])) {
+            if (isset($_POST['supprimer']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
-            $token = uniqid(rand(), true);
-            $_SESSION['token'] = $token;
+                $id = explode('-', $parametre);
 
-            $id = explode('-', $parametre);
+                $image = ImageModele::findById($id[0]);
 
-            $image = ImageModele::findById($id[0]);
+                $monImage = './assets/image/' . $image['nom_image'];
+                unlink($monImage);
 
-            $monImage = './assets/image/' . $image['nom_image'];
-            unlink($monImage);
+                AdminModele::deletImageById($id[0]);
 
-            AdminModele::deletImageById($id[0]);
+                $imageCount = AdminModele::countImageJoinDepartement($id[1]);
 
-            $imageCount = AdminModele::countImageJoinDepartement($id[1]);
+                if ($imageCount[0][0] == 0) {
+                    AdminModele::updateVisite0($id[1]);
+                }
 
-            if ($imageCount[0][0] == 0) {
-                AdminModele::updateVisite0($id[1]);
+                $departement = DepartementModele::findById($id[1]);
+
+
+                header("Location: " . Conf::index . "admin/dashboard/" . $departement['departement_slug']);
             }
-
-            $departement = DepartementModele::findById($id[1]);
-
-
-            header("Location: " . Conf::index . "admin/dashboard/" . $departement['departement_slug']);
         } else {
             header('Location: ' . Conf::index);
         }
+        $token = uniqid(rand(), true);
+        $_SESSION['token'] = $token;
+        $_SESSION['data_token'] = time();
     }
 
     function supprimerEquipement($id)
     {
         if (isset($_SESSION['admin'])) {
+            if (isset($_POST['supprimer']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
+                $image = EquipementModele::findById($id);
+
+                unlink('./assets/image/imageAccueil/' . $image['image']);
+
+                EquipementModele::deletEquipementById($id);
+
+                header('Location: ' . Conf::dashboardApropos);
+            } else {
+                header('Location: ' . Conf::index);
+            }
             $token = uniqid(rand(), true);
             $_SESSION['token'] = $token;
-
-            $image = EquipementModele::findById($id);
-
-            unlink('./assets/image/imageAccueil/' . $image['image']);
-
-            EquipementModele::deletEquipementById($id);
-
-            header('Location: ' . Conf::dashboardApropos);
+            $_SESSION['data_token'] = time();
         }
     }
 
@@ -239,19 +245,21 @@ class AdminControleur extends BaseControleur
     {
 
         if (isset($_SESSION['admin'])) {
+            if (isset($_POST['supprimer']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
-            $parametre = str_replace("/departement=", "/", $_GET['chemin']);
+                $parametre = str_replace("/departement=", "/", $_GET['chemin']);
 
-            $parametre = explode('/', $parametre);
+                $parametre = explode('/', $parametre);
 
-            $image = ImageModele::findById($parametre[2]);
+                $image = ImageModele::findById($parametre[2]);
 
-            AdminModele::deletImageById($parametre[2]);
+                AdminModele::deletImageById($parametre[2]);
 
-            $monImage = './assets/image/' . $image['nom_image'];
-            unlink($monImage);
+                $monImage = './assets/image/' . $image['nom_image'];
+                unlink($monImage);
 
-            header("Location: " . Conf::dashboardAccueil);
+                header("Location: " . Conf::dashboardAccueil);
+            }
         } else {
             header('Location: ' . Conf::index);
         }
@@ -269,9 +277,9 @@ class AdminControleur extends BaseControleur
 
             if (isset($_POST['valider2']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
-
                 $countfiles = count($_FILES['selectImage']['name']);
-                
+
+
                 for ($i = 0; $i < $countfiles; $i++) {
 
                     $filename = $_FILES['selectImage']['name'][$i];
@@ -293,28 +301,19 @@ class AdminControleur extends BaseControleur
 
                     $chiffre++;
 
-                    // Valid image extension
                     $valid_extension = array("png", "jpeg", "jpg");
-
-
 
                     if (in_array($file_extension, $valid_extension)) {
 
-                        // Upload file
                         if (move_uploaded_file(
                             $_FILES['selectImage']['tmp_name'][$i],
                             './assets/image/' . $filename
                         )) {
-
-                            // Execute query
                             AdminModele::insertImage($filename, $_POST['departement']);
-
 
                             $_SESSION['message_success'] = "Telechargement réussi";
 
                             AdminModele::updateVisite($_POST['departement_slug']);
-
-
 
                             $departement = AdminModele::findDepartementByNom($_POST['departement_slug']);
 
@@ -339,21 +338,20 @@ class AdminControleur extends BaseControleur
 
                     $file_extension = strtolower($file_extension);
 
-
                     $filename = "accueil" . time() . $chiffre . '.' . $file_extension;
 
                     $chiffre++;
+
                     $valid_extension = array("png", "jpeg", "jpg");
 
                     if (in_array($file_extension, $valid_extension)) {
 
-                        // Upload file
                         if (move_uploaded_file(
                             $_FILES['selectImage']['tmp_name'][$i],
                             './assets/image/' . $filename
                         )) {
                             $_SESSION['message_success'] = "Telechargement réussi";
-                            // Execute query
+                            
                             AdminModele::insertImageDepartementNull($filename);
 
                             header("Location: " . Conf::dashboardAccueil);
@@ -368,7 +366,6 @@ class AdminControleur extends BaseControleur
                 }
             } else if (isset($_POST["ajouterEquipement"]) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
-
                 $filename = $_FILES['selectImageEquipement']['name'];
 
                 $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
@@ -381,14 +378,12 @@ class AdminControleur extends BaseControleur
 
                 if (in_array($file_extension, $valid_extension)) {
 
-
-                    // Upload file
                     if (move_uploaded_file(
                         $_FILES['selectImageEquipement']['tmp_name'],
                         './assets/image/imageAccueil/' . $filename
                     )) {
                         $_SESSION['message_success'] = "Telechargement réussi";
-                        // Execute query
+                        
                         EquipementModele::insertEquipement($_POST['titre'], $_POST['contenu'], $filename);
 
                         header("Location: " . Conf::dashboardApropos);
@@ -404,8 +399,6 @@ class AdminControleur extends BaseControleur
 
                 DepartementModele::updateDescriptionById($_POST['descriptionDepartement'], $_POST['departement']);
 
-
-
                 EpingleDepartementModele::delet($_POST['departement']);
 
                 if ($_POST['epingle'] != NULL) {
@@ -413,7 +406,6 @@ class AdminControleur extends BaseControleur
                         EpingleDepartementModele::insertIntoDepartementEpingleById($_POST['departement'], $epingle);
                     }
                 }
-
 
                 $departement = AdminModele::findDepartementByNom($_POST['departement_slug']);
 
@@ -424,8 +416,6 @@ class AdminControleur extends BaseControleur
             $_SESSION['data_token'] = time();
         }
     }
-
-
 
     function update()
     {
@@ -449,14 +439,12 @@ class AdminControleur extends BaseControleur
                 header('Location: ' . Conf::dashboardApropos);
             } else if (isset($_POST['updateVideo']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
-
                 $videoLink = explode("=", $_POST['selectVideo']);
 
                 AdminModele::updateVideo($videoLink[1]);
 
                 header("Location: " . Conf::dashboardAccueil);
             } else if (isset($_POST['updateImagePresentation']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
-
 
                 $image = AccueilModele::findAll();
 
@@ -468,20 +456,18 @@ class AdminControleur extends BaseControleur
 
                 $file_extension = strtolower($file_extension);
 
-
                 $filename = "accueilImagePresentation" . time() . '.' . $file_extension;
 
                 $valid_extension = array("png", "jpeg", "jpg");
 
                 if (in_array($file_extension, $valid_extension)) {
 
-                    // Upload file
                     if (move_uploaded_file(
                         $_FILES['selectImagePresentation']['tmp_name'],
                         './assets/image/imageAccueil/' . $filename
                     )) {
                         $_SESSION['message_success'] = "Telechargement réussi";
-                        // Execute query
+                        
                         AccueilModele::updateImage($filename);
 
                         header("Location: " . Conf::dashboardApropos);
@@ -495,12 +481,10 @@ class AdminControleur extends BaseControleur
                 }
             } else if (isset($_POST['updateImageEquipement']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
-
-                
                 $imagePerso = EquipementModele::findById($_POST['id_equipement']);
 
                 unlink("./assets/image/imageAccueil/" . $imagePerso['image']);
-                
+
                 $filename = $_FILES['selectImageEquipement']['name'];
 
                 $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
@@ -514,13 +498,12 @@ class AdminControleur extends BaseControleur
 
                 if (in_array($file_extension, $valid_extension)) {
 
-                    // Upload file
                     if (move_uploaded_file(
                         $_FILES['selectImageEquipement']['tmp_name'],
                         './assets/image/imageAccueil/' . $filename
                     )) {
                         $_SESSION['message_success'] = "Telechargement réussi";
-                        // Execute query
+                        
                         EquipementModele::updateImage($filename, $_POST['id_equipement']);
 
                         header("Location: " . Conf::dashboardApropos);
