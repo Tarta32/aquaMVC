@@ -19,7 +19,7 @@ include './vue/commun/header.php';
     </div>
     <div class="carte">
         <h2 class="mt-5">France</h2>
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 667 578" xml:space="preserve">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="100 0 667 578" xml:space="preserve">
             <a target="_blank" xlink:href="#a">
                 <g class="region region-11" data-nom="Île-de-France" data-code_insee="11">
                     <a href="#a">
