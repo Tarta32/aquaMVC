@@ -121,6 +121,9 @@
 
    .cssbuttons-io-button-red:hover {
     box-shadow: 0 0.5em 1.5em -0.5em #d80a0a98;
+    background: linear-gradient(0deg, rgb(126, 5, 5) 0%, rgb(243, 0, 0) 100%) !important;
+    border: none !important;
+    color: grey;
    }
 
    .cssbuttons-io-button-red:active {

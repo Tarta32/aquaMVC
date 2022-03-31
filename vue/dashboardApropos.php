@@ -89,10 +89,20 @@ include './vue/commun/headerAdmin.php';
         <div class="row my-5 m-2 p-3 border border-4 aproposFlex align-items-center">
             <div class="col-12 col-md-6">
                 <div>
-
-                    <button class="btn cssbuttons-io-button-red mb-5" onclick='window.location.href="<?= Conf::index ?>admin/supprimerEquipement/<?= $equipID ?>"'>Supprimer l'equipement</button>
-                    <h4 class="text-center">Equipement <?= $chiffre ?></h4>
-
+                    <button type="button" class="btn btn-primary cssbuttons-io-button-red mb-5" data-bs-toggle="modal" data-bs-target="#supprimer">Supprimer l'equipement</button>
+                    <div class="modal fade" id="supprimer" tabindex="-1" aria-labelledby="supprimerLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    Supprimer l'equipement ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">retour</button>
+                                    <button class="btn btn-danger" onclick='window.location.href="<?= Conf::index ?>admin/supprimerEquipement/<?= $equipID ?>"'>Supprimer l'equipement</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <form method="POST" action="<?= Conf::index ?>admin/update">
                     <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">

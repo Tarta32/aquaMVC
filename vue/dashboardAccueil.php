@@ -50,11 +50,27 @@ include './vue/commun/headerAdmin.php'
                             <?php
                             foreach ($requeteImage as $img) {
                             ?>
+
                                 <div class="mItem" style="position: relative;">
-                                    <form style="position: absolute; left: 0" action="<?= Conf::index ?>admin/supprimerAccueil/<?= $img['id'] ?>" method="post">
-                                        <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
-                                        <button type="submit" class="btn btn-danger">x</button>
-                                    </form>
+                                    <button style="position: absolute; left: 0" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        x
+                                    </button>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    Supprimer l'element ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                    <form method="POST" action='<?= Conf::index ?>admin/supprimerAccueil/<?= $img['id'] ?>-<?= $img['id_departement'] ?>'>
+                                                        <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
+                                                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <img style="max-width: 150px;" src="<?= Conf::index ?>assets/image/<?= htmlentities($img['nom_image']) ?>" alt="" />
                                 </div>
                             <?php

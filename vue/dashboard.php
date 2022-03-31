@@ -128,11 +128,26 @@ include './vue/commun/headerAdmin.php'
 
                     ?>
                         <div class="mItem" style="position: relative;">
+                            <button style="position: absolute; left: 0" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                x
+                            </button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            Supprimer l'element ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                            <form method="POST" action='<?= Conf::index ?>admin/supprimer/<?= $img['image_id'] ?>-<?= $img['id_departement'] ?>'>
+                                                <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
+                                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                            <form method="POST" style="position: absolute; left: 0"  action='<?= Conf::index ?>admin/supprimer/<?= $img['image_id'] ?>-<?= $img['id_departement'] ?>'>
-                                <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
-                                <button type="submit" class="btn btn-danger">x</button>
-                            </form>
                             <img style="max-width: 200px;" src="<?= Conf::image . htmlentities($img['nom_image']) ?>" alt="" />
 
                         </div>
