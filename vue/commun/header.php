@@ -35,10 +35,10 @@
     <div class="container-fluid topHeader d-flex justify-content-between">
         <div class="headerMedia d-flex w-50 justify-content-between">
             <div class="mail">
-                <a href="mailto:morgan.robert1987@gmail.com"><i class='bx bx-mail-send'></i><span class="textHeaderTop">&nbsp; morgan.robert1987@gmail.com</span></a>
+                <a href="mailto:morgan.robert1987@gmail.com"><i class='bx bx-mail-send'></i><span class="textHeaderTop">morgan.robert1987@gmail.com</span></a>
             </div>
             <div class="phone">
-                <a href="tel: 0631895783"><i class='bx bxs-phone-call'></i><span class="textHeaderTop">&nbsp; 0631895783</span></a>
+                <a href="tel: 0631895783"><i class='bx bxs-phone-call'></i><span class="textHeaderTop">0631895783</span></a>
             </div>
         </div>
         <div class="iconeFlex d-flex">

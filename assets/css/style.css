@@ -255,7 +255,6 @@ iframe {
     max-width: 100%;
 }
 
-
 img {
     max-width: 100%;
 }
@@ -347,12 +346,6 @@ textarea {
     resize: none;
 }
 
-
-img {
-    max-width: 100%;
-}
-
-
 .absolute {
     position: absolute !important;
 }
@@ -423,7 +416,8 @@ img {
     transition: 0.3s
 }
 
-.mail, .phone {
+.mail,
+.phone {
     transition: 0.3s;
 }
 
@@ -620,6 +614,10 @@ g path:hover {
     max-width: 60vw !important;
 }
 
+.modal-content img{
+    width: 100%;
+}
+
 .imageMasonry {
     transition: 00.5s;
 }
@@ -810,6 +808,10 @@ g path:hover {
 
     .iconeFlex {
         display: block !important;
+    }
+
+    .headerMedia i{
+        display: none !important;
     }
 
     .copyright,
