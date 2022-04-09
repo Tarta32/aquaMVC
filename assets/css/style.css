@@ -808,6 +808,7 @@ g path:hover {
 
     .iconeFlex {
         display: block !important;
+        text-align: center;
     }
 
     .headerMedia i{

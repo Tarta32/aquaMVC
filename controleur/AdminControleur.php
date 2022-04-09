@@ -167,6 +167,12 @@ class AdminControleur extends BaseControleur
                     $mdperror = true;
                     $_SESSION['error'] = 'Mauvais login/password';
                 }
+            } elseif (isset($_POST['retour'])) {
+
+                header("Location: " . Conf::index);
+            } elseif (isset($_POST['oublie'])) {
+
+                header("Location: " . Conf::mdpOublie);
             }
 
             $parametres = compact('mdperror');
@@ -175,6 +181,102 @@ class AdminControleur extends BaseControleur
         } else {
 
             header("Location: " . Conf::dashboard);
+        }
+    }
+
+    function mdpOublie()
+    {
+
+        if (!isset($_SESSION['admin'])) {
+
+            if (isset($_POST['valider'])) {
+
+                $utilisateur = AdminModele::resetmail($_POST['email']);
+
+                if ($utilisateur != FALSE) {
+                    if ($utilisateur['email'] == $_POST['email']) {
+
+                        $code = rand(1000, 9999);
+
+                        AdminModele::updateToken($code);
+
+                        $_SESSION['email'] = $_POST['email'];
+                        $_SESSION['time'] = time();
+
+
+                        $message = 'Votre code de reinitialisation est : ' . $code;
+
+                        mail($utilisateur['email'], 'Reset password', $message);
+
+                        header("Location: " . Conf::token);
+                    } else {
+                        header("Location: " . Conf::connexion);
+                    }
+                }
+            } else if (isset($_POST['retour'])) {
+                header("Location: " . Conf::connexion);
+            }
+        }
+
+        $this->afficherVue([], 'mdpOublie');
+    }
+
+    function entrezToken()
+    {
+
+
+        $utilisateur = AdminModele::admin();
+
+        if ($_SESSION['email'] == $utilisateur[0]['email']) {
+
+            if (isset($_POST['valider'])) {
+
+                if (($utilisateur[0]['token'] == $_POST['token']) && ($utilisateur[0]['token'] != NULL)) {
+
+                    if ($_SESSION['time'] + 300 > time()) {
+
+                        header("Location: " . Conf::resetPassword);
+
+                        $_SESSION['tokenPassword'] = $utilisateur[0]['token'];
+                        $_SESSION['time'] = time();
+                    }
+                }
+            } else if (isset($_POST['retour'])) {
+                header("Location: " . Conf::connexion);
+            }
+            $this->afficherVue([], 'entrezToken');
+        } else {
+            header("Location: " . Conf::connexion);
+        }
+    }
+
+
+    function resetPassword()
+    {
+        $utilisateur = AdminModele::admin();
+
+        if ($_SESSION['tokenPassword'] = $utilisateur[0]['token']) {
+            if (isset($_POST['valider']) && ($_POST['password'] == $_POST['confirmPassword'])) {
+
+
+                AdminModele::updatePassword(password_hash($_POST['password'], PASSWORD_BCRYPT));
+
+                AdminModele::updateToken(NULL);
+
+                $_SESSION['message'] = "Mot de passe modifier !";
+
+                header("Location: " . Conf::connexion);
+            } else {
+
+                $_SESSION['message'] = "Veuillez entrer 2 mots de passe identiques";
+            }
+
+
+
+            $this->afficherVue([], 'resetPassword');
+        } else {
+
+            header("Location: " . Conf::connexion);
         }
     }
 
@@ -268,6 +370,24 @@ class AdminControleur extends BaseControleur
         $_SESSION['data_token'] = time();
     }
 
+    function supprimerMessage()
+    {
+        if (isset($_SESSION['admin'])) {
+            if (isset($_POST['supprimerMessages']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
+
+
+                foreach ($_POST['deletSelect'] as $delet) {
+
+                    AdminModele::SupprimerMessageById($delet);
+                }
+                header("Location: " . Conf::message);
+            }
+        }
+        $token = uniqid(rand(), true);
+        $_SESSION['token'] = $token;
+        $_SESSION['data_token'] = time();
+    }
+
     function insert()
     {
 
@@ -351,7 +471,7 @@ class AdminControleur extends BaseControleur
                             './assets/image/' . $filename
                         )) {
                             $_SESSION['message_success'] = "Telechargement réussi";
-                            
+
                             AdminModele::insertImageDepartementNull($filename);
 
                             header("Location: " . Conf::dashboardAccueil);
@@ -383,7 +503,7 @@ class AdminControleur extends BaseControleur
                         './assets/image/imageAccueil/' . $filename
                     )) {
                         $_SESSION['message_success'] = "Telechargement réussi";
-                        
+
                         EquipementModele::insertEquipement($_POST['titre'], $_POST['contenu'], $filename);
 
                         header("Location: " . Conf::dashboardApropos);
@@ -467,7 +587,7 @@ class AdminControleur extends BaseControleur
                         './assets/image/imageAccueil/' . $filename
                     )) {
                         $_SESSION['message_success'] = "Telechargement réussi";
-                        
+
                         AccueilModele::updateImage($filename);
 
                         header("Location: " . Conf::dashboardApropos);
@@ -503,7 +623,7 @@ class AdminControleur extends BaseControleur
                         './assets/image/imageAccueil/' . $filename
                     )) {
                         $_SESSION['message_success'] = "Telechargement réussi";
-                        
+
                         EquipementModele::updateImage($filename, $_POST['id_equipement']);
 
                         header("Location: " . Conf::dashboardApropos);

@@ -18,6 +18,40 @@ class AdminModele
         return $requete->fetch();
     }
 
+    static function resetmail($mail){
+        $connexion = new PDOperso();
+
+        $requete = $connexion->prepare('SELECT * FROM admin WHERE email = ?');
+        $requete->execute([$mail]);
+
+        return $requete->fetch();
+    }
+
+    static function admin(){
+        $connexion = new PDOperso();
+
+        $requete = $connexion->prepare('SELECT * FROM admin');
+        $requete->execute();
+
+        return $requete->fetchAll();
+    }
+
+    static function updatePassword($password){
+        $connexion = new PDOperso();
+
+        $requete = $connexion->prepare("UPDATE admin SET password = ?");
+
+        $requete->execute([$password]);
+    }
+
+    static function updateToken($token){
+        $connexion = new PDOperso();
+
+        $requete = $connexion->prepare("UPDATE admin SET token = ?");
+
+        $requete->execute([$token]);
+    }
+
     static function findAllFromDepartement()
     {
         $connexion = new PDOperso();
@@ -143,8 +177,10 @@ class AdminModele
         $requete->execute([$media]);
     }
 
-
-    
-
-    
+    static function SupprimerMessageById($id)
+    {
+        $connexion = new PDOperso();
+        $requete = $connexion->prepare("DELETE FROM message WHERE id = ?");
+        $requete->execute([$id]);
+    }
 }

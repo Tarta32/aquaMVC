@@ -23,4 +23,10 @@
         const message = "/aquaMVC/admin/message";
 
         const apropos = "/aquaMVC/apropos";
+
+        const mdpOublie = "/aquaMVC/admin/mdpOublie";
+
+        const token = "/aquaMVC/admin/entrezToken";
+
+        const resetPassword = "/aquaMVC/admin/resetPassword";
     }

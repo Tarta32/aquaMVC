@@ -35,14 +35,25 @@
                                     echo $_SESSION['error'];
                                     unset($_SESSION['error']);
                                   } ?></p>
+          <p class="text-danger"><?php if (isset($_SESSION['message'])) {
+                                    echo $_SESSION['message'];
+                                    unset($_SESSION['message']);
+                                  } ?></p>
           <div class="form-group ">
             <input name="login" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez login">
           </div>
           <div class="form-group mt-5">
             <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
           </div>
-          <input name="valider" class="btn cssbuttons-io-button mt-5" type="submit" value="Connexion">
-          <button class="btn cssbuttons-io-button-red mt-5" onclick="window.location.href='<?= Conf::index ?>'">Retour</button>
+          <div class="row">
+            <div class="col">
+              <input name="valider" class="btn cssbuttons-io-button mt-5" type="submit" value="Connexion">
+              <input name="retour" class="btn cssbuttons-io-button-red mt-5" type="submit" value="Retour">
+            </div>
+            <div class="col">
+              <input name="oublie" class="btn cssbuttons-io-button-blue mt-5" type="submit" value="MDP oublié ?">
+            </div>
+          </div>
         </div>
       </div>
     </form>

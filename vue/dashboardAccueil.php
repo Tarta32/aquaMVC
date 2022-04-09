@@ -50,7 +50,6 @@ include './vue/commun/headerAdmin.php'
                             <?php
                             foreach ($requeteImage as $img) {
                             ?>
-
                                 <div class="mItem" style="position: relative;">
                                     <button style="position: absolute; left: 0" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $img['id'] ?>">
                                         x
