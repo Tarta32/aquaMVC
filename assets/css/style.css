@@ -391,6 +391,10 @@ textarea {
     padding: 0 !important;
 }
 
+.text_icones{
+    font-size: 1rem;
+}
+
 /* Ombre du titre (h1) */
 .shadowText {
     color: #00000000;
@@ -420,7 +424,7 @@ textarea {
     font-size: 2.5rem;
     transition: 0.3s;
     margin-right: 10px !important;
-    text-align: right;
+    text-align: center;
 }
 
 .bx:hover {
@@ -820,6 +824,15 @@ g path:hover {
 @media (max-width: 576px) {
     .headerMedia {
         display: block !important;
+    }
+
+    .iconeAlign{
+        flex-direction: column;
+        text-align: initial;
+    }
+
+    .topHeader{
+        flex-direction: column;
     }
 
     .iconeFlex {

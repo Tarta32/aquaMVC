@@ -42,10 +42,16 @@
             </div>
         </div>
         <div class="iconeFlex d-flex">
-            <div>
-                <a href="https://www.instagram.com/fish_ooting/" class="text-primary"><i class='bx bxl-instagram-alt'></i></a>
-                <a href="https://www.facebook.com/MorganAquatique" class="text-primary"><i class='bx bxl-facebook-square'></i></a>
-                <a href="https://www.youtube.com/channel/UC4DCDphd0U-pfaxjrGOAEIQ" class="text-primary"><i class='bx bxl-youtube'></i></a>
+            <div class="d-flex iconeAlign">
+                <div class="mx-1">
+                    <a href="https://www.instagram.com/fish_ooting/" class="text-primary"><i class='bx bxl-instagram-alt'></i><h6 class="text_icones">Instagram</h6></a>
+                </div>
+                <div class="mx-1">
+                    <a href="https://www.facebook.com/MorganAquatique" class="text-primary"><i class='bx bxl-facebook-square'></i><h6 class="text_icones">Facebook</h6></a>
+                </div>
+                <div class="mx-1">
+                    <a href="https://www.youtube.com/channel/UC4DCDphd0U-pfaxjrGOAEIQ" class="text-primary"><i class='bx bxl-youtube'></i><h6 class="text_icones">Youtube</h6></a>
+                </div>
             </div>
         </div>
     </div>
