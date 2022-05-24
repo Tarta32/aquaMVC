@@ -5,7 +5,6 @@ namespace controleur;
 use modele\AdminModele;
 use Conf;
 use modele\AccueilModele;
-use modele\AproposModele;
 use modele\DepartementModele;
 use modele\EpingleDepartementModele;
 use modele\EpingleModele;
@@ -266,18 +265,49 @@ class AdminControleur extends BaseControleur
                 $_SESSION['message'] = "Mot de passe modifier !";
 
                 header("Location: " . Conf::connexion);
-            } else {
-
-                $_SESSION['message'] = "Veuillez entrer 2 mots de passe identiques";
             }
-
-
 
             $this->afficherVue([], 'resetPassword');
         } else {
 
             header("Location: " . Conf::connexion);
         }
+    }
+
+    function modifierAdmin()
+    {
+        if (isset($_SESSION['admin'])) {
+            $utilisateur = AdminModele::admin();
+            if (isset($_POST['valider'])) {
+                if (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time()) {
+                    if (password_verify($_POST['oldPassword'], $utilisateur[0]['password'])) {
+                        if ($_POST['password'] != NULL) {
+                            if ($_POST['password'] == $_POST['confirmPassword']) {
+
+                                AdminModele::updatePassword(password_hash($_POST['password'], PASSWORD_BCRYPT));
+                                header("Location: " . Conf::dashboard);
+                                $_SESSION['message'] = "Mot de passe modifié";
+                            } else {
+                                $_SESSION['message'] = "Entrez 2 mots de passe indentiques";
+                            }
+                        } else {
+                            $_SESSION['message'] = "Veuillez remplir les champs concernés";
+                        }
+                    } else {
+                        $_SESSION['message'] = "Erreur mot de passe";
+                    }
+                }
+            } elseif (isset($_POST['retour'])) {
+                header("Location: " . Conf::dashboard);
+            }
+        }
+
+        $token = uniqid(rand(), true);
+        $_SESSION['token'] = $token;
+        $_SESSION['data_token'] = time();
+
+        $parametres = compact('utilisateur');
+        $this->afficherVue($parametres, 'modifierAdmin');
     }
 
     function deconnexion()

@@ -18,20 +18,18 @@ include './vue/commun/header.php'
 
                 <form id="contact-form" method="post">
 
-                    <div class="messages"></div>
-
                     <div class="controls">
                         <div class="row">
                             <div class="col-lg-6 my-1">
                                 <div class="form-floating">
-                                    <input id="floatingInput" type="text" name="prenom" class="form-control" placeholder="Entrez votre prénom *" required="required" data-error="Firstname is required.">
+                                    <input id="floatingInput" pattern="[a-zA-Z.-]{2,}" type="text" name="prenom" class="form-control" placeholder="Entrez votre prénom *" required="required" data-error="Entrez votre prenom.">
                                     <label for="floatingInput">Prénom *</label>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="col-lg-6 my-1">
                                 <div class="form-floating">
-                                    <input id="floatingInput2" type="text" name="nom" class="form-control" placeholder="Entrez votre nom *" required="required" data-error="Lastname is required.">
+                                    <input id="floatingInput2" pattern="[a-zA-Z.-]{2,}" type="text" name="nom" class="form-control" placeholder="Entrez votre nom *" required="required" data-error="Entrez votre nom.">
                                     <label for="floatingInput2">Nom *</label>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -40,7 +38,7 @@ include './vue/commun/header.php'
                         <div class="row p1">
                             <div class="col-lg-6 my-1">
                                 <div class="form-floating">
-                                    <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="floatingInput3" type="email" name="email" class="form-control" placeholder="Entrez votre e-mail *" required="required" data-error="Valid email is required.">
+                                    <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="floatingInput3" type="email" name="email" class="form-control" placeholder="Entrez votre e-mail *" required="required" data-error="Entrez un email valide.">
                                     <label for="floatingInput3">Email *</label>
                                     <div class="help-block with-errors"></div>
                                 </div>

@@ -2,7 +2,6 @@
 
 namespace controleur;
 
-use Conf;
 use modele\AccueilModele;
 
 class AccueilControleur extends BaseControleur{

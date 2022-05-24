@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Mon but est de vous faire découvrir ce que je vois sous la surface des étangs et rivières et lutter pour la préservation des milieux aquatiques en dépolluant un maximum ces milieux.">
@@ -20,47 +20,39 @@
     <meta name="author" content="Barbe Julien">
     <link rel="icon" type="image/png" href="<?= Conf::index ?>assets/image/imageAccueil/BGimage/favicon.ico" />
     <link rel="stylesheet" href="https://bootswatch.com/5/spacelab/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="<?= Conf::index ?>assets/css/style.css">
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" defer></script>
-    <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js" defer></script>
-  <title>Admin - Aquavision, photos videos et referencement sub-aquatique </title>
+    <title>Admin - Aquavision, photos videos et referencement sub-aquatique</title>
 </head>
 
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid">
-
-
-        <a href="<?= Conf::index ?>"><img src="<?= Conf::index ?>assets/image/imageAccueil/BGimage/logo.png" style="width:75px" alt="Logo de plongée"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-
-        <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
-            <ul class="navbar-nav text-center">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Modifier</a>
-                    <div class="dropdown-menu ">
-                        <a class="dropdown-item" href="<?= Conf::dashboard ?>">Modifier Departements</a>
-                        <a class="dropdown-item" href="<?= Conf::dashboardAccueil ?>">Modifier Accueil</a>
-                        <a class="dropdown-item" href="<?= Conf::dashboardApropos ?>">Modifier A propos</a>
+    <div class="container adminCenter">
+        <form method='POST' action="">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <p class="text-danger"><?php if (isset($_SESSION['message'])) {
+                                                echo $_SESSION['message'];
+                                                unset($_SESSION['message']);
+                                            } ?></p>
+                    <div class="form-group ">
+                        <label for="oldPassword">Ancien Mot de passe</label>
+                        <input name="oldPassword" type="password" class="form-control mb-5" id="oldPassword" aria-describedby="emailHelp" placeholder="Entre votre ancien Mot de passe">
+                        <label for="password">Nouveau Mot de passe</label>
+                        <input name="password" type="password" class="form-control mb-5" id="password" aria-describedby="emailHelp" placeholder="Entre votre nouveau Mot de passe">
+                        <label for="confirmPassword">Confirmer nouveau Mot de passe</label>
+                        <input name="confirmPassword" type="password" class="form-control" id="confirmPassword" aria-describedby="emailHelp" placeholder="Confirmer le nouveau Mot de passe">
+                        <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= Conf::message ?>" class="nav-link">Messages</a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= Conf::deconnexion ?>" class="nav-link">Deconnexion</a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= Conf::modifierAdmin ?>" class="nav-link">Modifier admin</a>
-                </li>
-            </ul>
-        </div>
+                    <div class="row">
+                        <div class="col">
+                            <input name="valider" class="btn cssbuttons-io-button mt-5" type="submit" value="Changer mot de passe">
+                            <input name="retour" class="btn cssbuttons-io-button-red mt-5" type="submit" value="Retour">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
-    </div>
-</nav>
+</body>
+
+</html>

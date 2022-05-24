@@ -2,10 +2,7 @@
 
 namespace controleur;
 
-use Conf;
 use modele\AccueilModele;
-use modele\AporposModele;
-use modele\AproposModele;
 use modele\EquipementModele;
 
 class AproposControleur extends BaseControleur{

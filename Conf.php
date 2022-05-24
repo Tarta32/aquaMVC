@@ -29,4 +29,6 @@
         const token = "/aquaMVC/admin/entrezToken";
 
         const resetPassword = "/aquaMVC/admin/resetPassword";
+
+        const modifierAdmin = "/aquaMVC/admin/modifierAdmin";
     }

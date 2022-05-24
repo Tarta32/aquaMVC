@@ -939,7 +939,6 @@ include './vue/commun/header.php';
                         </div>
                     </div>
                 </div>
-
             <?php
             }
             ?>
