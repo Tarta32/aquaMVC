@@ -5,7 +5,7 @@ $description = " - Aquavision, photos videos et referencement sub-aquatique";
 include './vue/commun/header.php'
 ?>
 
-
+<?php if(isset($departement) && $departement != NULL){ ?>
 <div class="container">
     <div class="row justify-content-between">
         <div class="col-5 mt-5 p-3 border border-info border-3 rounded slideinLeftAnim">
@@ -38,6 +38,9 @@ include './vue/commun/header.php'
         ?>
     </div>
 </section>
+<?php }else{
+    header('Location: '.Conf::index."erreur"); 
+}?>
 
 <?php
 include './vue/commun/footer.php'
