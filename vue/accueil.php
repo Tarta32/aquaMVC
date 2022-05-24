@@ -929,7 +929,7 @@ include './vue/commun/header.php';
                     <div data-bs-toggle="modal" data-bs-target="#exampleModal<?= $img['id'] ?>">
                         <img style="box-shadow: 10px 11px 15px -3px rgba(0,0,0,0.58)" alt="Image Accueil" class="rounded-3 revealAnim imageMasonry" src='<?= Conf::index ?>assets/image/<?= $img['nom_image'] ?>'>
                     </div>
-                    <div class="modal fade" id="exampleModal<?= $img['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade mobile_remove" id="exampleModal<?= $img['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-accueil">
                             <div class="modal-content">
                                 <div class="modal-body modal-accueil-body">
@@ -942,10 +942,19 @@ include './vue/commun/header.php';
             <?php
             }
             ?>
+
+
     </section>
     <button class="my-4 boutonAccueil" onclick="window.location.href='<?= Conf::departement ?>'">Voir plus &xrarr;</button>
 
 </div>
+<script>
+    if (window.innerWidth < 768) {
+
+        document.querySelector('.mobile_remove').remove();
+
+    }
+</script>
 
 <?php
 
