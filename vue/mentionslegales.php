@@ -17,7 +17,7 @@ include './vue/commun/header.php';
     Numéro de SIRET :  91245166300013 <br>
     Responsable editorial : Morgan ROBERT <br>
     7 rue des Fauvettes 25130 VILLERS-LE-LAC <br>
-    Téléphone :0631895783 - Fax : 0631895783 <br>
+    Téléphone : 0631895783<br>
     Email : morgan.robert1987@gmail.com <br>
     Site Web : <a href="http://www.aquavision-shooting.com">www.aquavision-shooting.com</a>
 </p>
