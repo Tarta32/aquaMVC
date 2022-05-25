@@ -54,7 +54,7 @@ include './vue/commun/header.php'
         <script>
             if (window.innerWidth < 768) {
 
-                document.querySelector('.mobile_remove').remove();
+                document.querySelectorAll('.mobile_remove').remove();
 
             }
         </script>

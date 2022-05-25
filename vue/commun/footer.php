@@ -22,7 +22,8 @@
     </div>
     <div class="mentions d-block text-center my-auto">
         <p>
-            <a href="mentions.php">Mentions légales</a> <br> <a href="CGU.php">CGU</a>
+            <!-- <a href=".php">CGU</a> <br> -->
+             <a href="<?= Conf::index ?>mentionslegales">Mentions légales</a>
         </p>
     </div>
     <div class="reseaux d-block text-center my-auto">
