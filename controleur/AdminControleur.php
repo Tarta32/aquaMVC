@@ -283,10 +283,16 @@ class AdminControleur extends BaseControleur
                     if (password_verify($_POST['oldPassword'], $utilisateur[0]['password'])) {
                         if ($_POST['password'] != NULL) {
                             if ($_POST['password'] == $_POST['confirmPassword']) {
+                                var_dump(password_hash($_POST['password'], PASSWORD_BCRYPT)); die();
+                                if($_POST['oldPassword'] == $_POST['password']){
+                                    $_SESSION['message'] = "Le nouveau mot de passe ne peut pas etre identique a l'ancien";
+                                }else {
+                                    AdminModele::updatePassword(password_hash($_POST['password'], PASSWORD_BCRYPT));
+                                    header("Location: " . Conf::dashboard);
+                                    $_SESSION['message'] = "Mot de passe modifié";
 
-                                AdminModele::updatePassword(password_hash($_POST['password'], PASSWORD_BCRYPT));
-                                header("Location: " . Conf::dashboard);
-                                $_SESSION['message'] = "Mot de passe modifié";
+                                }
+
                             } else {
                                 $_SESSION['message'] = "Entrez 2 mots de passe indentiques";
                             }
@@ -574,7 +580,7 @@ class AdminControleur extends BaseControleur
             if ((isset($_POST['updateAccueil']) && ($_SESSION['token'] == $_POST['token'])) || (isset($_POST['updatePresentation']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 3000 > time()))) {
 
                 AdminModele::updateTitreContenu($_POST['titre'], $_POST['contenu']);
-                $_SESSION['message_success'] = "Modifications enregistrées";
+                $_SESSION['message_success'] = "Titre et contenu modifié avec succés";
 
                 if (isset($_POST['updateAccueil'])) {
                     header('Location: ' . Conf::dashboardAccueil);
@@ -584,16 +590,21 @@ class AdminControleur extends BaseControleur
             } else if (isset($_POST['updateEquipement']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
                 EquipementModele::updateEquipement($_POST['titre_equipement'], $_POST['contenu_equipement'], $_POST['id_equipement']);
-                $_SESSION['message_success'] = "Modifications enregistrées";
+                $_SESSION['message_success'] = "Titre et contenu de l'équipement modifié avec succés";
 
                 header('Location: ' . Conf::dashboardApropos);
             } else if (isset($_POST['updateVideo']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
                 $videoLink = explode("=", $_POST['selectVideo']);
-
+                if($videoLink[0] == 'https://www.youtube.com/watch?v' || $videoLink[0] == 'www.youtube.com/watch?v' || $videoLink[0] == 'youtube.com/watch?v'){
                 AdminModele::updateVideo($videoLink[1]);
+                $_SESSION['message_success'] = "Vidéo modifiée avec succés";
 
                 header("Location: " . Conf::dashboardAccueil);
+            }else {
+                $_SESSION['message_error'] = "Veuillez fournir un lien YouTube valide";
+                header("Location: " . Conf::dashboardAccueil);
+            }
             } else if (isset($_POST['updateImagePresentation']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
                 $image = AccueilModele::findAll();
@@ -616,7 +627,7 @@ class AdminControleur extends BaseControleur
                         $_FILES['selectImagePresentation']['tmp_name'],
                         './assets/image/imageAccueil/' . $filename
                     )) {
-                        $_SESSION['message_success'] = "Telechargement réussi";
+                        $_SESSION['message_success'] = "Image présentation modifiée avec succés";
 
                         AccueilModele::updateImage($filename);
 
@@ -652,7 +663,7 @@ class AdminControleur extends BaseControleur
                         $_FILES['selectImageEquipement']['tmp_name'],
                         './assets/image/imageAccueil/' . $filename
                     )) {
-                        $_SESSION['message_success'] = "Telechargement réussi";
+                        $_SESSION['message_success'] = "Image equipement modifiée avec succés";
 
                         EquipementModele::updateImage($filename, $_POST['id_equipement']);
 
