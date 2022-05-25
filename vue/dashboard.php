@@ -31,11 +31,11 @@ include './vue/commun/headerAdmin.php'
                             ?>
                                     <option <?php if (Conf::dashboard . '/' . $dp['departement_slug'] == $_SERVER['REQUEST_URI']) {
                                                 echo 'selected';
-                                            } ?> value="<?= $dp['departement_slug'] ?>" class="scrollVisite"><?= $dp['departement_code'] . " " . $dp['departement_nom'] ?> [visité]</option>
+                                            } ?> value="<?= $dp['departement_slug'] ?>" class="scrollVisite"><?= $dp['id'] . " " . $dp['departement_nom'] ?> [visité]</option>
                                 <?php } else { ?>
                                     <option <?php if (Conf::dashboard . '/' . $dp['departement_slug'] == $_SERVER['REQUEST_URI']) {
                                                 echo 'selected';
-                                            } ?> value="<?= $dp['departement_slug'] ?>" class="scrollNonVisite"><?= $dp['departement_code'] . " " . $dp['departement_nom'] ?></option>
+                                            } ?> value="<?= $dp['departement_slug'] ?>" class="scrollNonVisite"><?= $dp['id'] . " " . $dp['departement_nom'] ?></option>
                             <?php }
                             } ?>
                         </select>
