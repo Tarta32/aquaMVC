@@ -189,32 +189,31 @@ class AdminControleur extends BaseControleur
         if (!isset($_SESSION['admin'])) {
 
             if (isset($_POST['valider'])) {
-
                 $utilisateur = AdminModele::resetmail($_POST['email']);
 
-                if ($utilisateur != FALSE) {
-                    if ($utilisateur['email'] == $_POST['email']) {
+                if ($utilisateur) {
 
-                        $code = rand(1000, 9999);
+                    $code = rand(1000, 9999);
 
-                        AdminModele::updateToken($code);
+                    AdminModele::updateToken($code);
 
-                        $_SESSION['email'] = $_POST['email'];
-                        $_SESSION['time'] = time();
+                    $_SESSION['email'] = $_POST['email'];
+                    $_SESSION['time'] = time();
 
 
-                        $message = 'Votre code de reinitialisation est : ' . $code;
+                    $message = 'Votre code de reinitialisation est : ' . $code;
 
-                        mail($utilisateur['email'], 'Reset password', $message);
+                    mail($utilisateur['email'], 'Reset password', $message);
 
-                        header("Location: " . Conf::token);
-                    } else {
-                        header("Location: " . Conf::connexion);
-                    }
+                    header("Location: " . Conf::token);
+                } else {
+                    $_SESSION['message'] = "E-mail non reconnu";
                 }
             } else if (isset($_POST['retour'])) {
                 header("Location: " . Conf::connexion);
             }
+        } else {
+            header("Location: " . Conf::dashboard);
         }
 
         $this->afficherVue([], 'mdpOublie');
@@ -283,16 +282,15 @@ class AdminControleur extends BaseControleur
                     if (password_verify($_POST['oldPassword'], $utilisateur[0]['password'])) {
                         if ($_POST['password'] != NULL) {
                             if ($_POST['password'] == $_POST['confirmPassword']) {
-                                var_dump(password_hash($_POST['password'], PASSWORD_BCRYPT)); die();
-                                if($_POST['oldPassword'] == $_POST['password']){
+                                var_dump(password_hash($_POST['password'], PASSWORD_BCRYPT));
+                                die();
+                                if ($_POST['oldPassword'] == $_POST['password']) {
                                     $_SESSION['message'] = "Le nouveau mot de passe ne peut pas etre identique a l'ancien";
-                                }else {
+                                } else {
                                     AdminModele::updatePassword(password_hash($_POST['password'], PASSWORD_BCRYPT));
                                     header("Location: " . Conf::dashboard);
                                     $_SESSION['message'] = "Mot de passe modifié";
-
                                 }
-
                             } else {
                                 $_SESSION['message'] = "Entrez 2 mots de passe indentiques";
                             }
@@ -596,15 +594,15 @@ class AdminControleur extends BaseControleur
             } else if (isset($_POST['updateVideo']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
                 $videoLink = explode("=", $_POST['selectVideo']);
-                if($videoLink[0] == 'https://www.youtube.com/watch?v' || $videoLink[0] == 'www.youtube.com/watch?v' || $videoLink[0] == 'youtube.com/watch?v'){
-                AdminModele::updateVideo($videoLink[1]);
-                $_SESSION['message_success'] = "Vidéo modifiée avec succés";
+                if ($videoLink[0] == 'https://www.youtube.com/watch?v' || $videoLink[0] == 'www.youtube.com/watch?v' || $videoLink[0] == 'youtube.com/watch?v') {
+                    AdminModele::updateVideo($videoLink[1]);
+                    $_SESSION['message_success'] = "Vidéo modifiée avec succés";
 
-                header("Location: " . Conf::dashboardAccueil);
-            }else {
-                $_SESSION['message_error'] = "Veuillez fournir un lien YouTube valide";
-                header("Location: " . Conf::dashboardAccueil);
-            }
+                    header("Location: " . Conf::dashboardAccueil);
+                } else {
+                    $_SESSION['message_error'] = "Veuillez fournir un lien YouTube valide";
+                    header("Location: " . Conf::dashboardAccueil);
+                }
             } else if (isset($_POST['updateImagePresentation']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
                 $image = AccueilModele::findAll();

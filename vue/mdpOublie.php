@@ -35,7 +35,7 @@
                                                 unset($_SESSION['message']);
                                             } ?></p>
                     <div class="form-group ">
-                        <input name="email" type="mail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez votre e-mail">
+                        <input name="email" type="mail" class="form-control" id="email" aria-describedby="email" placeholder="Entrez votre e-mail">
                     </div>
                     <div class="row">
                         <div class="col">

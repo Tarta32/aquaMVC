@@ -35,8 +35,8 @@
                                                 unset($_SESSION['message']);
                                             } ?></p>
                     <div class="form-group ">
-                        <input name="password" type="password" class="form-control mb-5" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entre votre nouveau Mot de passe">
-                        <input name="confirmPassword" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Confirmer le nouveau Mot de passe">
+                        <input name="password" type="password" pattern="^[^ ].+[^ ]$" class="form-control mb-5" id="password" aria-describedby="password" placeholder="Entre votre nouveau Mot de passe">
+                        <input name="confirmPassword" type="password" pattern="^[^ ].+[^ ]$" class="form-control" id="confirmPassword" aria-describedby="confirmPassword" placeholder="Confirmer le nouveau Mot de passe">
                     </div>
                     <div class="row">
                         <div class="col">

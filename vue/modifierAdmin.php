@@ -36,11 +36,11 @@
                                             } ?></p>
                     <div class="form-group ">
                         <label for="oldPassword">Ancien Mot de passe</label>
-                        <input name="oldPassword" type="password" class="form-control mb-5" id="oldPassword" aria-describedby="emailHelp" placeholder="Entre votre ancien Mot de passe">
+                        <input name="oldPassword" type="password" pattern="^[^ ].+[^ ]$" class="form-control mb-5" id="oldPassword" aria-describedby="oldPassword" placeholder="Entre votre ancien Mot de passe">
                         <label for="password">Nouveau Mot de passe</label>
-                        <input name="password" type="password" class="form-control mb-5" id="password" aria-describedby="emailHelp" placeholder="Entre votre nouveau Mot de passe">
+                        <input name="password" type="password" pattern="^[^ ].+[^ ]$" class="form-control mb-5" id="password" aria-describedby="password" placeholder="Entre votre nouveau Mot de passe">
                         <label for="confirmPassword">Confirmer nouveau Mot de passe</label>
-                        <input name="confirmPassword" type="password" class="form-control" id="confirmPassword" aria-describedby="emailHelp" placeholder="Confirmer le nouveau Mot de passe">
+                        <input name="confirmPassword" type="password" pattern="^[^ ].+[^ ]$" class="form-control" id="confirmPassword" aria-describedby="confirmPassword" placeholder="Confirmer le nouveau Mot de passe">
                         <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                     </div>
                     <div class="row">
