@@ -45,19 +45,19 @@ include './vue/commun/header.php'
                         </div>
                     </div>
                 </div>
+                <script>
+                    if (window.innerWidth < 768) {
+        
+                        document.querySelector('.mobile_remove').remove();
+        
+                    }
+                </script>
 
             <?php
             }
             ?>
         </div>
 
-        <script>
-            if (window.innerWidth < 768) {
-
-                document.querySelectorAll('.mobile_remove').remove();
-
-            }
-        </script>
 
     </section>
 <?php } else {

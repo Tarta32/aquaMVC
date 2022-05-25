@@ -397,6 +397,7 @@ textarea {
 
 .text_icones{
     font-size: 1rem;
+    margin-top: -15px !important;
 }
 
 /* Ombre du titre (h1) */

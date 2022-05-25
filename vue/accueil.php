@@ -939,6 +939,11 @@ include './vue/commun/header.php';
                         </div>
                     </div>
                 </div>
+                <script>
+                    if (window.innerWidth < 768) {
+                        document.querySelector('.mobile_remove').remove();
+                    }
+                </script>
             <?php
             }
             ?>
@@ -948,13 +953,6 @@ include './vue/commun/header.php';
     <button class="my-4 boutonAccueil" onclick="window.location.href='<?= Conf::departement ?>'">Voir plus &xrarr;</button>
 
 </div>
-<script>
-    if (window.innerWidth < 768) {
-
-        document.querySelectorAll('.mobile_remove').remove();
-
-    }
-</script>
 
 <?php
 
