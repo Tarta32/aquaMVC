@@ -10,20 +10,20 @@
                 <a href="<?= Conf::index ?>">Accueil</a>
             </li>
             <li style="list-style: url(<?= Conf::index ?>assets/image/imageAccueil/BGimage/leaf.png) !important;">
-                <a href="<?= Conf::index ?>">Prestations</a>
-            </li>
-            <li style="list-style: url(<?= Conf::index ?>assets/image/imageAccueil/BGimage/leaf.png) !important;">
-                <a href="<?= Conf::contact ?>">Contact</a>
+                <a href="<?= Conf::departement ?>">Departements</a>
             </li>
             <li style="list-style: url(<?= Conf::index ?>assets/image/imageAccueil/BGimage/leaf.png) !important;">
                 <a href="<?= Conf::apropos ?>">A propos</a>
+            </li>
+            <li style="list-style: url(<?= Conf::index ?>assets/image/imageAccueil/BGimage/leaf.png) !important;">
+                <a href="<?= Conf::contact ?>">Contact</a>
             </li>
         </ul>
     </div>
     <div class="mentions d-block text-center my-auto">
         <p>
             <!-- <a href=".php">CGU</a> <br> -->
-             <a href="<?= Conf::index ?>mentionslegales">Mentions légales</a>
+            <a href="<?= Conf::index ?>mentionslegales">Mentions légales</a>
         </p>
     </div>
     <div class="reseaux d-block text-center my-auto">
