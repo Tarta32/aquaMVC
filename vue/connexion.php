@@ -40,7 +40,7 @@
                                     unset($_SESSION['message']);
                                   } ?></p>
           <div class="form-group ">
-            <input name="login" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez login">
+            <input name="login" type="text" class="form-control passwordCheck" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez login">
           </div>
           <div class="form-group mt-5">
             <input name="password" type="password" class="form-control passwordCheck" id="exampleInputPassword1" placeholder="Password">
