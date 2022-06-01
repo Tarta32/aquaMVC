@@ -329,17 +329,16 @@ class AdminControleur extends BaseControleur
             if (isset($_POST['supprimer']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
                 $id = explode('-', $parametre);
-
                 $image = ImageModele::findById($id[0]);
-
+                
                 $monImage = './assets/image/' . $image['nom_image'];
                 unlink($monImage);
-
+                
                 AdminModele::deletImageById($id[0]);
-
+                
                 $imageCount = AdminModele::countImageJoinDepartement($id[1]);
-
-                if ($imageCount[0][0] == 0) {
+                // je cherche l'index "count(*)" dans l'array créé par $imageCount
+                if ($imageCount["count(*)"] == 0) {
                     AdminModele::updateVisite0($id[1]);
                 }
 

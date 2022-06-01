@@ -65,7 +65,7 @@ include './vue/commun/headerAdmin.php'
                             <input style="display: none;" type="text" name="departement_slug" value="<?= $selectDepartement["departement_slug"] ?>">                           
                             <div class="form-group">
                                 <label for="formFile" class="form-label mt-4">inserer image</label>
-                                <input name='selectImage[]' class="form-control" type="file" id="formFile" multiple>
+                                <input name='selectImage[]' class="form-control" type="file" id="formFile" multiple required>
                             </div>
                             <input class="btn cssbuttons-io-button mt-2" type="submit" value="Upload image(s)" name="valider2">
                         </form>
@@ -99,12 +99,11 @@ include './vue/commun/headerAdmin.php'
                     <label for="descriptionDepartement">Description departement :</label>
                     <textarea class="form-control" name="descriptionDepartement" id="descriptionDepartement" cols="30" rows="10"><?= $selectDepartement['departement_description'] ?></textarea>
                 </div>
-                <input class="btn cssbuttons-io-button" type="submit" value="Valider description" name="validerDescription">
                 <div class="form-group">
                     <label for="formFile" class="form-label mt-4">inserer image</label>
                     <input name='selectImage[]' class="form-control" type="file" id="formFile" multiple>
                 </div>
-                <input class="btn cssbuttons-io-button" type="submit" value="Upload image(s)" name="valider2">
+                <input class="btn cssbuttons-io-button my-3" type="submit" value="Upload image(s) et Valider description" name="valider2">
             </form>
             <section class="sectionMasonry">
                 <div class="masonry">
