@@ -282,8 +282,6 @@ class AdminControleur extends BaseControleur
                     if (password_verify($_POST['oldPassword'], $utilisateur[0]['password'])) {
                         if ($_POST['password'] != NULL) {
                             if ($_POST['password'] == $_POST['confirmPassword']) {
-                                var_dump(password_hash($_POST['password'], PASSWORD_BCRYPT));
-                                die();
                                 if ($_POST['oldPassword'] == $_POST['password']) {
                                     $_SESSION['message'] = "Le nouveau mot de passe ne peut pas etre identique a l'ancien";
                                 } else {
