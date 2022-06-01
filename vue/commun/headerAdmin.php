@@ -25,6 +25,7 @@
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" defer></script>
     <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js" defer></script>
+    <script src="<?= Conf::index ?>assets/js/script.js" defer></script>
   <title>Admin - Aquavision, photos videos et referencement sub-aquatique </title>
 </head>
 

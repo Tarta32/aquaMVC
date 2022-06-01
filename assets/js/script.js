@@ -63,3 +63,22 @@ slideinTopAnims.forEach(slideinTopAnim => {
     },options)
     observer.observe(slideinTopAnim);
 })
+
+function checkSpace(param) {
+
+    passwordField.forEach((input) => {
+
+        input.addEventListener("keydown", function(event) {
+
+            if (event.keyCode == 32) {
+
+                event.preventDefault();
+
+            }
+
+            console.log('texte : ' + input.value);
+
+        })
+    })
+
+}

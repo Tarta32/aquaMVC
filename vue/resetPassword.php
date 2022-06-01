@@ -35,8 +35,8 @@
                                                 unset($_SESSION['message']);
                                             } ?></p>
                     <div class="form-group ">
-                        <input name="password" type="password" pattern="^[^ ].+[^ ]$" class="form-control mb-5" id="password" aria-describedby="password" placeholder="Entre votre nouveau Mot de passe">
-                        <input name="confirmPassword" type="password" pattern="^[^ ].+[^ ]$" class="form-control" id="confirmPassword" aria-describedby="confirmPassword" placeholder="Confirmer le nouveau Mot de passe">
+                        <input name="password" type="password" pattern="^[^ ].+[^ ]$" class="form-control mb-5" id="password" aria-describedby="password passwordCheck" placeholder="Entre votre nouveau Mot de passe">
+                        <input name="confirmPassword" type="password" pattern="^[^ ].+[^ ]$" class="form-control" id="confirmPassword" aria-describedby="confirmPassword passwordCheck" placeholder="Confirmer le nouveau Mot de passe">
                     </div>
                     <div class="row">
                         <div class="col">
@@ -47,6 +47,27 @@
             </div>
         </form>
     </div>
+
+    <script>
+        window.onload = function() {
+
+            let passwordField = document.querySelectorAll(".passwordCheck");
+
+            passwordField.forEach((input) => {
+
+                input.addEventListener("keydown", function(event) {
+
+                    if (event.keyCode == 32) {
+
+                        event.preventDefault();
+
+                    }
+
+                })
+            })
+
+        }
+    </script>
 </body>
 
 </html>

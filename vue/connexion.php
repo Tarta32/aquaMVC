@@ -43,7 +43,7 @@
             <input name="login" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrez login">
           </div>
           <div class="form-group mt-5">
-            <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input name="password" type="password" class="form-control passwordCheck" id="exampleInputPassword1" placeholder="Password">
           </div>
           <div class="row">
             <div class="col">
@@ -58,6 +58,27 @@
       </div>
     </form>
   </div>
+
+  <script>
+    window.onload = function() {
+
+      let passwordField = document.querySelectorAll(".passwordCheck");
+
+      passwordField.forEach((input) => {
+
+        input.addEventListener("keydown", function(event) {
+
+          if (event.keyCode == 32) {
+
+            event.preventDefault();
+
+          }
+
+        })
+      })
+
+    }
+  </script>
 </body>
 
 </html>
