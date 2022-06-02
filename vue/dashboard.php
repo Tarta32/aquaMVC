@@ -7,11 +7,17 @@ include './vue/commun/headerAdmin.php'
 <div class="container">
     <?php
 
-    if (isset($_SESSION['message'])) {
+    if (isset($_SESSION['message_error'])) {
 
-        echo "<p style='color:red'>" . $_SESSION['message'] . "</p>";
+        echo "<p style='color:red'>" . $_SESSION['message_error'] . "</p>";
 
-        unset($_SESSION['message']);
+        unset($_SESSION['message_error']);
+    }
+    if (isset($_SESSION['message_success'])) {
+
+        echo "<p style='color:green'>" . $_SESSION['message_success'] . "</p>";
+
+        unset($_SESSION['message_success']);
     }
 
 
@@ -81,6 +87,7 @@ include './vue/commun/headerAdmin.php'
         ?>
             <form method="POST" enctype="multipart/form-data" action="<?= Conf::index ?>admin/insert">
                 <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
+                <input type="hidden" name="oldText" value="<?= $selectDepartement['departement_description'] ?>">
                 <h2><?= $selectDepartement['departement_nom'] ?></h2>
                 <input style="display: none;" type="text" name="departement" value="<?= $selectDepartement["id"] ?>">
                 <input style="display: none;" type="text" name="departement_slug" value="<?= $selectDepartement["departement_slug"] ?>">
