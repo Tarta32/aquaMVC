@@ -5,7 +5,7 @@
     Autoloader::start();
     session_start();
 
-$chemin = str_replace("/parametre=", "/", $_GET['chemin']);
+$chemin = $_GET['chemin'];
 
 $partiesChemin = explode("/", $chemin);
 
