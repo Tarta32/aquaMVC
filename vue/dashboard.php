@@ -33,15 +33,10 @@ include './vue/commun/headerAdmin.php'
                             <?php
                             foreach ($departement as $dp) {
                                 if ($dp['visite'] == 1) {
-
                             ?>
-                                    <option <?php if (Conf::dashboard . '/' . $dp['departement_slug'] == $_SERVER['REQUEST_URI']) {
-                                                echo 'selected';
-                                            } ?> value="<?= $dp['departement_slug'] ?>" class="scrollVisite"><?= $dp['id'] . " " . $dp['departement_nom'] ?> [visité]</option>
-                                <?php } else { ?>
-                                    <option <?php if (Conf::dashboard . '/' . $dp['departement_slug'] == $_SERVER['REQUEST_URI']) {
-                                                echo 'selected';
-                                            } ?> value="<?= $dp['departement_slug'] ?>" class="scrollNonVisite"><?= $dp['id'] . " " . $dp['departement_nom'] ?></option>
+                                    <option <?php if (Conf::dashboard . '/' . $dp['departement_slug'] == $_SERVER['REQUEST_URI']) {echo 'selected';} ?> value="<?= $dp['departement_slug'] ?>" class="scrollVisite"><?= $dp['id'] . " " . $dp['departement_nom'] ?> [visité]</option>
+                                    <?php } else { ?>
+                                        <option <?php if (Conf::dashboard . '/' . $dp['departement_slug'] == $_SERVER['REQUEST_URI']) {echo 'selected';} ?> value="<?= $dp['departement_slug'] ?>" class="scrollNonVisite"><?= $dp['id'] . " " . $dp['departement_nom'] ?></option>
                             <?php }
                             } ?>
                         </select>
@@ -86,7 +81,9 @@ include './vue/commun/headerAdmin.php'
 
         ?>
             <form method="POST" enctype="multipart/form-data" action="<?= Conf::index ?>admin/insert">
+
                 <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
+
                 <input type="hidden" name="oldText" value="<?= $selectDepartement['departement_description'] ?>">
                 <h2><?= $selectDepartement['departement_nom'] ?></h2>
                 <input style="display: none;" type="text" name="departement" value="<?= $selectDepartement["id"] ?>">

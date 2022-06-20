@@ -2,7 +2,6 @@
 
 class PDOperso extends PDO
 {
-
     function __construct(
         $host = 'localhost', 
         $dbname = 'aqua', 
@@ -15,10 +14,6 @@ class PDOperso extends PDO
             $user,
             $pwd
         );
-
-
         $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
-
-
 }

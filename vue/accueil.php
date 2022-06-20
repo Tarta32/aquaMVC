@@ -12,6 +12,7 @@ include './vue/commun/header.php';
 
     }
 </script>
+
 <section class="carteInteractive">
     <div class="slideinTopAnim">
         <h2 class="bleu"><span class="vert">C</span>ARTE INTERACTIVE</h2>
@@ -887,23 +888,26 @@ include './vue/commun/header.php';
                 </a>
             </g>
         </svg>
-        <?php
-
-        foreach ($departement as $dp) {
-
-            if ($dp['visite'] == "1") {
-
-                echo '<script>visited("' . $dp['departement_slug'] . '",' . $dp['id'] . ')</script>';
-            }
-        }
-        ?>
     </div>
+    <?php
+
+    foreach ($departement as $dp) {
+
+        if ($dp['visite'] == "1") {
+
+            echo '<script>visited("' . $dp['departement_slug'] . '",' . $dp['id'] . ')</script>';
+        }
+    }
+    ?>
+    
 </section>
 
 <section class="presentation p-5">
     <div class="container d-flex justify-content-between presentation">
         <div class="textePresentation text-light slideinLeftAnim p-5">
+
             <h3 class="text-light text-center"><?= htmlentities($accueil['titre']) ?></h3>
+            
             <p class="mt-3"><?php
                             if (strlen(htmlentities($accueil['contenu'])) > 270) {
                                 echo nl2br(utf8_encode(substr(htmlentities($accueil['contenu']), 0, strpos(htmlentities($accueil['contenu']), ' ', 270)))) . ' . . .';

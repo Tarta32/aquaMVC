@@ -18,7 +18,9 @@ include './vue/commun/header.php'
             </div>
             <div class="col-5 mt-5 p-3 border border-info border-3 rounded slideinRightAnim">
                 <h2 class="text-center bleu"><span class="vert">D</span>escription du departement</h2>
+
                 <p class="text-center"><?= $departement['departement_description'] ?></p>
+                
             </div>
         </div>
     </div>

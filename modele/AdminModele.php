@@ -9,21 +9,16 @@ class AdminModele
 
     static function connexion($login)
     {
-
         $connexion = new PDOperso();
-
         $requete = $connexion->prepare('SELECT * FROM admin WHERE login = ?');
         $requete->execute([$login]);
-
         return $requete->fetch();
     }
 
     static function resetmail($mail){
         $connexion = new PDOperso();
-
         $requete = $connexion->prepare('SELECT * FROM admin WHERE email = ?');
         $requete->execute([$mail]);
-
         return $requete->fetch();
     }
 
@@ -66,13 +61,7 @@ class AdminModele
     {
         $connexion = new PDOperso();
         $requete = $connexion->prepare('SELECT * from departement WHERE departement_nom = ?');
-
-        $requete->execute(
-            [
-                $departement_nom
-            ]
-        );
-
+        $requete->execute([$departement_nom]);
         return $requete->fetch();
     }
 
@@ -81,7 +70,9 @@ class AdminModele
 
         $connexion = new PDOperso();
 
-        $query = "SELECT departement_nom, nom_image, image.id as image_id, id_departement FROM image JOIN departement ON departement.id = image.id_departement WHERE departement_nom = ?";
+        $query = "SELECT departement_nom, nom_image, image.id as image_id, id_departement 
+        FROM image JOIN departement ON departement.id = image.id_departement 
+        WHERE departement_nom = ?";
         $requete = $connexion->prepare($query);
 
         $requete->execute([$departement_nom]);
@@ -108,6 +99,7 @@ class AdminModele
     static function deletImageById($id)
     {
         $connexion = new PDOperso();
+
         $requete = $connexion->prepare("DELETE FROM image WHERE id = ?");
         $requete->execute([$id]);
     }

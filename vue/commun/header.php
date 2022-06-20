@@ -27,8 +27,6 @@
     <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js" defer></script>
     <script src="<?= Conf::index ?>assets/js/script.js" defer></script>
     <title><?= $title . $description ?></title>
-
-
 </head>
 
 <body>
@@ -44,27 +42,29 @@
         <div class="iconeFlex d-flex">
             <div class="d-flex iconeAlign">
                 <div class="mx-1">
-                    <a href="https://www.instagram.com/fish_ooting/" target="_blank" class="text-primary"><i class='bx bxl-instagram-alt'></i><h6 class="text_icones">Instagram</h6></a>
+                    <a href="https://www.instagram.com/fish_ooting/" target="_blank" class="text-primary"><i class='bx bxl-instagram-alt'></i>
+                        <h6 class="text_icones">Instagram</h6>
+                    </a>
                 </div>
                 <div class="mx-1">
-                    <a href="https://www.facebook.com/MorganAquatique" target="_blank" class="text-primary"><i class='bx bxl-facebook-square'></i><h6 class="text_icones">Facebook</h6></a>
+                    <a href="https://www.facebook.com/MorganAquatique" target="_blank" class="text-primary"><i class='bx bxl-facebook-square'></i>
+                        <h6 class="text_icones">Facebook</h6>
+                    </a>
                 </div>
                 <div class="mx-1">
-                    <a href="https://www.youtube.com/channel/UC4DCDphd0U-pfaxjrGOAEIQ" target="_blank" class="text-primary"><i class='bx bxl-youtube'></i><h6 class="text_icones">Youtube</h6></a>
+                    <a href="https://www.youtube.com/channel/UC4DCDphd0U-pfaxjrGOAEIQ" target="_blank" class="text-primary"><i class='bx bxl-youtube'></i>
+                        <h6 class="text_icones">Youtube</h6>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-
-
             <a href="<?= Conf::index ?>"><img src="<?= Conf::index ?>assets/image/imageAccueil/BGimage/logo.png" style="width:75px" alt="Logo de plongée"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-
             <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
                 <ul class="navbar-nav text-center">
                     <li class="nav-item">
@@ -85,10 +85,8 @@
                             <a class="nav-link" href="<?= Conf::dashboard ?>"><span class="vert">A</span>dmin</a>
                         </li>
                     <?php } ?>
-
                 </ul>
             </div>
-
         </div>
         </div>
     </nav>

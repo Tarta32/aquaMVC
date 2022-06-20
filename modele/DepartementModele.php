@@ -10,7 +10,7 @@ class DepartementModele extends BaseModele
     static function findDepartementById($id)
     {
         $connexion = new PDOperso();
-        $requete = $connexion->prepare('SELECT * FROM departement WHERE id = ? AND visite = "1"');
+        $requete = $connexion->prepare('SELECT * FROM departement WHERE id = ? AND visite = 1');
         $requete->execute([$id]);
         return $requete->fetch();
     }

@@ -33,9 +33,12 @@ include './vue/commun/headerAdmin.php'
             ?>
                 <div class="row bg-light border border-top-0 border-2 border-success">
                     <div class="col-1 border-end border-2 border-success">
+
                         <div class="form-check">
                             <input class="text-center" class="form-check-input" type="checkbox" value="<?= $msg['id'] ?>" name="deletSelect[]" id="deletSelect">
                         </div>
+
+                        
                     </div>
                     <div class="col-2 border-end border-2 border-success">
                         <p><?= $msg['nom'] ?></p>

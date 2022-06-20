@@ -12,7 +12,9 @@ class DepartementControleur extends BaseControleur{
     public function visite($parametre) {
 
         $epingles = EpingleModele::FindEpingleByIdJoinEpingleDepartement($parametre);
+
         $departement = DepartementModele::findDepartementById($parametre);
+        
         $images = DepartementModele::findImageByDepartementId($parametre);
 
         $parametres = compact('departement', 'images','epingles');

@@ -109,6 +109,7 @@ class AdminControleur extends BaseControleur
 
 
             $requeteImage = AdminModele::findImageByIdNull();
+
             $accueil = AdminModele::accueilInfo();
 
 
@@ -160,11 +161,13 @@ class AdminControleur extends BaseControleur
 
                         $_SESSION['admin'] = $_POST['login'];
                         header('Location: ' . Conf::dashboard);
+                    } else {
+                        $_SESSION['error'] = 'Mauvais login/password';
                     }
                 } else {
 
-                    $mdperror = true;
                     $_SESSION['error'] = 'Mauvais login/password';
+                    $mdperror = true;
                 }
             } elseif (isset($_POST['retour'])) {
 
@@ -378,6 +381,7 @@ class AdminControleur extends BaseControleur
     {
 
         if (isset($_SESSION['admin'])) {
+
             if (isset($_POST['supprimer']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
                 $parametre = str_replace("/departement=", "/", $_GET['chemin']);
@@ -396,6 +400,7 @@ class AdminControleur extends BaseControleur
         } else {
             header('Location: ' . Conf::index);
         }
+
         $token = uniqid(rand(), true);
         $_SESSION['token'] = $token;
         $_SESSION['data_token'] = time();
@@ -404,14 +409,18 @@ class AdminControleur extends BaseControleur
     function supprimerMessage()
     {
         if (isset($_SESSION['admin'])) {
-            if (isset($_POST['supprimerMessages']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
+            if (isset($_POST['supprimerMessages'])) {
+
+                if (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time()) {
 
 
-                foreach ($_POST['deletSelect'] as $delet) {
+                    foreach ($_POST['deletSelect'] as $delet) {
 
-                    AdminModele::SupprimerMessageById($delet);
+                        AdminModele::SupprimerMessageById($delet);
+                    }
+
+                    header("Location: " . Conf::message);
                 }
-                header("Location: " . Conf::message);
             }
         }
         $token = uniqid(rand(), true);
@@ -425,7 +434,7 @@ class AdminControleur extends BaseControleur
         $chiffre = 0;
         if (isset($_SESSION['admin'])) {
 
-            
+
             if (isset($_POST['valider2']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
                 if ($_POST['oldText'] != $_POST['descriptionDepartement']) {
@@ -445,7 +454,7 @@ class AdminControleur extends BaseControleur
                 $countfiles = count($_FILES['selectImage']['name']);
 
 
-                if (isset($_FILES['selectImage'])){
+                if (isset($_FILES['selectImage'])) {
                     for ($i = 0; $i < $countfiles; $i++) {
 
                         $filename = $_FILES['selectImage']['name'][$i];
@@ -454,14 +463,7 @@ class AdminControleur extends BaseControleur
 
                         $file_extension = strtolower($file_extension);
 
-                        $slug = explode('-', $_POST['departement_slug']);
-
-                        for ($j = 0; count($slug) < $j; $j++) {
-
-                            $slug .= $slug[$j];
-                        }
-
-                        $slug = implode('', $slug);
+                        $slug = str_replace('-', '', $_POST['departement_slug']);
 
                         $filename = $slug . time() . $chiffre . '.' . $file_extension;
 
@@ -579,6 +581,7 @@ class AdminControleur extends BaseControleur
             if ((isset($_POST['updateAccueil']) && ($_SESSION['token'] == $_POST['token'])) || (isset($_POST['updatePresentation']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time()))) {
 
                 AdminModele::updateTitreContenu($_POST['titre'], $_POST['contenu']);
+
                 $_SESSION['message_success'] = "Titre et contenu modifié avec succés";
 
                 if (isset($_POST['updateAccueil'])) {

@@ -15,6 +15,7 @@ include './vue/commun/headerAdmin.php'
                                         unset($_SESSION['message_success']);
                                     }
                                     ?></p>
+                                    
             <form method="POST" action="<?= Conf::index ?>admin/update">
                 <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                 <div class="form-group mt-3 mb-3">
@@ -27,6 +28,7 @@ include './vue/commun/headerAdmin.php'
                 </div>
                 <input class="btn cssbuttons-io-button mt-2" type="submit" value="Modifier contenu" name="updateAccueil">
             </form>
+
             <div class="row">
                 <div class="col-6">
                     <form enctype='multipart/form-data' method="POST" action="<?= Conf::index ?>admin/update">
@@ -62,7 +64,9 @@ include './vue/commun/headerAdmin.php'
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+
                                                     <form method="POST" action='<?= Conf::index ?>admin/supprimerAccueil/<?= $img['id'] ?>-<?= $img['id_departement'] ?>'>
+
                                                         <input type="hidden" value="<?= $_SESSION['token'] ?>" name="token">
                                                         <button type="submit" name="supprimer" class="btn btn-danger">Supprimer</button>
                                                     </form>
@@ -70,7 +74,9 @@ include './vue/commun/headerAdmin.php'
                                             </div>
                                         </div>
                                     </div>
+
                                     <img style="max-width: 150px;" src="<?= Conf::index ?>assets/image/<?= htmlentities($img['nom_image']) ?>" alt="" />
+                                    
                                 </div>
                             <?php
                             }
