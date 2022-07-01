@@ -610,36 +610,38 @@ class AdminControleur extends BaseControleur
             } else if (isset($_POST['updateImagePresentation']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
 
                 $image = AccueilModele::findAll();
+                if ($_FILES['selectImagePresentation']['name'] != null) {
+                    unlink("./assets/image/imageAccueil/" . $image[0]['image']);
 
-                unlink("./assets/image/imageAccueil/" . $image[0]['image']);
 
-                $filename = $_FILES['selectImagePresentation']['name'];
+                    $filename = $_FILES['selectImagePresentation']['name'];
 
-                $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
+                    $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
 
-                $file_extension = strtolower($file_extension);
+                    $file_extension = strtolower($file_extension);
 
-                $filename = "accueilImagePresentation" . time() . '.' . $file_extension;
+                    $filename = "accueilImagePresentation" . time() . '.' . $file_extension;
 
-                $valid_extension = array("png", "jpeg", "jpg");
+                    $valid_extension = array("png", "jpeg", "jpg");
 
-                if (in_array($file_extension, $valid_extension)) {
+                    if (in_array($file_extension, $valid_extension)) {
 
-                    if (move_uploaded_file(
-                        $_FILES['selectImagePresentation']['tmp_name'],
-                        './assets/image/imageAccueil/' . $filename
-                    )) {
-                        $_SESSION['message_success'] = "Image présentation modifiée avec succés";
+                        if (move_uploaded_file(
+                            $_FILES['selectImagePresentation']['tmp_name'],
+                            './assets/image/imageAccueil/' . $filename
+                        )) {
+                            $_SESSION['message_success'] = "Image présentation modifiée avec succés";
 
-                        AccueilModele::updateImage($filename);
+                            AccueilModele::updateImage($filename);
 
-                        header("Location: " . Conf::dashboardApropos);
+                            header("Location: " . Conf::dashboardApropos);
+                        }
                     } else {
-                        $_SESSION['message_error'] = "Aucun fichier telechargé";
+                        $_SESSION['message_error'] = "Erreur d'extension de fichier";
                         header("Location: " . Conf::dashboardApropos);
                     }
                 } else {
-                    $_SESSION['message_error'] = "Erreur d'extension de fichier";
+                    $_SESSION['message_error'] = "Aucun fichier telechargé";
                     header("Location: " . Conf::dashboardApropos);
                 }
             } else if (isset($_POST['updateImageEquipement']) && (($_SESSION['token'] == $_POST['token']) && $_SESSION['data_token'] + 300 > time())) {
