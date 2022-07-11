@@ -453,10 +453,8 @@ class AdminControleur extends BaseControleur
 
                 $countfiles = count($_FILES['selectImage']['name']);
 
-
                 if (isset($_FILES['selectImage'])) {
                     for ($i = 0; $i < $countfiles; $i++) {
-
                         $filename = $_FILES['selectImage']['name'][$i];
 
                         $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
@@ -490,8 +488,10 @@ class AdminControleur extends BaseControleur
                                 $_SESSION['message_error'] = "Aucun fichier telechargé";
                                 header("Location: " . Conf::dashboard . "/" . $departement['departement_slug']);
                             }
-                        } else {
+                        } else if ($_FILES['selectImage']['name'][$i] != "") {
                             $_SESSION['message_error'] = "Extension de l'image non conforme";
+                            header("Location: " . Conf::dashboard . "/" . $departement['departement_slug']);
+                        } else {
                             header("Location: " . Conf::dashboard . "/" . $departement['departement_slug']);
                         }
                     }
